@@ -60,7 +60,7 @@ publishing {
 
     repositories {
         maven {
-            url = uri("https://github.com/Geming400/gd.kt")
+            url = uri("https://github.com/gd-kt/gd.kt")
             name = "gd.kt"
         }
     }

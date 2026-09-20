@@ -26,7 +26,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.Geming400:gd.kt:<version tag>")
+    implementation("com.github.gd-kt:gd.kt:<version tag>")
 }
 ```
 
