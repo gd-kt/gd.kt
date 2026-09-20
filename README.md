@@ -1,6 +1,6 @@
 # gd.kt
 
-[![Jitpack Badge](https://jitpack.io/v/Geming400/gd.kt.svg)](https://jitpack.io/#Geming400/gd.kt)
+[![Jitpack Badge](https://jitpack.io/v/gd-kt/gd.kt.svg)](https://jitpack.io/#gd-kt/gd.kt)
 
 *(This is actually the lib I've remade the most)*
 
