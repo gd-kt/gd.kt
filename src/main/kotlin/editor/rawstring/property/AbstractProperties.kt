@@ -107,6 +107,28 @@ interface PropertyDefinition<T> : RawStringable {
 }
 
 /**
+ * Compares this property's value and [other]. An exception is throw if [value] is `null`.
+ * @throws NullPointerException if [value] is `null
+ * @return the comparison between [value] and [other]
+ * @see Comparable.compareTo
+ * @see PropertyDefinition.compareOrElse
+ */
+fun <T : Comparable<T>> PropertyDefinition<T>.compareOrThrow(other: T): Int =
+    this.getOrThrow().compareTo(other)
+
+/**
+ * Compares this property's value and [other]. [default] is returned if [value] is `null`.
+ * @return the comparison between [value] and [other], or [default] if if [value] is `null`
+ * @see Comparable.compareTo
+ * @see PropertyDefinition.compareOrThrow
+ */
+fun <T : Comparable<T>> PropertyDefinition<T>.compareOrElse(other: T, default: Int): Int =
+    if (this.value == null)
+        default
+    else
+        this.compareOrThrow(other)
+
+/**
  * Represents a property that is mutable
  */
 interface MutableProperty<T> : PropertyDefinition<T> {
