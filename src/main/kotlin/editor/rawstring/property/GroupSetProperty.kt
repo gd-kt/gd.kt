@@ -13,8 +13,7 @@ import java.util.SequencedSet
 class GroupSetProperty(
     id: Id,
     val groupParentsProperty: SequencedSetProperty<UInt>,
-    collectionCtor: CollectionCtor<SequencedSet<UInt>> = { linkedSetOf() },
-    defaultValue: SequencedSet<UInt>? = collectionCtor(),
+    defaultValue: SequencedSet<UInt>? = linkedSetOf(),
     currentValue: SequencedSet<UInt>? = null
 ) : SequencedSetProperty<UInt>(id, defaultValue =  defaultValue, currentValue = currentValue, elemSerializer = Serializers.UINT) {
     override var value: SequencedSet<UInt>?

@@ -9,8 +9,7 @@ import java.util.*
  */
 open class ListProperty<T>(
     id: Id,
-    collectionCtor: CollectionCtor<MutableList<T>> = { arrayListOf() },
-    defaultValue: MutableList<T>? = collectionCtor(),
+    defaultValue: MutableList<T>? = arrayListOf(),
     currentValue: MutableList<T>? = null,
     elemSerializer: Serializer<T>
 ) : AbstractCollectionProperty<T, MutableList<T>>(id, defaultValue, currentValue, elemSerializer) {
@@ -42,8 +41,7 @@ open class ListProperty<T>(
  */
 open class SetProperty<T>(
     id: Id,
-    collectionCtor: CollectionCtor<MutableSet<T>> = { mutableSetOf() },
-    defaultValue: MutableSet<T>? = collectionCtor(),
+    defaultValue: MutableSet<T>? = mutableSetOf(),
     currentValue: MutableSet<T>? = null,
     elemSerializer: Serializer<T>
 ) : AbstractCollectionProperty<T, MutableSet<T>>(id, defaultValue, currentValue, elemSerializer) {
@@ -58,8 +56,7 @@ open class SetProperty<T>(
  */
 open class SequencedSetProperty<T>(
     id: Id,
-    collectionCtor: CollectionCtor<SequencedSet<T>> = { linkedSetOf() },
-    defaultValue: SequencedSet<T>? = collectionCtor(),
+    defaultValue: SequencedSet<T>? = linkedSetOf(),
     currentValue: SequencedSet<T>? = null,
     elemSerializer: Serializer<T>
 ) : AbstractCollectionProperty<T, SequencedSet<T>>(id, defaultValue, currentValue, elemSerializer) {
