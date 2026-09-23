@@ -172,15 +172,16 @@ abstract class AbstractProperty<T>(final override val id: Id, open val defaultVa
      *
      * If set to `null`, the [defaultValue] will be used instead *(see [resetValue])*
      *
-     * Do note that this variable **may be dangerous to modify** (changing the variable is not tho !!) (eg: adding elements to a collection)
+     * Do note that this variable **may be dangerous to mutate** (changing the variable is not tho !!) (eg: adding elements to a collection)
      * because this variable returns the [defaultValue] if the property's [internal value][currentValue] is `null`, so
      * in that case you might modify it indirectly.
+     *
      * This is why your custom properties should contain calls that do not
      * directly access [value] to prevent from modifying the default value (ex: to add an elem in a collection).
      * You can look at how this was done in [AbstractCollectionProperty] which has to in a way fight
      * against this limitation using [AbstractCollectionProperty.getOrCreateCollection].
      *
-     * This is why the best practice for properties is to **contain immutable types** ! (ex: primitive types)
+     * This is why the best practice for properties is to **contain immutable types**! (ex: primitive types)
      */
     override var value: T?
         get() {
