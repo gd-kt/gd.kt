@@ -316,13 +316,19 @@ abstract class AbstractCollectionProperty<T, C>(
         const val ELEMENT_SEPARATOR: Char = '.'
     }
 
-    override val serializer: Serializer<C> = Serializer.collectionSerializer(this::createEmptyCollection, this.elemSerializer)
+    override val serializer: Serializer<C> =
+        Serializer.collectionSerializer(this::createEmptyCollection, this.elemSerializer)
 
     protected abstract fun createEmptyCollection(): C
 
-    protected fun getOrCreateCollection(): C {
+    /**
+     * Gets the underlying collection, or creates if necessary.
+     *
+     * **This should be called when modifying the collection** !
+     */
+    fun getOrCreateCollection(): C {
         if (this.currentValue == null) {
-            val collection = createEmptyCollection()
+            val collection = this.createEmptyCollection()
             this.defaultValue?.let(collection::addAll)
             this.currentValue = collection
         }
