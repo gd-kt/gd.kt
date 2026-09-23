@@ -5,40 +5,40 @@ import editor.rawstring.serializing.Serializers
 
 sealed class NumberProperty<T>(id: Id, defaultValue: T? = null, currentValue: T? = null) : AbstractProperty<T>(id, defaultValue, currentValue)
 
-interface RangedProperty<T : Comparable<T>, R : ClosedRange<T>> {
+interface RangedProperty<T : Comparable<T>, R : ClosedRange<T>> : PropertyDefinition<T> {
     val range: R
 }
 
 
 open class IntProperty(id: Id, defaultValue: Int? = 0, currentValue: Int? = null) : NumberProperty<Int>(id, defaultValue, currentValue) {
-    override val serializer = Serializers.INT
-
     companion object {
         fun ranged(id: Id, range: IntRange, defaultValue: Int? = 0, currentValue: Int? = null): RangedIntProperty =
             RangedIntProperty(id, range, defaultValue, currentValue)
     }
 
+    override val serializer = Serializers.INT
+
     override fun asRawString(separator: Char): String =
-        this.toRawStringHelper(Serializers.INT, separator)
+        this.toRawStringHelper(this.serializer, separator)
 }
 
 open class UIntProperty(id: Id, defaultValue: UInt? = 0u, currentValue: UInt? = null) : NumberProperty<UInt>(id, defaultValue, currentValue) {
-    override val serializer = Serializers.UINT
-
     companion object {
         fun ranged(id: Id, range: UIntRange, defaultValue: UInt? = 0u, currentValue: UInt? = null): RangedUIntProperty =
             RangedUIntProperty(id, range, defaultValue, currentValue)
     }
 
+    override val serializer = Serializers.UINT
+
     override fun asRawString(separator: Char): String =
-        this.toRawStringHelper(Serializers.UINT, separator)
+        this.toRawStringHelper(this.serializer, separator)
 }
 
 open class UByteProperty(id: Id, defaultValue: UByte? = 0u, currentValue: UByte? = null) : NumberProperty<UByte>(id, defaultValue, currentValue) {
     override val serializer = Serializers.UBYTE
 
     override fun asRawString(separator: Char): String =
-        this.toRawStringHelper(Serializers.UBYTE, separator)
+        this.toRawStringHelper(this.serializer, separator)
 }
 
 open class FloatProperty(id: Id, defaultValue: Float? = 0f, currentValue: Float? = null) : NumberProperty<Float>(id, defaultValue, currentValue) {
@@ -50,7 +50,7 @@ open class FloatProperty(id: Id, defaultValue: Float? = 0f, currentValue: Float?
     }
 
     override fun asRawString(separator: Char): String =
-        this.toRawStringHelper(Serializers.FLOAT, separator)
+        this.toRawStringHelper(this.serializer, separator)
 }
 
 
