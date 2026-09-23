@@ -4,6 +4,12 @@ import editor.rawstring.Id
 import editor.rawstring.serializing.Serializers
 import java.util.SequencedSet
 
+/**
+ * Special property used to store object groups.
+ * It needs to know the [groupParentsProperty], this is where "pink groups" (or "parents group") are stored.
+ *
+ * [value] returns both this property's stored groups and the [groupParentsProperty]'s groups.
+ */
 class GroupSetProperty(
     id: Id,
     val groupParentsProperty: SequencedSetProperty<UInt>,
