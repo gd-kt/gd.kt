@@ -54,6 +54,7 @@ open class ConditionalProperty<T, PT, P : AbstractProperty<PT>?>(
          * @param valueGetter the lambda used to get the value of this conditional property.
          * @param T the type of the conditional property
          */
+        @JvmStatic
         fun <T> createIndependent(
             id: Id,
             serializer: Serializer<T>,
@@ -134,6 +135,7 @@ open class MutableConditionalProperty<T, PT, P : AbstractProperty<PT>?>(
          *                  If it returns `false`, the [raw string output][asRawString] will be empty *(= `""`)*
          * @param T the type of the conditional property
          */
+        @JvmStatic
         fun <T> createIndependent(
             id: Id,
             defaultValue: T? = null,
