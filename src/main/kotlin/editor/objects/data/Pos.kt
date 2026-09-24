@@ -13,7 +13,32 @@ sealed interface Position {
      * don't actually represent the true geometry dash position
      */
     val actualX: Float
+
+    /**
+     * The actual y position of this position object.
+     *
+     * This is useful for [GridPos] because its position fields ([x][GridPos.x] / [y][GridPos.y])
+     * don't actually represent the true geometry dash position
+     */
     val actualY: Float
+}
+
+sealed interface OperatorPosition<T : OperatorPosition<T>> : Position {
+    operator fun times(num: Float): T
+
+    operator fun times(pos: Position): T
+
+    operator fun div(num: Float): T
+
+    operator fun div(pos: Position): T
+
+    operator fun plus(num: Float): T
+
+    operator fun plus(pos: Position): T
+
+    operator fun minus(num: Float): T
+
+    operator fun minus(pos: Position): T
 }
 
 /**
@@ -23,7 +48,7 @@ sealed interface Position {
 data class Pos(
     val x: Float,
     val y: Float
-) : Position {
+) : OperatorPosition<Pos> {
     companion object {
         @JvmField
         @get:JvmName("ZERO")
@@ -58,28 +83,28 @@ data class Pos(
      */
     constructor() : this(0f, 0f)
 
-    operator fun times(num: Float): Pos =
+    override operator fun times(num: Float): Pos =
         this.copy(x = this.x * num, y = this.y * num)
 
-    operator fun times(pos: Position): Pos =
+    override operator fun times(pos: Position): Pos =
         this.copy(x = this.x * pos.actualX, y = this.y * pos.actualY)
 
-    operator fun div(num: Float): Pos =
+    override operator fun div(num: Float): Pos =
         this.copy(x = this.x / num, y = this.y / num)
 
-    operator fun div(pos: Position): Pos =
+    override operator fun div(pos: Position): Pos =
         this.copy(x = this.x / pos.actualX, y = this.y / pos.actualY)
 
-    operator fun plus(num: Float): Pos =
+    override operator fun plus(num: Float): Pos =
         this.copy(x = this.x + num, y = this.y + num)
 
-    operator fun plus(pos: Position): Pos =
+    override operator fun plus(pos: Position): Pos =
         this.copy(x = this.x + pos.actualX, y = this.y + pos.actualY)
 
-    operator fun minus(num: Float): Pos =
+    override operator fun minus(num: Float): Pos =
         this.copy(x = this.x - num, y = this.y - num)
 
-    operator fun minus(pos: Position): Pos =
+    override operator fun minus(pos: Position): Pos =
         this.copy(x = this.x - pos.actualX, y = this.y - pos.actualY)
 
     override val actualX = this.x
@@ -96,7 +121,7 @@ data class Pos(
 data class GridPos(
     val x: Float,
     val y: Float
-) : Position {
+) : OperatorPosition<GridPos> {
     companion object {
         @JvmField
         @get:JvmName("ZERO")
@@ -131,28 +156,28 @@ data class GridPos(
      */
     constructor() : this(0f, 0f)
 
-    operator fun times(num: Float): GridPos =
+    override operator fun times(num: Float): GridPos =
         this.copy(x = this.x * num, y = this.y * num)
 
-    operator fun times(pos: Position): GridPos =
+    override operator fun times(pos: Position): GridPos =
         this.copy(x = this.x * pos.actualX, y = this.y * pos.actualY)
 
-    operator fun div(num: Float): GridPos =
+    override operator fun div(num: Float): GridPos =
         this.copy(x = this.x / num, y = this.y / num)
 
-    operator fun div(pos: Position): GridPos =
+    override operator fun div(pos: Position): GridPos =
         this.copy(x = this.x / pos.actualX, y = this.y / pos.actualY)
 
-    operator fun plus(num: Float): GridPos =
+    override operator fun plus(num: Float): GridPos =
         this.copy(x = this.x + num, y = this.y + num)
 
-    operator fun plus(pos: Position): GridPos =
+    override operator fun plus(pos: Position): GridPos =
         this.copy(x = this.x + pos.actualX, y = this.y + pos.actualY)
 
-    operator fun minus(num: Float): GridPos =
+    override operator fun minus(num: Float): GridPos =
         this.copy(x = this.x - num, y = this.y - num)
 
-    operator fun minus(pos: Position): GridPos =
+    override operator fun minus(pos: Position): GridPos =
         this.copy(x = this.x - pos.actualX, y = this.y - pos.actualY)
 
     override val actualX = this.x * Position.GRID_UNIT
