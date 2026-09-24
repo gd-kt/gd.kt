@@ -19,3 +19,6 @@ interface ServerStructure : GenericGdObject {
     override fun asRawString(): String =
         super.asRawString()
 }
+
+@OptIn(GDClientApi::class)
+inline fun ServerStructure.useClient(func: AbstractGDClient.(client: AbstractGDClient) -> Unit) = func(this.client, this.client)
