@@ -3,7 +3,7 @@ package editor.objects
 import annotations.GDName
 import editor.objects.data.Position
 import editor.objects.data.enums.SingleColorType
-import editor.rawstring.id
+import editor.rawstring.Id.Companion.id
 import editor.rawstring.property.BoolProperty
 import editor.rawstring.property.EnumProperty
 import editor.rawstring.property.IntProperty

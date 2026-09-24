@@ -1,6 +1,7 @@
 package editor.rawstring
 
 import TestTags
+import editor.rawstring.Id.Companion.id
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Tag
@@ -11,7 +12,7 @@ private class IdTests {
     @Test
     @DisplayName("String ID test")
     fun stringCtorTest() {
-        val id = Id.ofString("hi")
+        val id = "hi".id
         Assertions.assertEquals(Id.Type.STRING, id.type)
         Assertions.assertNull(id.numericalID)
         Assertions.assertEquals("hi", id.getID())
@@ -24,7 +25,7 @@ private class IdTests {
     @Test
     @DisplayName("Numerical ID test")
     fun numericalCtorTest() {
-        val id = Id.ofNumerical(5u)
+        val id = 5u.id
         Assertions.assertEquals(Id.Type.NUMERICAL, id.type)
         Assertions.assertNull(id.stringID)
         Assertions.assertEquals("5", id.getID())

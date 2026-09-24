@@ -2,7 +2,7 @@ package samples.editor.rawstring.property
 
 import editor.objects.GenericGdObject
 import editor.rawstring.RawStringFactory
-import editor.rawstring.id
+import editor.rawstring.Id.Companion.id
 import editor.rawstring.property.ConditionalProperty
 import editor.rawstring.property.IntProperty
 import editor.rawstring.property.MutableConditionalProperty

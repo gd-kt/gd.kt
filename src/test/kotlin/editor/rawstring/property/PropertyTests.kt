@@ -5,8 +5,8 @@ import TestTags
 import editor.objects.GenericGdObject
 import editor.objects.data.Hsv
 import editor.rawstring.Id
+import editor.rawstring.Id.Companion.id
 import editor.rawstring.RawStringFactory
-import editor.rawstring.id
 import editor.rawstring.serializing.Serializer
 import editor.rawstring.serializing.Serializers
 import utils.LACKS_IMPL

@@ -11,7 +11,7 @@ import editor.objects.triggers.TargetMoveTrigger
 import editor.objects.triggers.ToggleTrigger
 import editor.objects.data.Pos
 import editor.objects.data.Scale
-import editor.rawstring.id
+import editor.rawstring.Id.Companion.id
 import editor.rawstring.property.UIntProperty
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.DisplayName

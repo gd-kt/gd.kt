@@ -5,7 +5,7 @@ import client.GDClientApi
 import client.enums.Gamemode
 import editor.objects.ObjectParser
 import editor.rawstring.RawStringFactory
-import editor.rawstring.id
+import editor.rawstring.Id.Companion.id
 import editor.rawstring.property.BoolProperty
 import editor.rawstring.property.EnumProperty
 import editor.rawstring.property.GdEnum

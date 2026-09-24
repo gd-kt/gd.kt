@@ -5,35 +5,58 @@ package editor.rawstring
  * Numerical types are [unsigned integers][UInt] because in geometry dash, property ids don't go below `1`.
  *
  * You can create an [Id] instance, either by:
- * - Using [ofNumerical] and [ofString]
- * - Or use the 3 extensions [Int.id], [UInt.id] and [String.id]
+ * - In **java**: Using [ofString][String.id] and [ofInt][Int.id]
+ * - In **kotlin**: Using the 3 extensions [Int.id], [UInt.id] and [String.id]
  */
 @ConsistentCopyVisibility
 data class Id private constructor(val numericalID: UInt?, val stringID: String?): Comparable<Id> {
     companion object {
-        fun ofNumerical(numericalID: UInt) = Id(numericalID.coerceAtLeast(1u), null)
-
-        fun ofString(stringID: String) = Id(null, stringID)
-
         /**
          * Creates a numerical or string [Id] object.
          * It tries converting your [id] to an int, and depending on if it fails
          * or not it will return an id with the correct underlying [type]
          * @throws IllegalArgumentException if the given [id] is below `0` (exclusive, so `< 0`)
          */
+        @JvmStatic
         fun ofUnknown(id: String): Id {
             val asUInt = id.toUIntOrNull()
             return if (asUInt == null) {
                 val asInt = id.toIntOrNull()
                 if (asInt == null) {
-                    ofString(id)
+                    id.id
                 } else {
                     throw IllegalArgumentException("Id argument (= $id) isn't a valid UInt", NumberFormatException("Invalid number format: '$id'"))
                 }
             } else {
-                ofNumerical(asUInt)
+                asUInt.id
             }
         }
+
+        /**
+         * Creates a numerical ID for this integer
+         * @see UInt.id
+         */
+        @get:JvmName("ofInt")
+        @JvmStatic
+        inline val Int.id: Id
+            get() = this.coerceAtLeast(1).toUInt().id
+
+
+        /**
+         * Creates a numerical ID for this unsigned integer
+         */
+        @get:JvmName("ofUInt")
+        @JvmStatic
+        val UInt.id: Id
+            get() = Id(this.coerceAtLeast(1u), null)
+
+        /**
+         * Creates a string ID for this string
+         */
+        @get:JvmName("ofString")
+        @JvmStatic
+        val String.id: Id
+            get() = Id(null, this)
     }
 
     val type: Type
@@ -110,25 +133,3 @@ data class Id private constructor(val numericalID: UInt?, val stringID: String?)
         STRING
     }
 }
-
-/**
- * Creates a numerical ID for this integer
- * @see Id.ofNumerical
- */
-inline val Int.id: Id
-    get() = Id.ofNumerical(this.coerceAtLeast(1).toUInt())
-
-
-/**
- * Creates a numerical ID for this unsigned integer
- * @see Id.ofNumerical
- */
-inline val UInt.id: Id
-    get() = Id.ofNumerical(this)
-
-/**
- * Creates a string ID for this string
- * @see Id.ofString
- */
-inline val String.id: Id
-    get() = Id.ofString(this)

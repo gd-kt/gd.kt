@@ -4,6 +4,7 @@ import CustomAssertions
 import TestTags
 import editor.objects.SimpleObject
 import editor.objects.asMap
+import editor.rawstring.Id.Companion.id
 import editor.rawstring.property.IntProperty
 import exceptions.InvalidRawStringException
 import org.junit.jupiter.api.Assertions

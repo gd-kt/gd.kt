@@ -5,7 +5,7 @@ package samples.editor.objects
 import editor.objects.GenericGdObject
 import editor.objects.ObjectParser
 import editor.rawstring.RawStringFactory
-import editor.rawstring.id
+import editor.rawstring.Id.Companion.id
 import editor.rawstring.property.IntProperty
 
 private fun parseAnySample() {

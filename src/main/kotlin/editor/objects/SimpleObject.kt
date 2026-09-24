@@ -6,7 +6,7 @@ import editor.objects.data.Position
 import editor.objects.data.Scale
 import editor.rawstring.DynamicRawStringFactory
 import editor.rawstring.RawStringFactory
-import editor.rawstring.id
+import editor.rawstring.Id.Companion.id
 import editor.rawstring.property.*
 import editor.rawstring.serializing.Serializers
 

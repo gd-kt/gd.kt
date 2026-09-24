@@ -1,7 +1,7 @@
 package editor.objects.propertycontainers
 
 import editor.objects.data.enums.Easing
-import editor.rawstring.id
+import editor.rawstring.Id.Companion.id
 import editor.rawstring.property.EnumProperty
 import editor.rawstring.property.FloatProperty
 import editor.rawstring.property.GDDurationProperty

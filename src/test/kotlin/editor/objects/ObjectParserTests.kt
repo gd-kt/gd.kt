@@ -1,7 +1,7 @@
 package editor.objects
 
 import TestTags
-import editor.rawstring.id
+import editor.rawstring.Id.Companion.id
 import editor.rawstring.property.IntProperty
 import editor.rawstring.property.ListProperty
 import editor.rawstring.serializing.Serializers

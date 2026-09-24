@@ -4,7 +4,7 @@ import annotations.GDName
 import editor.objects.data.Pos
 import editor.objects.data.Position
 import editor.objects.propertycontainers.TriggerProperties
-import editor.rawstring.id
+import editor.rawstring.Id.Companion.id
 import editor.rawstring.property.BoolProperty
 import editor.rawstring.property.UByteProperty
 import editor.rawstring.property.UIntProperty

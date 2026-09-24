@@ -2,7 +2,7 @@ package editor.objects.triggers
 
 import editor.objects.ComplexObject
 import editor.objects.data.Position
-import editor.rawstring.id
+import editor.rawstring.Id.Companion.id
 import editor.rawstring.property.BoolProperty
 import editor.rawstring.property.MutableConditionalProperty
 import editor.rawstring.serializing.Serializers

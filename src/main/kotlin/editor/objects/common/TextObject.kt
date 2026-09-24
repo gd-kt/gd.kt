@@ -3,7 +3,7 @@ package editor.objects.common
 import editor.objects.ComplexObject
 import editor.objects.data.Pos
 import editor.objects.data.Position
-import editor.rawstring.id
+import editor.rawstring.Id.Companion.id
 import editor.rawstring.property.IntProperty
 import editor.rawstring.property.StringProperty
 
