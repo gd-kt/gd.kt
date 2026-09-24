@@ -4,6 +4,8 @@ import editor.objects.GenericGdObject
 import editor.rawstring.RawStringFactory.Companion.createRawString
 import editor.rawstring.property.AbstractProperty
 import editor.rawstring.property.PropertyDefinition
+import utils.containsProperty
+import utils.getProperty
 
 /**
  * A raw string factory allows you to abstract the generation of raw string for [GenericGdObjects][GenericGdObject].
@@ -35,3 +37,22 @@ interface DynamicRawStringFactory : RawStringFactory {
         }
     }
 }
+
+/**
+ * Gets the first dynamic property with the given [id]
+ * @param id the [Id] to look for
+ * @return the found [property][PropertyDefinition]
+ * @throws NoSuchElementException if there is no property corresponding to the given [id]
+ * @see dynamicProperties
+ */
+fun DynamicRawStringFactory.getDynamicProperty(id: Id): PropertyDefinition<*> =
+    this.dynamicProperties.getProperty(id)
+
+/**
+ * Checks if this dynamic raw string factory contains a property with the given [id]
+ * @param id the [Id] to look for
+ * @return if the given [id] is contained in this dynamic raw string factory
+ * @see dynamicProperties
+ */
+fun DynamicRawStringFactory.containsDynamicProperty(id: Id): Boolean =
+    this.dynamicProperties.containsProperty(id)
