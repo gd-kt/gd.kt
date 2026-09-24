@@ -16,6 +16,7 @@ interface GenericGdObject : RawStringable {
          * Loosely check if a raw string is valid in its form
          * @sample samples.editor.rawstring.isValidObjectStringSample
          */
+        @JvmStatic
         fun isValidObjectString(rawStr: String, separator: Char = AbstractProperty.KEY_VAL_SEPARATOR): Boolean =
             rawStr.count { it == separator } % 2 == 1
     }
