@@ -92,7 +92,8 @@ interface RawStringFactory {
 
     /**
      * The properties of this factory's object.
-     * They are cached per-instance and are only cached when this var's getter is called
+     *
+     * On the **default impl.** they are cached per-instance and are only cached when this var's getter is called.
      */
     val properties: Collection<PropertyDefinition<*>>
     val keyValSeparator: Char
