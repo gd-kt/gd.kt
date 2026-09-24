@@ -83,6 +83,8 @@ data class Pos(
      */
     constructor() : this(0f, 0f)
 
+    constructor(pos: Pair<Float, Float>) : this(pos.first, pos.second)
+
     override operator fun times(num: Float): Pos =
         this.copy(x = this.x * num, y = this.y * num)
 
@@ -155,6 +157,8 @@ data class GridPos(
      * @see ZERO
      */
     constructor() : this(0f, 0f)
+
+    constructor(pos: Pair<Float, Float>) : this(pos.first, pos.second)
 
     override operator fun times(num: Float): GridPos =
         this.copy(x = this.x * num, y = this.y * num)
