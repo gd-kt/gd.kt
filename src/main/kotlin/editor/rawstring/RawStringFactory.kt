@@ -17,6 +17,7 @@ interface RawStringFactory {
         /**
          * Creates the default implementation for a raw string factory
          */
+        @JvmStatic
         fun create(parent: GenericGdObject, keyValSeparator: Char = AbstractProperty.KEY_VAL_SEPARATOR): DynamicRawStringFactory =
             RawStringFactoryImpl(parent, keyValSeparator)
 
@@ -24,6 +25,7 @@ interface RawStringFactory {
          * Joins multiple objects into a larger raw string understandable by geometry dash.
          * Each entry is separated by a semicolon.
          */
+        @JvmStatic
         fun joinRawStrings(objects: Collection<RawStringable>, separator: Char = OBJECTS_SEPARATOR): String =
             objects.joinToString(separator.toString()) { it.asRawString() }
 
@@ -31,6 +33,7 @@ interface RawStringFactory {
          * Joins multiple objects into a larger raw string understandable by geometry dash.
          * Each entry is separated by a semicolon.
          */
+        @JvmStatic
         fun joinRawStrings(vararg objects: RawStringable, separator: Char = OBJECTS_SEPARATOR): String =
             joinRawStrings(objects = listOf(*objects), separator)
 
@@ -38,6 +41,7 @@ interface RawStringFactory {
          * Joins multiple objects' raw strings into a larger raw string understandable by geometry dash.
          * Each entry is separated by a semicolon.
          */
+        @JvmStatic
         @JvmName("joinRawStringsFromCharSequence")
         fun joinRawStrings(objects: Collection<CharSequence>, separator: Char = OBJECTS_SEPARATOR): String =
             objects.joinToString(separator.toString())
@@ -46,6 +50,7 @@ interface RawStringFactory {
          * Joins multiple objects' raw strings into a larger raw string understandable by geometry dash.
          * Each entry is separated by a semicolon.
          */
+        @JvmStatic
         @JvmName("joinRawStringsFromCharSequence")
         fun joinRawStrings(vararg objects: CharSequence, separator: Char = OBJECTS_SEPARATOR): String =
             joinRawStrings(objects = listOf(*objects), separator)
@@ -58,6 +63,7 @@ interface RawStringFactory {
          * @throws InvalidRawStringException if the raw string is invalid *(see [GenericGdObject.isValidObjectString])*
          * @throws IllegalArgumentException if any of the parsed [ids][Id] are below `0` (exclusive, so `< 0`)
          */
+        @JvmStatic
         fun rawStringToMap(rawString: String, separator: Char = AbstractProperty.KEY_VAL_SEPARATOR): Map<Id, String> {
             return if (GenericGdObject.isValidObjectString(rawString, separator)) {
                 val rawStrAsPairs = rawString.split(separator).chunked(2) {
@@ -74,6 +80,7 @@ interface RawStringFactory {
          * Checks the equality of 2 possible raw strings. If any of the raw strings are malformed `false` is returned
          * @sample samples.editor.rawstring.areRawStringEqualsSample
          */
+        @JvmStatic
         fun areRawStringEquals(a: String, b: String, separator: Char = AbstractProperty.KEY_VAL_SEPARATOR): Boolean {
             return try {
                 rawStringToMap(a, separator) == rawStringToMap(b, separator)
@@ -84,6 +91,7 @@ interface RawStringFactory {
             }
         }
 
+        @JvmStatic
         fun createRawString(properties: Collection<PropertyDefinition<*>>, separator: Char = AbstractProperty.KEY_VAL_SEPARATOR) =
             properties.joinToString(separator.toString()) {
                 it.asRawString()
@@ -119,48 +127,48 @@ interface RawStringFactory {
      * @return the properties in a [Map]
      */
     fun asMap(): Map<Id, PropertyDefinition<*>>
-
-    /**
-     * Gets all the **serializable** properties of this factory's parent in a map
-     * in the format `propID: prop`
-     * @return the properties in a [Map]
-     * @throws NullPointerException if **ANY** of the [numerical ids][Id.numericalID] is `null`
-     */
-    fun asIntMap(): Map<UInt, PropertyDefinition<*>> =
-        this.asMap().mapKeys { it.key.getNumericalIdStrict() }
-
-    /**
-     * Gets all the **serializable** properties of this factory's parent in a map
-     * in the format `propID: prop`
-     * @return the properties in a [Map]
-     * @throws NullPointerException if **ANY** of the [string ids][Id.stringID] is `null`
-     */
-    fun asStringMap(): Map<String, PropertyDefinition<*>> =
-        this.asMap().mapKeys { it.key.getStringIdStrict() }
-
-    /**
-     * Gets all the **serializable** properties of this factory's parent in a map
-     * in the format `propID: propRawString`
-     * @return the properties in a [Map]
-     */
-    fun asRawStringMap(): Map<Id, String> =
-        this.asMap().mapValues { it.value.asRawString() }
-
-    /**
-     * Gets all the **serializable** properties of this factory's parent in a map
-     * in the format `propID: propRawString`
-     * @return the properties in a [Map]
-     * @throws NullPointerException if **ANY** of the [numerical ids][Id.numericalID] is `null`
-     */
-    fun asRawStringIntMap(): Map<UInt, String> =
-        this.asIntMap().mapValues { it.value.asRawString() }
-
-    /**
-     * Gets all the **serializable** properties of this factory's parent in a map
-     * in the format `propID: propRawString`
-     * @return the properties in a [Map]
-     * @throws NullPointerException if **ANY** of the [string ids][Id.stringID] is `null`
-     */
-    fun asRawStringStringMap(): Map<String, String> =
-        this.asStringMap().mapValues { it.value.asRawString() }
 }
+
+/**
+ * Gets all the **serializable** properties of this factory's parent in a map
+ * in the format `propID: prop`
+ * @return the properties in a [Map]
+ * @throws NullPointerException if **ANY** of the [numerical ids][Id.numericalID] is `null`
+ */
+fun RawStringFactory.asIntMap(): Map<UInt, PropertyDefinition<*>> =
+    this.asMap().mapKeys { it.key.getNumericalIdStrict() }
+
+/**
+ * Gets all the **serializable** properties of this factory's parent in a map
+ * in the format `propID: prop`
+ * @return the properties in a [Map]
+ * @throws NullPointerException if **ANY** of the [string ids][Id.stringID] is `null`
+ */
+fun RawStringFactory.asStringMap(): Map<String, PropertyDefinition<*>> =
+    this.asMap().mapKeys { it.key.getStringIdStrict() }
+
+/**
+ * Gets all the **serializable** properties of this factory's parent in a map
+ * in the format `propID: propRawString`
+ * @return the properties in a [Map]
+ */
+fun RawStringFactory.asRawStringMap(): Map<Id, String> =
+    this.asMap().mapValues { it.value.asRawString() }
+
+/**
+ * Gets all the **serializable** properties of this factory's parent in a map
+ * in the format `propID: propRawString`
+ * @return the properties in a [Map]
+ * @throws NullPointerException if **ANY** of the [numerical ids][Id.numericalID] is `null`
+ */
+fun RawStringFactory.asRawStringIntMap(): Map<UInt, String> =
+    this.asIntMap().mapValues { it.value.asRawString() }
+
+/**
+ * Gets all the **serializable** properties of this factory's parent in a map
+ * in the format `propID: propRawString`
+ * @return the properties in a [Map]
+ * @throws NullPointerException if **ANY** of the [string ids][Id.stringID] is `null`
+ */
+fun RawStringFactory.asRawStringStringMap(): Map<String, String> =
+    this.asStringMap().mapValues { it.value.asRawString() }
