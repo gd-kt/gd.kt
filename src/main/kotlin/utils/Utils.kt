@@ -1,6 +1,8 @@
 @file:JvmName("GdDotKTUtils")
 package utils
 
+import editor.rawstring.Id
+import editor.rawstring.property.PropertyDefinition
 import exceptions.IllegalTypeException
 import okhttp3.FormBody
 
@@ -186,3 +188,20 @@ internal inline fun <T : Any> nonNull(message: String, valueGetter: () -> T?): T
  */
 @Suppress("FunctionName")
 internal fun LACKS_IMPL(): Nothing = throw NotImplementedError("This doesn't have any implementation. This is maybe because we are in a test environment and this has no reason to be implemented.")
+
+/**
+ * Gets the first property with the given [id]
+ * @param id the [Id] to look for
+ * @return the found [property][PropertyDefinition]
+ * @throws NoSuchElementException if there is no property corresponding to the given [id]
+ */
+fun <T : PropertyDefinition<*>> Collection<T>.getProperty(id: Id): PropertyDefinition<*> =
+    this.first { it.id == id }
+
+/**
+ * Checks if this collection contains a property with the given [id]
+ * @param id the [Id] to look for
+ * @return if the given [id] is contained in this collection
+ */
+fun <T : PropertyDefinition<*>> Collection<T>.containsProperty(id: Id): Boolean =
+    this.firstOrNull { it.id == id } != null

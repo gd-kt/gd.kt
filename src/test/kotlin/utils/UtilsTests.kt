@@ -1,6 +1,9 @@
 package utils
 
 import TestTags
+import editor.rawstring.Id.Companion.id
+import editor.rawstring.property.IntProperty
+import editor.rawstring.property.PropertyDefinition
 import exceptions.IllegalTypeException
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.DisplayName
@@ -91,6 +94,33 @@ private class UtilsTest {
 
         Assertions.assertNotEquals(string, encryptedString)
         Assertions.assertEquals(string, encryptedString.cyclicXor(key))
+    }
+
+    @Test
+    @Tag(TestTags.EDITOR)
+    @DisplayName("Property collections test")
+    fun propertyCollectionTest() {
+        val myPropCollection = mutableListOf<PropertyDefinition<*>>()
+
+        Assertions.assertFalse(myPropCollection.containsProperty(5.id))
+        Assertions.assertThrows(NoSuchElementException::class.java) { myPropCollection.getProperty(5.id) }
+
+        val prop = IntProperty(2.id)
+        myPropCollection.add(prop)
+
+        Assertions.assertFalse(myPropCollection.containsProperty(5.id))
+        Assertions.assertThrows(NoSuchElementException::class.java) { myPropCollection.getProperty(5.id) }
+        Assertions.assertTrue(myPropCollection.containsProperty(2.id))
+        Assertions.assertDoesNotThrow { myPropCollection.getProperty(2.id) }
+
+        prop.value = 7
+        Assertions.assertEquals(7, myPropCollection.getProperty(2.id).value)
+        Assertions.assertEquals(prop, myPropCollection.getProperty(2.id))
+
+        myPropCollection.remove(prop)
+
+        Assertions.assertFalse(myPropCollection.containsProperty(5.id))
+        Assertions.assertThrows(NoSuchElementException::class.java) { myPropCollection.getProperty(5.id) }
     }
 
     @Test
