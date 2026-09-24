@@ -99,7 +99,7 @@ interface PropertyDefinition<T> : RawStringable {
         else
             this.value!!
 
-    operator fun getValue(thisRef: Any, property: KProperty<*>): T? =
+    operator fun getValue(thisRef: Any?, property: KProperty<*>): T? =
         this.value
 }
 
@@ -134,7 +134,7 @@ interface MutableProperty<T> : PropertyDefinition<T> {
      */
     override var value: T?
 
-    operator fun setValue(thisRef: Any, property: KProperty<*>, value: T?) {
+    operator fun setValue(thisRef: Any?, property: KProperty<*>, value: T?) {
         this.value = value
     }
 }
