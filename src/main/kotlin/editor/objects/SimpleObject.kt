@@ -51,7 +51,7 @@ open class SimpleObject : GenericGdObject {
     val order = IntProperty(115.id)
     @GDName("CH")
     val channel = IntProperty(170.id)
-    // TODO: Make a object class where the 'preview' property is a thing
+    // TODO: Make a property container class where the 'preview' property is a thing
     val linkedGroupID = IntProperty(108.id)
 
     // val customProperties = PropertiesSet<ImplementableProperty<Any>>()
