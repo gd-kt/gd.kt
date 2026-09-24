@@ -9,7 +9,8 @@ import editor.rawstring.property.PropertyDefinition
  * A raw string factory allows you to abstract the generation of raw string for [GenericGdObjects][GenericGdObject].
  * Internally, the **default implementation** uses reflection to look for [PropertyDefinitions][PropertyDefinition] and create the raw string from there.
  *
- * A <b>dynamic</b> raw string factory however allows the user to add any properties dependant of the factory's linked object
+ * A <b>dynamic</b> raw string factory however allows the user to add any properties
+ * dependant of the factory's linked object at **runtime**.
  * @see RawStringFactory
  */
 interface DynamicRawStringFactory : RawStringFactory {
