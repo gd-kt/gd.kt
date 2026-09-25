@@ -1,3 +1,7 @@
+<div align="center">
+    <img src="https://github.com/gd-kt/docs/raw/main/docs/public/alt_logo.png" height=35% width=35% alt="gd.kt logo">
+</div>
+
 # gd.kt
 
 [![Jitpack Badge](https://jitpack.io/v/gd-kt/gd.kt.svg)](https://jitpack.io/#gd-kt/gd.kt)
@@ -12,10 +16,7 @@ It can be used, but do not really expect anything, though the difference with mo
 There is not much java interoperability because for example `UInt`s cannot get created on java and fully used.
 
 > [!NOTE]
-> There are no docs yet. This readme is the only documentation you will find
-> for the moment.
->
-> Most classes/functions have KDoc attached to them !
+> `gd.kt`'s documentation can be found [here](https://gd-kt.github.io/docs/).
 
 ## Installation
 
