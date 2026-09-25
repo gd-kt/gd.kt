@@ -34,7 +34,7 @@ private fun conditionalPropertySample() {
     // Here is an example:
 
     class MyObj : GenericGdObject {
-        override val rawStringFactory: RawStringFactory = RawStringFactory.create(this)
+        override val rawStringFactory: RawStringFactory = RawStringFactory.createDynamic(this)
 
         val normalProp = IntProperty(1.id, defaultValue = 0)
         val conditionalProp = ConditionalProperty(
@@ -67,7 +67,7 @@ private fun mutableConditionalPropertySample() {
     // Here is an example:
 
     class MyObj : GenericGdObject {
-        override val rawStringFactory: RawStringFactory = RawStringFactory.create(this)
+        override val rawStringFactory: RawStringFactory = RawStringFactory.createDynamic(this)
 
         val normalProp = IntProperty(1.id, defaultValue = 0)
         val conditionalProp = MutableConditionalProperty(

@@ -38,7 +38,7 @@ private fun parseGenericGdObjectSample() {
     // Object parsers can parse objects with no constructors
     // as well with one with constructors
     open class MyObj : GenericGdObject {
-        override val rawStringFactory: RawStringFactory = RawStringFactory.create(this)
+        override val rawStringFactory: RawStringFactory = RawStringFactory.createDynamic(this)
 
         val prop = IntProperty(5.id, defaultValue = 6)
     }

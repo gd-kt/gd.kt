@@ -19,7 +19,7 @@ import editor.rawstring.serializing.Serializers
  * **If you are wondering what any of these properties mean, check the [GD Editor Guide](https://www.robtopgames.com/files/GDEditor.pdf) !**
  */
 open class SimpleObject : GenericGdObject {
-    override val rawStringFactory: DynamicRawStringFactory = RawStringFactory.create(this)
+    override val rawStringFactory: DynamicRawStringFactory = RawStringFactory.createDynamic(this)
 
     val objID = UIntProperty(1.id, defaultValue = null)
     val x = FloatProperty(2.id, defaultValue = null)

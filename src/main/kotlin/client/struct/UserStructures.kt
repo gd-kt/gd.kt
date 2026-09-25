@@ -157,7 +157,7 @@ open class UserStructure(override val client: AbstractGDClient) : ServerStructur
             ObjectParser.parse(rawString, UserStructure(client), separator)
     }
 
-    override val rawStringFactory: RawStringFactory = RawStringFactory.create(this)
+    override val rawStringFactory: RawStringFactory = RawStringFactory.createDynamic(this)
 
     val userName = UnencodedStringProperty(1.id, defaultValue = null)
     val userID = UIntProperty(2.id, defaultValue = null)

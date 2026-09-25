@@ -15,10 +15,17 @@ interface RawStringFactory {
         const val OBJECTS_SEPARATOR: Char = ';'
 
         /**
+         * Creates the default implementation for a **dynamic** raw string factory
+         */
+        @JvmStatic
+        fun createDynamic(parent: GenericGdObject, keyValSeparator: Char = AbstractProperty.KEY_VAL_SEPARATOR): DynamicRawStringFactory =
+            DynamicRawStringFactoryImpl(parent, keyValSeparator)
+
+        /**
          * Creates the default implementation for a raw string factory
          */
         @JvmStatic
-        fun create(parent: GenericGdObject, keyValSeparator: Char = AbstractProperty.KEY_VAL_SEPARATOR): DynamicRawStringFactory =
+        fun create(parent: GenericGdObject, keyValSeparator: Char = AbstractProperty.KEY_VAL_SEPARATOR): RawStringFactory =
             RawStringFactoryImpl(parent, keyValSeparator)
 
         /**

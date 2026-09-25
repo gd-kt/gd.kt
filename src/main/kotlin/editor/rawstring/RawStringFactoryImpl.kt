@@ -9,10 +9,8 @@ import kotlin.reflect.full.isSubtypeOf
 import kotlin.reflect.full.memberProperties
 import kotlin.reflect.full.starProjectedType
 
-internal class RawStringFactoryImpl(private val parent: GenericGdObject, override val keyValSeparator: Char = AbstractProperty.KEY_VAL_SEPARATOR) : DynamicRawStringFactory {
+internal open class RawStringFactoryImpl(private val parent: GenericGdObject, override val keyValSeparator: Char = AbstractProperty.KEY_VAL_SEPARATOR) : RawStringFactory {
     private var cachedProperties: Collection<PropertyDefinition<*>>? = null
-
-    override val dynamicProperties: MutableList<PropertyDefinition<*>> = arrayListOf()
 
     override val properties: Collection<PropertyDefinition<*>>
         get() {
