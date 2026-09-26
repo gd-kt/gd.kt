@@ -189,6 +189,12 @@ internal inline fun <T : Any> nonNull(message: String, valueGetter: () -> T?): T
 @Suppress("FunctionName")
 internal fun LACKS_IMPL(): Nothing = throw NotImplementedError("This doesn't have any implementation. This is maybe because we are in a test environment and this has no reason to be implemented.")
 
+fun Float.toCompactedString(): String =
+    if (this == 0f)
+        "0"
+    else
+        this.toString()
+
 /**
  * Gets the first property with the given [id]
  * @param id the [Id] to look for

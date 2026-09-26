@@ -1,6 +1,6 @@
 package client.struct
 
-import client.AbstractGDClient
+import client.clients.AbstractGDClient
 import client.GDClientApi
 
 /**

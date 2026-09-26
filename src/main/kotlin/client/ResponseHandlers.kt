@@ -1,5 +1,6 @@
 package client
 
+import client.clients.ResponseHandler
 import exceptions.ServerErrorException
 
 @GDClientApi

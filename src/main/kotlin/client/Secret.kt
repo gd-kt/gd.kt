@@ -2,7 +2,7 @@ package client
 
 /**
  * A list of secrets used for requests
- * @see GDClient
+ * @see client.clients.GDClient
  */
 @GDClientApi
 enum class Secret(val secret: String) {

@@ -1,7 +1,7 @@
 package client.endpoint
 
 import client.GDClientApi
-import client.ResponseHandler
+import client.clients.ResponseHandler
 import okhttp3.HttpUrl
 
 @GDClientApi

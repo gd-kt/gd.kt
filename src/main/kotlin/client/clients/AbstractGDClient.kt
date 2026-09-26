@@ -1,25 +1,35 @@
-package client
+package client.clients
 
 import XorKey
+import client.Credentials
+import client.GDClientApi
+import client.Platform
+import client.Secret
 import client.endpoint.Endpoint
 import client.endpoint.Endpoints
 import client.struct.ServerStructure
 import client.struct.ServerStructureCompanion
 import client.struct.UserInfo
 import editor.rawstring.serializing.Parsable
-import editor.rawstring.serializing.Serializers
 import exceptions.InvalidRawStringException
 import exceptions.LoggedOutException
 import exceptions.ServerErrorException
-import okhttp3.*
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.FormBody
+import okhttp3.HttpUrl
 import okhttp3.HttpUrl.Companion.toHttpUrl
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Response
 import org.apache.commons.codec.digest.DigestUtils
 import utils.cyclicXor
 import utils.nonNull
 import utils.remember
 import utils.toFormRequestBody
 import java.io.IOException
-import java.util.*
+import java.util.ArrayList
+import java.util.UUID
 import kotlin.io.encoding.Base64
 import kotlin.random.Random
 
@@ -266,119 +276,43 @@ abstract class AbstractGDClient(
             return body.split(",").toTypedArray()
         }
     }
-
-    /**
-     * @see accountID
-     * @throws LoggedOutException if [accountID] is `null`
-     */
-    fun getAccountIdOrThrow(): UInt =
-        nonNull(LoggedOutException("Cannot get the client's accountID since this client isn't logged in")) { this.accountID }
-
-    /**
-     * @see playerID
-     * @throws LoggedOutException if [playerID] is `null`
-     */
-    fun getPlayerIdOrThrow(): UInt =
-        nonNull(LoggedOutException("Cannot get the client's playerID since this client isn't logged in")) { this.accountID }
-
-    /**
-     * If this client is logged in. **This doesn't check if the credentials are valid.**
-     * @see credentials
-     */
-    fun isLoggedIn(): Boolean =
-        this.credentials != null
-
-    /**
-     * Throws an exception if this client does not happen to be logged in
-     * @see isLoggedIn
-     * @throws LoggedOutException if the client is not logged in
-     */
-    fun throwIfLoggedOut() {
-        if (!this.isLoggedIn())
-            throw LoggedOutException()
-    }
 }
 
 /**
- * Represents a **synchronous** geometry dash client.
- * @see AsyncGDClient
+ * @see accountID
+ * @throws LoggedOutException if [accountID] is `null`
  */
-@GDClientApi
-class GDClient(
-    credentials: Credentials? = null,
-    url: HttpUrl = DEFAULT_URL,
-
-    gameVersion: UInt = GAME_VERSION,
-    binaryVersion: UInt = BINARY_VERSION,
-    platform: Platform = Platform.get()
-) : AbstractGDClient(credentials, url, gameVersion, binaryVersion, platform) {
-    fun getUserInfo(accountID: Int): Result<UserInfo> =
-        this.executeRequest(
-            UserInfo,
-            Endpoints.GET_USER_INFO,
-            mapOf(
-                Pair("targetAccountID", accountID)
-            ),
-            asyncCallback = null
-        )
-
-    /**
-     * @return the ID of the sent comment
-     */
-    fun postAccountComment(message: String): Result<Int> {
-        this.throwIfLoggedOut()
-        return this.executeRequest(
-            Serializers.INT,
-            Endpoints.UPLOAD_ACCOUNT_COMMENT,
-            mapOf(
-                Pair("comment", Base64.UrlSafe.encode(message.toByteArray())),
-                Pair("accountID", this.accountID!!)
-            ),
-            asyncCallback = null
-        )
-    }
-}
+@OptIn(GDClientApi::class)
+fun AbstractGDClient.getAccountIdOrThrow(): UInt =
+    nonNull(LoggedOutException("Cannot get the client's accountID since this client isn't logged in")) { this.accountID }
 
 /**
- * Represents an **asynchronous** geometry dash client.
- * @see GDClient
+ * @see playerID
+ * @throws LoggedOutException if [playerID] is `null`
  */
-@GDClientApi
-class AsyncGDClient(
-    credentials: Credentials? = null,
-    url: HttpUrl = DEFAULT_URL,
+@OptIn(GDClientApi::class)
+fun AbstractGDClient.getPlayerIdOrThrow(): UInt =
+    nonNull(LoggedOutException("Cannot get the client's playerID since this client isn't logged in")) { this.accountID }
 
-    gameVersion: UInt = GAME_VERSION,
-    binaryVersion: UInt = BINARY_VERSION,
-    platform: Platform = Platform.get()
-) : AbstractGDClient(credentials, url, gameVersion, binaryVersion, platform) {
-    fun getUserInfo(accountID: Int, asyncCallback: CallbackWithData<UserInfo>) {
-        this.executeRequest(
-            UserInfo,
-            Endpoints.LOGIN,
-            mapOf(
-                Pair("targetAccountID", accountID)
-            ),
-            asyncCallback = asyncCallback
-        )
-    }
+/**
+ * If this client is logged in. **This doesn't check if the credentials are valid.**
+ * @see credentials
+ */
+@OptIn(GDClientApi::class)
+fun AbstractGDClient.isLoggedIn(): Boolean =
+    this.credentials != null
 
-    /**
-     * @return the ID of the sent comment
-     */
-    fun postAccountComment(message: String, asyncCallback: CallbackWithData<Int>) {
-        this.throwIfLoggedOut()
-        this.executeRequest(
-            Serializers.INT,
-            Endpoints.UPLOAD_ACCOUNT_COMMENT,
-            mapOf(
-                Pair("comment", Base64.UrlSafe.encode(message.toByteArray())),
-                Pair("accountID", this.accountID!!)
-            ),
-            asyncCallback = asyncCallback
-        )
-    }
+/**
+ * Throws an exception if this client does not happen to be logged in
+ * @see isLoggedIn
+ * @throws LoggedOutException if the client is not logged in
+ */
+@OptIn(GDClientApi::class)
+fun AbstractGDClient.throwIfLoggedOut() {
+    if (!this.isLoggedIn())
+        throw LoggedOutException()
 }
+
 
 // The 'Any' upper bound is to prevent null types
 @GDClientApi
@@ -396,12 +330,14 @@ fun <K : Any, V : Any> Map<K, V>.toFormRequestBodyWithClientInfo(client: Abstrac
 }
 
 @GDClientApi
-interface CallbackWithData<T> {
+fun interface CallbackWithData<T> {
     @Throws(IOException::class)
     fun onNetworkFailure(
         call: Call,
         e: IOException,
-    )
+    ) {
+
+    }
 
     fun onParsingFailure(
         call: Call,
