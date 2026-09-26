@@ -2,7 +2,6 @@ package editor.rawstring.property
 
 import editor.rawstring.Id
 import editor.rawstring.serializing.Serializer
-import editor.rawstring.serializing.Serializers
 import java.util.SequencedSet
 
 /**

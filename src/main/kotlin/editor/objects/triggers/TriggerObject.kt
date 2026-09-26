@@ -17,9 +17,27 @@ abstract class TriggerObject : ComplexObject {
     val touchTriggered = BoolProperty(11.id, false)
     val multiTriggered =
         MutableConditionalProperty.createIndependent(87.id, defaultValue = false, serializer = Serializers.BOOLEAN) {
-            this@TriggerObject.spawnTriggered.isSerializable() || this@TriggerObject.touchTriggered.isSerializable()
+            this.spawnTriggered.isSerializable() || this.touchTriggered.isSerializable()
         }
 
     constructor(objID: UInt, pos: Position) : super(objID, pos)
     constructor(objID: UInt, x: Float, y: Float) : super(objID, x, y)
+}
+
+/**
+ * Sets this trigger object as "spawn triggered"
+ */
+fun TriggerObject.setSpawned() {
+    this.touchTriggered.resetValue()
+    this.spawnTriggered.value = true
+}
+
+/**
+ * Sets this trigger object as "spawn triggered" and adds the given
+ * [group] to this object
+ * @param group the group to add to this object
+ */
+fun TriggerObject.setSpawned(group: UInt) {
+    this.setSpawned()
+    this.groups.add(group)
 }
