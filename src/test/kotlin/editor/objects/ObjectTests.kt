@@ -13,6 +13,7 @@ import editor.objects.triggers.TargetMoveTrigger
 import editor.objects.triggers.ToggleTrigger
 import editor.objects.data.Pos
 import editor.objects.data.Scale
+import editor.objects.triggers.CounterLabelTrigger
 import editor.objects.triggers.SpawnTrigger
 import editor.objects.triggers.TimewarpTrigger
 import editor.rawstring.Id.Companion.id
@@ -270,5 +271,11 @@ private class AlternativeConstructorsTests {
         val trigger = SpawnTrigger(0f, 0f, 5u, 12f)
         Assertions.assertEquals(5u, trigger.targetGroup.getOrThrow())
         Assertions.assertEquals(12f, trigger.delay.getOrThrow())
+    }
+
+    @Test
+    fun counterLabelTriggerTest() {
+        val counterLabel = CounterLabelTrigger(0f, 0f, 5u)
+        Assertions.assertEquals(5u, counterLabel.itemID.getOrThrow())
     }
 }
