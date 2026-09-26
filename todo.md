@@ -5,3 +5,8 @@
 - [x] Add sample for ObjectParser + finish explanation in readme 
 - [x] Make docs
 - [ ] Add `WSLiveEditor` support
+- Add these triggers:
+  - [x] Timewarp
+  - [ ] Counter label
+  - [ ] Pickup trigger
+  - [ ] Spawn Trigger

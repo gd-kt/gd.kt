@@ -11,7 +11,6 @@ import editor.rawstring.property.MutableConditionalProperty
 import editor.rawstring.property.RangedFloatProperty
 import editor.rawstring.property.UIntProperty
 import editor.rawstring.serializing.Serializer
-import editor.rawstring.serializing.Serializers
 
 object TriggerProperties {
     val EASING_RATE_RANGE = 0.1f..20f
