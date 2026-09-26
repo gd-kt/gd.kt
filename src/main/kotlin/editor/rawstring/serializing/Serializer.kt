@@ -6,8 +6,7 @@ import editor.rawstring.property.CollectionCtor
 import editor.rawstring.property.GdEnum
 import kotlin.enums.EnumEntries
 
-@FunctionalInterface
-interface Serializable<in T> {
+fun interface Serializable<in T> {
     companion object {
         /**
          * @see toString
@@ -21,8 +20,7 @@ interface Serializable<in T> {
     fun serialize(value: T): String
 }
 
-@FunctionalInterface
-interface Parsable<out T> {
+fun interface Parsable<out T> {
     fun parse(rawValue: String): T
 }
 
