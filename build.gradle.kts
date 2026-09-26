@@ -4,8 +4,10 @@ plugins {
     `maven-publish`
 }
 
+val libVersion: String by project
+
 group = "fr.geming400.gddotkt"
-version = "1.0.2"
+version = libVersion
 val samplesDir = "src/samples/kotlin"
 
 java {
