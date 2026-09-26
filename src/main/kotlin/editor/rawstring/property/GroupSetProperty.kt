@@ -1,6 +1,7 @@
 package editor.rawstring.property
 
 import editor.rawstring.Id
+import editor.rawstring.serializing.Serializer
 import editor.rawstring.serializing.Serializers
 import java.util.SequencedSet
 
@@ -15,7 +16,7 @@ class GroupSetProperty(
     val groupParentsProperty: SequencedSetProperty<UInt>,
     defaultValue: SequencedSet<UInt>? = linkedSetOf(),
     currentValue: SequencedSet<UInt>? = null
-) : SequencedSetProperty<UInt>(id, defaultValue =  defaultValue, currentValue = currentValue, elemSerializer = Serializers.UINT) {
+) : SequencedSetProperty<UInt>(id, defaultValue =  defaultValue, currentValue = currentValue, elemSerializer = Serializer.clampedUInt(0u..9999u)) {
     override var value: SequencedSet<UInt>?
         get() {
             val linkedSet = linkedSetOf<UInt>()

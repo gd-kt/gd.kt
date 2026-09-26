@@ -64,6 +64,12 @@ interface Serializer<T> : Serializable<T>, Parsable<T> {
                 { it.toInt().coerceIn(range) }
             )
 
+        fun clampedUInt(range: UIntRange): Serializer<UInt> =
+            create(
+                { it.coerceIn(range).toString() },
+                { it.toUInt().coerceIn(range) }
+            )
+
         fun clampedFloat(range: ClosedFloatingPointRange<Float>): Serializer<Float> =
             create(
                 { it.coerceIn(range).toString() },
