@@ -12,6 +12,7 @@ import editor.rawstring.property.GdEnum
 import editor.rawstring.property.IntProperty
 import editor.rawstring.property.MutableConditionalProperty
 import editor.rawstring.property.UIntProperty
+import editor.rawstring.property.getOrThrow
 import editor.rawstring.serializing.Serializer
 import editor.rawstring.serializing.Serializers
 

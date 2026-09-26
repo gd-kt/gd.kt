@@ -12,6 +12,7 @@ import editor.rawstring.property.GdEnum
 import editor.rawstring.property.IntProperty
 import editor.rawstring.property.UIntProperty
 import editor.rawstring.property.UnencodedStringProperty
+import editor.rawstring.property.getOrThrow
 import editor.rawstring.serializing.Serializer
 import exceptions.GdDotKtException
 

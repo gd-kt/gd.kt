@@ -9,4 +9,4 @@
   - [x] Timewarp
   - [ ] Counter label
   - [ ] Pickup trigger
-  - [ ] Spawn Trigger
+  - [x] Spawn Trigger

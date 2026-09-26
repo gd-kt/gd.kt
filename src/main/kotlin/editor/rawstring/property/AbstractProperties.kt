@@ -65,43 +65,43 @@ interface PropertyDefinition<T> : RawStringable {
      */
     fun asRawString(separator: Char = AbstractProperty.KEY_VAL_SEPARATOR): String
 
-    /**
-     * Returns the property's [value] or throw if it's `null`.
-     * This is only useful if the default value is nullable and is suggested
-     * to be used with [collection properties][AbstractCollectionProperty].
-     *
-     * `this.value!!` can also be used but this has a proper error message.
-     * @return the property's [value] or throw if it's `null`
-     * @throws NullPointerException if the property's [value] is `null`
-     */
-    fun getOrThrow(): T =
-        nonNull("${this::class.simpleName}'s value is null when it was expected to be non null") { this.value }
-
-    /**
-     * Returns the property's [value] or [other] if it's `null`.
-     * This is only useful if the default value is nullable
-     * @return the property's [value] or [other] if it's `null`
-     */
-    fun getOrElse(other: T): T =
-        if (this.value == null)
-            other
-        else
-            this.value!!
-
-    /**
-     * Returns the property's [value] or [other] if it's `null`.
-     * This is only useful if the default value is nullable
-     * @return the property's [value] or [other] if it's `null`
-     */
-    fun getOrNullableElse(other: T?): T? =
-        if (this.value == null)
-            other
-        else
-            this.value!!
-
     operator fun getValue(thisRef: Any?, property: KProperty<*>): T? =
         this.value
 }
+
+/**
+ * Returns the property's [value] or throw if it's `null`.
+ * This is only useful if the default value is nullable and is suggested
+ * to be used with [collection properties][AbstractCollectionProperty].
+ *
+ * `this.value!!` can also be used but this has a proper error message.
+ * @return the property's [value] or throw if it's `null`
+ * @throws NullPointerException if the property's [value] is `null`
+ */
+fun <T> PropertyDefinition<T>.getOrThrow(): T =
+    nonNull("${this::class.simpleName}'s value is null when it was expected to be non null") { this.value }
+
+/**
+ * Returns the property's [value] or [other] if it's `null`.
+ * This is only useful if the default value is nullable
+ * @return the property's [value] or [other] if it's `null`
+ */
+fun <T> PropertyDefinition<T>.getOrElse(other: T): T =
+    if (this.value == null)
+        other
+    else
+        this.value!!
+
+/**
+ * Returns the property's [value] or [other] if it's `null`.
+ * This is only useful if the default value is nullable
+ * @return the property's [value] or [other] if it's `null`
+ */
+fun <T> PropertyDefinition<T>.getOrNullableElse(other: T?): T? =
+    if (this.value == null)
+        other
+    else
+        this.value!!
 
 /**
  * Compares this property's value and [other]. An exception is throw if [value] is `null`.

@@ -13,8 +13,11 @@ import editor.objects.triggers.TargetMoveTrigger
 import editor.objects.triggers.ToggleTrigger
 import editor.objects.data.Pos
 import editor.objects.data.Scale
+import editor.objects.triggers.SpawnTrigger
+import editor.objects.triggers.TimewarpTrigger
 import editor.rawstring.Id.Companion.id
 import editor.rawstring.property.UIntProperty
+import editor.rawstring.property.getOrThrow
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Tag
@@ -248,5 +251,24 @@ private class AlternativeConstructorsTests {
         val trigger = ColorTrigger(0f, 0f, color, 5u)
         Assertions.assertEquals(5u, trigger.colorChannel.getOrThrow())
         Assertions.assertEquals(color, trigger.color)
+    }
+
+    @Test
+    fun timewarpTriggerTest() {
+        Assertions.assertEquals(2f, TimewarpTrigger(0f, 0f, 2.5f).timeMod.getOrThrow())
+        Assertions.assertEquals(2f, TimewarpTrigger(Pos(0f, 0f), 2.5f).timeMod.getOrThrow())
+
+        Assertions.assertEquals(0.65f, TimewarpTrigger(0f, 0f, 0.65f).timeMod.getOrThrow())
+        Assertions.assertEquals(0.65f, TimewarpTrigger(Pos(0f, 0f), 0.65f).timeMod.getOrThrow())
+
+        Assertions.assertEquals(0.1f, TimewarpTrigger(0f, 0f, -0.65f).timeMod.getOrThrow())
+        Assertions.assertEquals(0.1f, TimewarpTrigger(Pos(0f, 0f), -0.65f).timeMod.getOrThrow())
+    }
+
+    @Test
+    fun spawnTriggerTest() {
+        val trigger = SpawnTrigger(0f, 0f, 5u, 12f)
+        Assertions.assertEquals(5u, trigger.targetGroup.getOrThrow())
+        Assertions.assertEquals(12f, trigger.delay.getOrThrow())
     }
 }

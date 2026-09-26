@@ -8,6 +8,7 @@ import editor.rawstring.Id.Companion.id
 import editor.rawstring.property.BoolProperty
 import editor.rawstring.property.UByteProperty
 import editor.rawstring.property.UIntProperty
+import editor.rawstring.property.getOrThrow
 import java.awt.Color
 
 /**
