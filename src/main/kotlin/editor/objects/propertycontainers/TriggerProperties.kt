@@ -2,6 +2,7 @@ package editor.objects.propertycontainers
 
 import editor.objects.data.enums.Easing
 import editor.rawstring.Id.Companion.id
+import editor.rawstring.property.BoolProperty
 import editor.rawstring.property.EnumProperty
 import editor.rawstring.property.FloatProperty
 import editor.rawstring.property.GDDurationProperty
@@ -10,6 +11,7 @@ import editor.rawstring.property.MutableConditionalProperty
 import editor.rawstring.property.RangedFloatProperty
 import editor.rawstring.property.UIntProperty
 import editor.rawstring.serializing.Serializer
+import editor.rawstring.serializing.Serializers
 
 object TriggerProperties {
     val EASING_RATE_RANGE = 0.1f..20f
@@ -30,6 +32,9 @@ object TriggerProperties {
 
     inline val HSV: HsvProperty
         get() = HsvProperty(49.id)
+
+    inline val MULTI_TRIGGERED
+        get() = BoolProperty(87.id)
 
     fun getEasingRateProp(easingProp: EnumProperty<Easing>) =
         MutableConditionalProperty(85.id, 0f, dependantOn = easingProp, valueChanger = { it.coerceIn(EASING_RATE_RANGE) }, serializer = Serializer.clampedFloat(EASING_RATE_RANGE)) {

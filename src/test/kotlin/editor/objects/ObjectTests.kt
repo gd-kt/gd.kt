@@ -1,6 +1,8 @@
 package editor.objects
 
 import TestTags
+import editor.objects.common.Speed
+import editor.objects.common.SpeedPortalObject
 import editor.objects.triggers.AlphaTrigger
 import editor.objects.triggers.ColorTrigger
 import editor.objects.triggers.DirectionMoveTrigger
@@ -195,6 +197,19 @@ private class ComplexObjectTests {
         trigger.playerColor = PlayerColor.PLAYER_2
         Assertions.assertFalse(trigger.playerColor1.getOrThrow())
         Assertions.assertTrue(trigger.playerColor2.getOrThrow())
+    }
+
+    @Test
+    fun speedPortalObjectTest() {
+        val obj = SpeedPortalObject(Speed.entries.first(), 0f, 0f)
+        Speed.entries.forEach {
+            obj.speed = it
+
+            Assertions.assertEquals(it.objID, obj.objID.getOrThrow())
+            CustomAssertions.assertRawStringEquals("1,${it.objID},2,0.0,3,0.0", obj.asRawString())
+
+            Assertions.assertEquals(it, obj.speed)
+        }
     }
 }
 
