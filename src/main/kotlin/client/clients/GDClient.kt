@@ -50,6 +50,9 @@ class GDClient(
         )
     }
 
+    /**
+     * @return the ID of the sent comment
+     */
     fun postComment(message: String, levelID: Int, percentage: Float = 0f): Result<Int> {
         this.throwIfLoggedOut()
         val encodedMessage = Base64.UrlSafe.encode(message.toByteArray())

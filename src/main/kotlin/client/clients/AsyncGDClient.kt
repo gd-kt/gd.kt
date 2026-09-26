@@ -50,6 +50,9 @@ class AsyncGDClient(
         )
     }
 
+    /**
+     * The callback returns the ID of the sent comment
+     */
     fun postComment(message: String, asyncCallback: CallbackWithData<Int>) {
         this.throwIfLoggedOut()
         this.executeRequest(
