@@ -7,6 +7,6 @@
 - [ ] Add `WSLiveEditor` support
 - Add these triggers:
   - [x] Timewarp
-  - [ ] Counter label
-  - [ ] Pickup trigger
+  - [x] Counter label
+  - [x] Pickup trigger
   - [x] Spawn Trigger

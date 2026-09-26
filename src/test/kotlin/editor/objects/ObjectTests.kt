@@ -14,6 +14,7 @@ import editor.objects.triggers.ToggleTrigger
 import editor.objects.data.Pos
 import editor.objects.data.Scale
 import editor.objects.triggers.CounterLabelTrigger
+import editor.objects.triggers.PickupTrigger
 import editor.objects.triggers.SpawnTrigger
 import editor.objects.triggers.TimewarpTrigger
 import editor.rawstring.Id.Companion.id
@@ -277,5 +278,12 @@ private class AlternativeConstructorsTests {
     fun counterLabelTriggerTest() {
         val counterLabel = CounterLabelTrigger(0f, 0f, 5u)
         Assertions.assertEquals(5u, counterLabel.itemID.getOrThrow())
+    }
+
+    @Test
+    fun pickupLabelTriggerTest() {
+        val counterLabel = PickupTrigger(0f, 0f, 5u, 120)
+        Assertions.assertEquals(5u, counterLabel.itemID.getOrThrow())
+        Assertions.assertEquals(120, counterLabel.count.getOrThrow())
     }
 }
