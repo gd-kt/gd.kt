@@ -61,7 +61,7 @@ class RangedIntProperty internal constructor(
     currentValue: Int? = null
 ) : IntProperty(id, defaultValue, currentValue), RangedProperty<Int, IntRange> {
     override var value: Int?
-        get() = super.value
+        get() = super.value?.coerceIn(this.range)
         set(value) { super.value = value?.coerceIn(this.range) }
 }
 
@@ -72,7 +72,7 @@ class RangedUIntProperty internal constructor(
     currentValue: UInt? = null
 ) : UIntProperty(id, defaultValue, currentValue), RangedProperty<UInt, UIntRange> {
     override var value: UInt?
-        get() = super.value
+        get() = super.value?.coerceIn(this.range)
         set(value) { super.value = value?.coerceIn(this.range) }
 }
 
@@ -83,6 +83,6 @@ class RangedFloatProperty internal constructor(
     currentValue: Float? = null
 ) : FloatProperty(id, defaultValue, currentValue), RangedProperty<Float, ClosedFloatingPointRange<Float>> {
     override var value: Float?
-        get() = super.value
+        get() = super.value?.coerceIn(this.range)
         set(value) { super.value = value?.coerceIn(this.range) }
 }
