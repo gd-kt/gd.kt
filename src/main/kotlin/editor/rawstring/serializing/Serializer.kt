@@ -70,7 +70,7 @@ interface Serializer<T> : Serializable<T>, Parsable<T> {
                 { it.toFloat().coerceIn(range) }
             )
 
-        @Suppress("UNCHECKED_CAST", "MoveLambdaOutsideParentheses")
+        @Suppress("MoveLambdaOutsideParentheses")
         fun <T> enum(enumEntries: EnumEntries<T>): Serializer<T> where T : Enum<T>, T : GdEnum =
             create(
                 { it.value.toString() },
