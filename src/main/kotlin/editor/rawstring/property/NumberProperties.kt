@@ -86,3 +86,6 @@ class RangedFloatProperty internal constructor(
         get() = super.value?.coerceIn(this.range)
         set(value) { super.value = value?.coerceIn(this.range) }
 }
+
+fun UIntProperty.valueAsInt(): Int?
+    = this.value?.toInt()
