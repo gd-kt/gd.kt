@@ -28,24 +28,24 @@ class PickupTrigger : TriggerObject {
     }
 
     val itemID = UIntProperty(80.id)
-    val operationType = EnumProperty(88.id, Serializer.enum(OperationType.entries),  defaultValue = OperationType.ADDITION)
+    val operationType = EnumProperty(88.id, Serializer.enum(PickupOperationType.entries),  defaultValue = PickupOperationType.ADDITION)
     /**
-     * Only is compatible with [operationType] == [OperationType.ADDITION]
+     * Only is compatible with [operationType] == [PickupOperationType.ADDITION]
      */
     val count = MutableConditionalProperty(77.id, defaultValue = 0, dependantOn = operationType, serializer = Serializers.INT) {
-        it.value == OperationType.ADDITION
+        it.value == PickupOperationType.ADDITION
     }
     /**
-     * Only is compatible with [operationType] == [OperationType.ADDITION]
+     * Only is compatible with [operationType] == [PickupOperationType.ADDITION]
      */
     val override = MutableConditionalProperty(139.id, defaultValue = false, dependantOn = operationType, serializer = Serializers.BOOLEAN) {
-        it.value == OperationType.ADDITION
+        it.value == PickupOperationType.ADDITION
     }
     /**
-     * Only is compatible with [operationType] **!**= [OperationType.ADDITION]
+     * Only is compatible with [operationType] **!**= [PickupOperationType.ADDITION]
      */
     val divisionMultiplicationFactor = MutableConditionalProperty(449.id, defaultValue = 1f, dependantOn = operationType, serializer = Serializers.FLOAT) {
-        it.value != OperationType.ADDITION
+        it.value != PickupOperationType.ADDITION
     }
 
     constructor(pos: Position) : super(OBJ_ID, pos)
@@ -58,9 +58,8 @@ class PickupTrigger : TriggerObject {
     constructor(x: Float, y: Float, itemID: UInt, count: Int = 0) : this(Pos(x, y), itemID, count)
 }
 
-enum class OperationType(override val value: Int) : GdEnum {
+enum class PickupOperationType(override val value: Int) : GdEnum {
     ADDITION(0),
     MULTIPLICATION(1),
     DIVISION(2)
 }
-

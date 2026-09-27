@@ -1,6 +1,7 @@
 package editor.objects.propertycontainers
 
 import editor.objects.data.enums.Easing
+import editor.rawstring.Id
 import editor.rawstring.Id.Companion.id
 import editor.rawstring.property.BoolProperty
 import editor.rawstring.property.EnumProperty
@@ -15,7 +16,6 @@ import editor.rawstring.serializing.Serializer
 object TriggerProperties {
     val EASING_RATE_RANGE = 0.1f..20f
     const val MAX_GROUPS = 9999u
-
 
     inline val DURATION: GDDurationProperty
         get() = GDDurationProperty(10.id)
@@ -42,4 +42,7 @@ object TriggerProperties {
         MutableConditionalProperty(85.id, 0f, dependantOn = easingProp, valueChanger = { it.coerceIn(EASING_RATE_RANGE) }, serializer = Serializer.clampedFloat(EASING_RATE_RANGE)) {
             it.value?.type?.hasEasingRate ?: false
         }
+
+    fun getGroupProperty(id: Id): UIntProperty =
+        UIntProperty.ranged(id, 0u..MAX_GROUPS)
 }

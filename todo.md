@@ -11,11 +11,11 @@
   - [x] Pickup trigger
   - [x] Spawn trigger
   - [x] Persistent trigger
-  - [ ] Edit trigger
-  - [ ] Comp. trigger
+  - [x] Edit trigger
+  - [x] Comp. trigger
   - [x] Count trigger
   - [x] Instant count trigger
   - [x] Collision block
   - [x] Collision trigger
   - [x] Instant collision trigger
-- Add dokka deployment to gh pages
+- [ ] Add dokka deployment to gh pages
