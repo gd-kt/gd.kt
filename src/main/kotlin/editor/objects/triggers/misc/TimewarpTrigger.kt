@@ -1,7 +1,8 @@
-package editor.objects.triggers
+package editor.objects.triggers.misc
 
 import editor.objects.data.Pos
 import editor.objects.data.Position
+import editor.objects.triggers.TriggerObject
 import editor.rawstring.Id.Companion.id
 import editor.rawstring.property.FloatProperty
 

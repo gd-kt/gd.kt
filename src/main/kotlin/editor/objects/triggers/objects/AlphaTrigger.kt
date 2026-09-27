@@ -1,9 +1,10 @@
-package editor.objects.triggers
+package editor.objects.triggers.objects
 
 import annotations.GDName
 import editor.objects.data.Pos
 import editor.objects.data.Position
 import editor.objects.propertycontainers.TriggerProperties
+import editor.objects.triggers.TriggerObject
 
 /**
  * An alpha trigger allows to change the opacity of any objects linked to the [target group][targetGroup].
