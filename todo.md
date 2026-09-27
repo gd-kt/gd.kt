@@ -9,4 +9,13 @@
   - [x] Timewarp
   - [x] Counter label
   - [x] Pickup trigger
-  - [x] Spawn Trigger
+  - [x] Spawn trigger
+  - [ ] Persistent trigger
+  - [ ] Edit trigger
+  - [ ] Comp. trigger
+  - [ ] Count trigger
+  - [ ] Instant count trigger
+  - [ ] Collision block
+  - [ ] Collision trigger
+  - [ ] Instant collision trigger
+- Add dokka deployment to gh pages
