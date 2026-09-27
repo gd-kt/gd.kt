@@ -32,8 +32,11 @@ object TriggerProperties {
     inline val HSV: HsvProperty
         get() = HsvProperty(49.id)
 
-    inline val MULTI_TRIGGERED
+    inline val MULTI_TRIGGERED: BoolProperty
         get() = BoolProperty(87.id)
+
+    inline val ACTIVATE_GROUP: BoolProperty
+        get() = BoolProperty(56.id)
 
     fun getEasingRateProp(easingProp: EnumProperty<Easing>) =
         MutableConditionalProperty(85.id, 0f, dependantOn = easingProp, valueChanger = { it.coerceIn(EASING_RATE_RANGE) }, serializer = Serializer.clampedFloat(EASING_RATE_RANGE)) {

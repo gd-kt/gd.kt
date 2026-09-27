@@ -4,8 +4,6 @@ import editor.objects.data.Pos
 import editor.objects.data.Position
 import editor.objects.propertycontainers.TriggerProperties
 import editor.objects.triggers.TriggerObject
-import editor.rawstring.Id.Companion.id
-import editor.rawstring.property.BoolProperty
 
 /**
  * A toggle trigger allows for any [targeted objects][targetGroup] to be toggled on or on depending on the [activateGroup] property.
@@ -19,7 +17,7 @@ class ToggleTrigger : TriggerObject {
     }
 
     val targetGroup = TriggerProperties.TARGET_GROUP
-    val activateGroup = BoolProperty(56.id, false)
+    val activateGroup = TriggerProperties.ACTIVATE_GROUP
 
     constructor(pos: Position) : super(OBJ_ID, pos)
     constructor(x: Float, y: Float) : super(OBJ_ID, x, y)

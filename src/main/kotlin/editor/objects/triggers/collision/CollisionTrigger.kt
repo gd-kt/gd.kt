@@ -23,7 +23,7 @@ class CollisionTrigger : TriggerObject {
     }
 
     val targetGroup = TriggerProperties.TARGET_GROUP
-    val activateGroup = BoolProperty(56.id)
+    val activateGroup = TriggerProperties.ACTIVATE_GROUP
     val triggerOnExit = BoolProperty(93.id)
 
     @GDName("PP")
