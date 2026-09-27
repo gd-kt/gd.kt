@@ -3,7 +3,7 @@ import client.GDClientApi
 import client.GJP2
 import client.clients.AsyncGDClient
 import client.clients.GDClient
-import editor.objects.triggers.PickupTrigger
+import editor.objects.triggers.objects.ToggleTrigger
 
 // TODO: Once this is actually more closer to being finished delete this temporary main function
 @OptIn(GDClientApi::class)
@@ -28,7 +28,6 @@ private fun main() {
 //        println("Async comment: $data")
 //    }
 
-    val label = PickupTrigger(50f, 50f, 10u, 12)
-    label.count.value = 7
+    val label = ToggleTrigger(50f, 50f)
     println(label.asRawString())
 }
