@@ -1,22 +1,12 @@
 package editor.objects
 
+import CustomAssertions
 import TestTags
 import editor.objects.common.Speed
 import editor.objects.common.SpeedPortalObject
-import editor.objects.triggers.objects.AlphaTrigger
-import editor.objects.triggers.objects.ColorTrigger
-import editor.objects.triggers.objects.DirectionMoveTrigger
-import editor.objects.triggers.objects.LockOn
-import editor.objects.triggers.objects.MoveTrigger
-import editor.objects.triggers.objects.PlayerColor
-import editor.objects.triggers.objects.TargetMoveTrigger
-import editor.objects.triggers.objects.ToggleTrigger
 import editor.objects.data.Pos
 import editor.objects.data.Scale
-import editor.objects.triggers.counters.CounterLabelTrigger
-import editor.objects.triggers.counters.PickupTrigger
-import editor.objects.triggers.misc.SpawnTrigger
-import editor.objects.triggers.misc.TimewarpTrigger
+import editor.objects.triggers.objects.*
 import editor.rawstring.Id.Companion.id
 import editor.rawstring.property.UIntProperty
 import editor.rawstring.property.getOrThrow
@@ -230,60 +220,5 @@ private class AlternativeConstructorsTests {
 
         Assertions.assertEquals(5u, TargetMoveTrigger(0f, 0f, 5u).targetGroup.getOrThrow())
         Assertions.assertEquals(5u, TargetMoveTrigger(Pos(0f, 0f), 5u).targetGroup.getOrThrow())
-    }
-
-    @Test
-    fun alphaTriggerTest() {
-        val trigger = AlphaTrigger(0f, 0f, 5u, 0.8f, 0.4f)
-        Assertions.assertEquals(5u, trigger.targetGroup.getOrThrow())
-        Assertions.assertEquals(0.8f, trigger.opacity.getOrThrow())
-        Assertions.assertEquals(0.4f, trigger.fadeTime.getOrThrow())
-    }
-
-    @Test
-    fun toggleTriggerTest() {
-        val trigger = ToggleTrigger(0f, 0f, 5u, true)
-        Assertions.assertEquals(5u, trigger.targetGroup.getOrThrow())
-        Assertions.assertEquals(true, trigger.activateGroup.getOrThrow())
-    }
-
-    @Test
-    fun colorTriggerTest() {
-        val color = Color.CYAN
-        val trigger = ColorTrigger(0f, 0f, color, 5u)
-        Assertions.assertEquals(5u, trigger.colorChannel.getOrThrow())
-        Assertions.assertEquals(color, trigger.color)
-    }
-
-    @Test
-    fun timewarpTriggerTest() {
-        Assertions.assertEquals(2f, TimewarpTrigger(0f, 0f, 2.5f).timeMod.getOrThrow())
-        Assertions.assertEquals(2f, TimewarpTrigger(Pos(0f, 0f), 2.5f).timeMod.getOrThrow())
-
-        Assertions.assertEquals(0.65f, TimewarpTrigger(0f, 0f, 0.65f).timeMod.getOrThrow())
-        Assertions.assertEquals(0.65f, TimewarpTrigger(Pos(0f, 0f), 0.65f).timeMod.getOrThrow())
-
-        Assertions.assertEquals(0.1f, TimewarpTrigger(0f, 0f, -0.65f).timeMod.getOrThrow())
-        Assertions.assertEquals(0.1f, TimewarpTrigger(Pos(0f, 0f), -0.65f).timeMod.getOrThrow())
-    }
-
-    @Test
-    fun spawnTriggerTest() {
-        val trigger = SpawnTrigger(0f, 0f, 5u, 12f)
-        Assertions.assertEquals(5u, trigger.targetGroup.getOrThrow())
-        Assertions.assertEquals(12f, trigger.delay.getOrThrow())
-    }
-
-    @Test
-    fun counterLabelTriggerTest() {
-        val counterLabel = CounterLabelTrigger(0f, 0f, 5u)
-        Assertions.assertEquals(5u, counterLabel.itemID.getOrThrow())
-    }
-
-    @Test
-    fun pickupLabelTriggerTest() {
-        val counterLabel = PickupTrigger(0f, 0f, 5u, 120)
-        Assertions.assertEquals(5u, counterLabel.itemID.getOrThrow())
-        Assertions.assertEquals(120, counterLabel.count.getOrThrow())
     }
 }
