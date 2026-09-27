@@ -24,7 +24,7 @@ object TriggerProperties {
         get() = EnumProperty(30.id, Serializer.enum(Easing.entries))
 
     inline val TARGET_GROUP: UIntProperty
-        get() = UIntProperty.ranged(51.id, 1u..MAX_GROUPS)
+        get() = UIntProperty.ranged(51.id, 0u..MAX_GROUPS)
 
     inline val OPACITY: RangedFloatProperty
         get() = FloatProperty.ranged(35.id, 0f..1f)
