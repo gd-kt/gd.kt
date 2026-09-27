@@ -12,6 +12,7 @@ import editor.rawstring.property.UIntProperty
  * A collision block allows to check whenever another block collided with this one
  *
  * **If you are wondering what any of these properties mean, check the [GD Editor Guide](https://www.robtopgames.com/files/GDEditor.pdf) !**
+ * @see InstantCollisionTrigger
  * @see CollisionTrigger
  */
 class CollisionBlockObject : ComplexObject {

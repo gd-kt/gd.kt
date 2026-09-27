@@ -2,7 +2,6 @@ package editor.objects.triggers.collision
 
 import annotations.GDName
 import editor.objects.data.Position
-import editor.objects.propertycontainers.TriggerProperties
 import editor.objects.triggers.TriggerObject
 import editor.rawstring.Id.Companion.id
 import editor.rawstring.property.BoolProperty
@@ -11,20 +10,27 @@ import editor.rawstring.serializing.Serializers
 
 /**
  * A collision trigger allows to check if a [Collision Block][CollisionBlockObject] has collided with another [Collision Block][CollisionBlockObject].
- * Once triggered, it can spawn the [targetGroup] multiple times.
+ * Unlike the [CollisionTrigger], the collision check is done once per spawning, and a "false" and "true" output can be chosen
  *
  * **If you are wondering what any of these properties mean, check the [GD Editor Guide](https://www.robtopgames.com/files/GDEditor.pdf) !**
- * @see InstantCollisionTrigger
+ * @see CollisionTrigger
  * @see CollisionBlockObject
  */
-class CollisionTrigger : TriggerObject {
+class InstantCollisionTrigger : TriggerObject {
     companion object {
-        const val OBJ_ID = 1815u
+        const val OBJ_ID = 3609u
     }
 
-    val targetGroup = TriggerProperties.TARGET_GROUP
-    val activateGroup = BoolProperty(56.id)
-    val triggerOnExit = BoolProperty(93.id)
+    /**
+     * The group id to spawn if the check **succeeded**
+     */
+    @GDName("True ID")
+    val succeededSpawnID = BoolProperty(51.id)
+    /**
+     * The group id to spawn if the check **failed**
+     */
+    @GDName("False ID")
+    val failedSpawnID = BoolProperty(71.id)
 
     @GDName("PP")
     val isPlayerCollideCheck = BoolProperty(201.id)

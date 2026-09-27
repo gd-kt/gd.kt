@@ -17,5 +17,5 @@
   - [ ] Instant count trigger
   - [x] Collision block
   - [x] Collision trigger
-  - [ ] Instant collision trigger
+  - [x] Instant collision trigger
 - Add dokka deployment to gh pages
