@@ -47,3 +47,6 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+# thing to test the lib locally
+Main.kt
