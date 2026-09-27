@@ -22,7 +22,7 @@ class SpawnTrigger : TriggerObject {
     val targetGroup = TriggerProperties.TARGET_GROUP
     val delay = FloatProperty(63.id)
     /**
-     * A random delay applied to [delay] in runtime
+     * A random delay applied to [delay] at runtime
      */
     val randomDeltaDelay = FloatProperty(556.id)
     /**
