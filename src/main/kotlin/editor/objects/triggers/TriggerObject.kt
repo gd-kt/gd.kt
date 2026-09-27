@@ -27,9 +27,11 @@ abstract class TriggerObject : ComplexObject {
 /**
  * Sets this trigger object as "spawn triggered"
  */
-fun TriggerObject.setSpawned() {
+fun TriggerObject.setSpawned(multiTriggered: Boolean? = null) {
     this.touchTriggered.resetValue()
     this.spawnTriggered.value = true
+    if (multiTriggered != null)
+        this.multiTriggered.value = multiTriggered
 }
 
 /**
@@ -37,7 +39,7 @@ fun TriggerObject.setSpawned() {
  * [group] to this object
  * @param group the group to add to this object
  */
-fun TriggerObject.setSpawned(group: UInt) {
-    this.setSpawned()
+fun TriggerObject.setSpawned(group: UInt, multiTriggered: Boolean? = null) {
+    this.setSpawned(multiTriggered)
     this.groups.add(group)
 }
