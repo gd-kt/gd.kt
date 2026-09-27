@@ -190,7 +190,13 @@ abstract class AbstractProperty<T>(final override val id: Id, open val defaultVa
             else
                 this.currentValue
         }
-        set(value) { this.currentValue = value }
+        set(value) {
+            if (value === this.defaultValue) {
+                this.resetValue()
+            } else {
+                this.currentValue = value
+            }
+        }
 
     /**
      * Checks if this property's [value] is equal to its [default value][defaultValue]
@@ -201,7 +207,7 @@ abstract class AbstractProperty<T>(final override val id: Id, open val defaultVa
      * Reset this property's [value] to its [default value][defaultValue]
      */
     fun resetValue() {
-        this.currentValue = this.defaultValue
+        this.currentValue = null
     }
 
     /**
