@@ -10,7 +10,7 @@
   - [x] Counter label
   - [x] Pickup trigger
   - [x] Spawn trigger
-  - [ ] Persistent trigger
+  - [x] Persistent trigger
   - [ ] Edit trigger
   - [ ] Comp. trigger
   - [x] Count trigger
