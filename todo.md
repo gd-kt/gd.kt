@@ -13,8 +13,8 @@
   - [ ] Persistent trigger
   - [ ] Edit trigger
   - [ ] Comp. trigger
-  - [ ] Count trigger
-  - [ ] Instant count trigger
+  - [x] Count trigger
+  - [x] Instant count trigger
   - [x] Collision block
   - [x] Collision trigger
   - [x] Instant collision trigger
