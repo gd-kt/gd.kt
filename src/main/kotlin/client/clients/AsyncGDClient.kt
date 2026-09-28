@@ -53,20 +53,7 @@ class AsyncGDClient(
     /**
      * The callback returns the ID of the sent comment
      */
-    fun postComment(message: String, asyncCallback: CallbackWithData<Int>) {
-        this.throwIfLoggedOut()
-        this.executeRequest(
-            Serializers.INT,
-            Endpoints.UPLOAD_ACCOUNT_COMMENT,
-            mapOf(
-                Pair("comment", Base64.UrlSafe.encode(message.toByteArray())),
-                Pair("accountID", this.accountID!!)
-            ),
-            asyncCallback = asyncCallback
-        )
-    }
-
-    fun postComment(message: String, levelID: Int, percentage: Float = 0f, asyncCallback: CallbackWithData<Int>) {
+    fun postComment(message: String, levelID: Int, percentage: Float = 0f, isList: Boolean = false, asyncCallback: CallbackWithData<Int>) {
         this.throwIfLoggedOut()
         val encodedMessage = Base64.UrlSafe.encode(message.toByteArray())
         this.executeRequest(
@@ -81,7 +68,7 @@ class AsyncGDClient(
                 Pair("chk", createCHK(
                     this.credentials.username,
                     encodedMessage,
-                    levelID,
+                    if (isList) -levelID else levelID,
                     percentage.toCompactedString(),
                     0, // = commentType = level
                     key = XorKey.COMMENT_INTEGRITY

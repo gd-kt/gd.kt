@@ -53,7 +53,7 @@ class GDClient(
     /**
      * @return the ID of the sent comment
      */
-    fun postComment(message: String, levelID: Int, percentage: Float = 0f): Result<Int> {
+    fun postComment(message: String, levelID: Int, percentage: Float = 0f, isList: Boolean = false): Result<Int> {
         this.throwIfLoggedOut()
         val encodedMessage = Base64.UrlSafe.encode(message.toByteArray())
         return this.executeRequest(
@@ -68,7 +68,7 @@ class GDClient(
                 Pair("chk", createCHK(
                     this.credentials.username,
                     encodedMessage,
-                    levelID,
+                    if (isList) -levelID else levelID,
                     percentage.toCompactedString(),
                     0, // = commentType = level
                     key = XorKey.COMMENT_INTEGRITY
