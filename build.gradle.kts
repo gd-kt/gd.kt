@@ -1,6 +1,7 @@
 plugins {
     kotlin("jvm") version "2.4.0"
     id("org.jetbrains.dokka") version "2.2.0"
+    kotlin("plugin.serialization") version "2.4.20"
     `maven-publish`
 }
 
@@ -25,6 +26,7 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:5.4.0")
     implementation("commons-codec:commons-codec:1.22.1")
     implementation("org.apache.commons:commons-lang3:3.20.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0")
 }
 
 kotlin {
