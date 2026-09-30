@@ -87,7 +87,7 @@ abstract class AbstractGDClient(
             createCHK(values.toList(), key, salt)
 
         fun createCHK(values: List<Any>, key: XorKey, salt: String? = key.salt): String =
-            createCHK(values, { key applyXor it }, salt)
+            createCHK(values, { key.applyXor(it) }, salt)
 
         fun createCHK(vararg values: Any, key: XorKey, salt: String? = key.salt): String =
             createCHK(values.toList(), key, salt)

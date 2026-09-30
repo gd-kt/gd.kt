@@ -22,7 +22,7 @@ enum class XorKey(val key: Int, val salt: String? = null, val type: XorType = Xo
     CHEST_REWARDS(59182),
     STAT_SUBMISSION_INTEGRITY(85271);
 
-    infix fun applyXor(input: String): String =
+    fun applyXor(input: String): String =
         this.type.xorer(input, this.key)
 }
 
