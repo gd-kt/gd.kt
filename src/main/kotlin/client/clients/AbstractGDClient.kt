@@ -320,7 +320,7 @@ fun <K : Any, V : Any> Map<K, V>.toFormRequestBodyWithClientInfo(client: Abstrac
     val bodyBuilder = this.toFormRequestBody()
     bodyBuilder.add("secret", secret.secret)
     bodyBuilder.add("gameVersion", client.gameVersion.toString())
-    bodyBuilder.add("gameVersion", client.binaryVersion.toString())
+    bodyBuilder.add("binaryVersion", client.binaryVersion.toString())
     bodyBuilder.add("dvs", client.platform.value.toString())
     if (client.credentials != null)
         bodyBuilder.add("gjp2", client.credentials.gjp2.encryptedPassword)
