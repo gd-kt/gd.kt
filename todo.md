@@ -18,4 +18,4 @@
   - [x] Collision block
   - [x] Collision trigger
   - [x] Instant collision trigger
-- [ ] Add dokka deployment to gh pages
+- [x] Add dokka deployment to gh pages
