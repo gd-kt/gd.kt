@@ -15,7 +15,7 @@ import okhttp3.*
 import kotlin.coroutines.resume
 import kotlin.time.Duration.Companion.seconds
 
-sealed class WSLiveEditorClient(val port: UShort = DEFAULT_PORT, protected val client: OkHttpClient = DEFAULT_CLIENT) : AutoCloseable {
+sealed class WSLiveEditorClient(val port: UShort = DEFAULT_PORT, protected val client: OkHttpClient = DEFAULT_CLIENT, val freeClientResources: Boolean = true) : AutoCloseable {
     companion object {
         @JvmStatic
         @get:JvmName("getDefaultClient")
@@ -74,10 +74,12 @@ sealed class WSLiveEditorClient(val port: UShort = DEFAULT_PORT, protected val c
         }
 
     override fun close() {
-        // We need to do this so all the websocket threads
-        // actually finish executing
-        this.client.dispatcher.executorService.shutdown()
-        this.client.connectionPool.evictAll()
+        if (this.freeClientResources) {
+            // We need to do this so all the websocket threads
+            // actually finish executing
+            this.client.dispatcher.executorService.shutdown()
+            this.client.connectionPool.evictAll()
+        }
     }
 
     @Serializable
@@ -101,9 +103,15 @@ sealed class WSLiveEditorClient(val port: UShort = DEFAULT_PORT, protected val c
  *
  * [WSLiveEditor](https://geode-sdk.org/mods/iandyhd3.wsliveeditor) is a **[geode](https://geode-sdk.org)** mod
  * that allows to request info/modify info on, the editor.
+ * @property port the port on which `WSLiveEditor` serves its server
+ * @property client the client used to send requests to the websocket server
+ * @property freeClientResources if the [client] should be freed when closing this instance.
+ *                               If set to `false` then the content of [close] is never called.
+ *                               If you happen to own the **given client** and you don't want
+ *                               it to be freed, this is a solution.
  * @see WSLiveEditor
  */
-class AsyncWSLiveEditor(port: UShort = DEFAULT_PORT, client: OkHttpClient = DEFAULT_CLIENT) : WSLiveEditorClient(port, client) {
+class AsyncWSLiveEditor(port: UShort = DEFAULT_PORT, client: OkHttpClient = DEFAULT_CLIENT, freeClientResources: Boolean = true) : WSLiveEditorClient(port, client, freeClientResources) {
     /**
      * Adds objects into the editor.
      * If multiple objects are going to get added, they must be separated by semicolons
@@ -201,9 +209,15 @@ class AsyncWSLiveEditor(port: UShort = DEFAULT_PORT, client: OkHttpClient = DEFA
  *
  * [WSLiveEditor](https://geode-sdk.org/mods/iandyhd3.wsliveeditor) is a **[geode](https://geode-sdk.org)** mod
  * that allows to request info/modify info on, the editor.
+ * @property port the port on which `WSLiveEditor` serves its server
+ * @property client the client used to send requests to the websocket server
+ * @property freeClientResources if the [client] should be freed when closing this instance.
+ *                               If set to `false` then the content of [close] is never called.
+ *                               If you happen to own the **given client** and you don't want
+ *                               it to be freed, this is a solution.
  * @see WSLiveEditor
  */
-class WSLiveEditor(port: UShort = DEFAULT_PORT, client: OkHttpClient = DEFAULT_CLIENT) : WSLiveEditorClient(port, client) {
+class WSLiveEditor(port: UShort = DEFAULT_PORT, client: OkHttpClient = DEFAULT_CLIENT, freeClientResources: Boolean = true) : WSLiveEditorClient(port, client, freeClientResources) {
     val asyncClient = AsyncWSLiveEditor(this.port, this.client)
 
     private fun <T> syncCall(funcCall: (continuation: CancellableContinuation<T>, client: AsyncWSLiveEditor) -> Unit): T =
