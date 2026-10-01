@@ -1,5 +1,6 @@
 package client
 
+import kotlinx.serialization.Serializable
 import org.apache.commons.codec.digest.DigestUtils
 
 /**
@@ -9,6 +10,7 @@ import org.apache.commons.codec.digest.DigestUtils
  * This was added in 2.2
  */
 @JvmInline
+@Serializable
 @GDClientApi
 value class GJP2 internal constructor(val encryptedPassword: String) {
     companion object {
