@@ -26,7 +26,7 @@ jobs:
         uses: ./.github/actions/gradle-setup
 
       - name: Build documentation
-        run: ./gradlew dokkaHtml
+        run: ./gradlew dokkaGenerateHtml
 
       - name: Publish documentation
         uses: JamesIves/github-pages-deploy-action@releases/v4
