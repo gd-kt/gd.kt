@@ -73,6 +73,13 @@ sealed class WSLiveEditorClient(val port: UShort = DEFAULT_PORT, protected val c
             }
         }
 
+    override fun close() {
+        // We need to do this so all the websocket threads
+        // actually finish executing
+        this.client.dispatcher.executorService.shutdown()
+        this.client.connectionPool.evictAll()
+    }
+
     @Serializable
     protected data class WSLiveEditorResponse(
         val status: String,
@@ -184,13 +191,6 @@ class AsyncWSLiveEditor(port: UShort = DEFAULT_PORT, client: OkHttpClient = DEFA
         )
     }
 
-    override fun close() {
-        // We need to do this so all the websocket threads
-        // actually finish executing
-        this.client.dispatcher.executorService.shutdown()
-        this.client.connectionPool.evictAll()
-    }
-
     fun interface AsyncCallback<in T> {
         operator fun invoke(responseValue: T)
     }
@@ -290,12 +290,4 @@ class WSLiveEditor(port: UShort = DEFAULT_PORT, client: OkHttpClient = DEFAULT_C
                 continuation.resume(it)
             }
         }
-
-    override fun close() {
-        // We need to do this so all the websocket threads
-        // actually finish executing
-
-        // We delegate the close impl. to the async impl.
-        this.asyncClient.close()
-    }
 }
