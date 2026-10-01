@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>UserInfo</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
+                    gd.kt
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+1.0.4        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":/main"
+                                       data-filter=":/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    gd.kt
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="gd.kt::client.struct/UserInfo///PointingToDeclaration//-251573632">
+  <div class="breadcrumbs"><a href="../../../index.html">gd.kt</a><span class="delimiter">/</span><a href="../index.html">client.struct</a><span class="delimiter">/</span><span class="current">UserInfo</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>User</span><wbr></wbr><span><span>Info</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">UserInfo</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">client<span class="token operator">: </span><a href="../../client.clients/-abstract-g-d-client/index.html">AbstractGDClient</a></span></span><span class="token punctuation">)</span> : <a href="../-user-structure/index.html">UserStructure</a></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="-2073744726%2FConstructors%2F-251573632" anchor-label="UserInfo" id="-2073744726%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-user-info.html"><span>User</span><wbr></wbr><span><span>Info</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2073744726%2FConstructors%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">client<span class="token operator">: </span><a href="../../client.clients/-abstract-g-d-client/index.html">AbstractGDClient</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="553005923%2FClasslikes%2F-251573632" anchor-label="Companion" id="553005923%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="553005923%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a> : <a href="../-server-structure-companion/index.html">ServerStructureCompanion</a><span class="token operator">&lt;</span><a href="index.html">UserInfo</a><span class="token operator">&gt; </span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="-140982221%2FProperties%2F-251573632" anchor-label="accountID" id="-140982221%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-user-structure/account-i-d.html"><span>account</span><wbr></wbr><span><span>ID</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-140982221%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-user-structure/account-i-d.html">accountID</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2059190677%2FProperties%2F-251573632" anchor-label="ballIconID" id="-2059190677%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="ball-icon-i-d.html"><span>ball</span><wbr></wbr><span>Icon</span><wbr></wbr><span><span>ID</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2059190677%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="ball-icon-i-d.html">ballIconID</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1438084527%2FProperties%2F-251573632" anchor-label="classicBreakdown" id="1438084527%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="classic-breakdown.html"><span>classic</span><wbr></wbr><span><span>Breakdown</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1438084527%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="classic-breakdown.html">classicBreakdown</a><span class="token operator">: </span><a href="../-classic-levels-breakdown/index.html">ClassicLevelsBreakdown</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="155685780%2FProperties%2F-251573632" anchor-label="client" id="155685780%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-user-structure/client.html"><span><span>client</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="155685780%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="../-user-structure/client.html">client</a><span class="token operator">: </span><a href="../../client.clients/-abstract-g-d-client/index.html">AbstractGDClient</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1449046072%2FProperties%2F-251573632" anchor-label="color" id="1449046072%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-user-structure/color.html"><span><span>color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1449046072%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-user-structure/color.html">color</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1520722608%2FProperties%2F-251573632" anchor-label="color2" id="1520722608%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-user-structure/color2.html"><span><span>color2</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1520722608%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-user-structure/color2.html">color2</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1011859072%2FProperties%2F-251573632" anchor-label="commentHistoryState" id="1011859072%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="comment-history-state.html"><span>comment</span><wbr></wbr><span>History</span><wbr></wbr><span><span>State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1011859072%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="comment-history-state.html">commentHistoryState</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-enum-property/index.html">EnumProperty</a><span class="token operator">&lt;</span><a href="../-comment-history-state/index.html">CommentHistoryState</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2074855148%2FProperties%2F-251573632" anchor-label="creatorPoints" id="2074855148%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-user-structure/creator-points.html"><span>creator</span><wbr></wbr><span><span>Points</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2074855148%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-user-structure/creator-points.html">creatorPoints</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="249051509%2FProperties%2F-251573632" anchor-label="cubeIconID" id="249051509%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="cube-icon-i-d.html"><span>cube</span><wbr></wbr><span>Icon</span><wbr></wbr><span><span>ID</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="249051509%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="cube-icon-i-d.html">cubeIconID</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-434106765%2FProperties%2F-251573632" anchor-label="customField" id="-434106765%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="custom-field.html"><span>custom</span><wbr></wbr><span><span>Field</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-434106765%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="custom-field.html">customField</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-unencoded-string-property/index.html">UnencodedStringProperty</a></div><div class="brief "><p class="paragraph">A player provided info. Quoting from geometry dash:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1656399352%2FProperties%2F-251573632" anchor-label="demonBreakdown" id="-1656399352%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="demon-breakdown.html"><span>demon</span><wbr></wbr><span><span>Breakdown</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1656399352%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="demon-breakdown.html">demonBreakdown</a><span class="token operator">: </span><a href="../-demon-levels-breakdown/index.html">DemonLevelsBreakdown</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1094195099%2FProperties%2F-251573632" anchor-label="demonCount" id="1094195099%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-user-structure/demon-count.html"><span>demon</span><wbr></wbr><span><span>Count</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1094195099%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-user-structure/demon-count.html">demonCount</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1651365055%2FProperties%2F-251573632" anchor-label="diamonds" id="1651365055%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="diamonds.html"><span><span>diamonds</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1651365055%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="diamonds.html">diamonds</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1001200176%2FProperties%2F-251573632" anchor-label="discord" id="1001200176%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="discord.html"><span><span>discord</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1001200176%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="discord.html">discord</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-unencoded-string-property/index.html">UnencodedStringProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-483568880%2FProperties%2F-251573632" anchor-label="friendRequestAge" id="-483568880%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="friend-request-age.html"><span>friend</span><wbr></wbr><span>Request</span><wbr></wbr><span><span>Age</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-483568880%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="friend-request-age.html">friendRequestAge</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-unencoded-string-property/index.html">UnencodedStringProperty</a></div><div class="brief "><p class="paragraph">Only has a value when the player sent you a friend request</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1896282768%2FProperties%2F-251573632" anchor-label="friendRequestID" id="-1896282768%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="friend-request-i-d.html"><span>friend</span><wbr></wbr><span>Request</span><wbr></wbr><span><span>ID</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1896282768%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="friend-request-i-d.html">friendRequestID</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div><div class="brief "><p class="paragraph">Only has a value when the player sent you a friend request</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1314571256%2FProperties%2F-251573632" anchor-label="friendRequestMessage" id="-1314571256%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="friend-request-message.html"><span>friend</span><wbr></wbr><span>Request</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1314571256%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="friend-request-message.html">friendRequestMessage</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-unencoded-string-property/index.html">UnencodedStringProperty</a></div><div class="brief "><p class="paragraph">Only has a value when the player sent you a friend request</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1238167164%2FProperties%2F-251573632" anchor-label="friendRequests" id="1238167164%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="friend-requests.html"><span>friend</span><wbr></wbr><span><span>Requests</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1238167164%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="friend-requests.html">friendRequests</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1687079042%2FProperties%2F-251573632" anchor-label="friendsState" id="1687079042%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="friends-state.html"><span>friends</span><wbr></wbr><span><span>State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1687079042%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="friends-state.html">friendsState</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-enum-property/index.html">EnumProperty</a><span class="token operator">&lt;</span><a href="../-friends-state/index.html">FriendsState</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-547109591%2FProperties%2F-251573632" anchor-label="friendState" id="-547109591%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="friend-state.html"><span>friend</span><wbr></wbr><span><span>State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-547109591%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="friend-state.html">friendState</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-enum-property/index.html">EnumProperty</a><span class="token operator">&lt;</span><a href="../-friend-state/index.html">FriendState</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-208748113%2FProperties%2F-251573632" anchor-label="globalRank" id="-208748113%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="global-rank.html"><span>global</span><wbr></wbr><span><span>Rank</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-208748113%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="global-rank.html">globalRank</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1750516998%2FProperties%2F-251573632" anchor-label="glowColor" id="1750516998%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="glow-color.html"><span>glow</span><wbr></wbr><span><span>Color</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1750516998%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="glow-color.html">glowColor</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-718947211%2FProperties%2F-251573632" anchor-label="hasGlow" id="-718947211%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="has-glow.html"><span>has</span><wbr></wbr><span><span>Glow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-718947211%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="has-glow.html">hasGlow</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-bool-property/index.html">BoolProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1239640581%2FProperties%2F-251573632" anchor-label="iconExplosionID" id="1239640581%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="icon-explosion-i-d.html"><span>icon</span><wbr></wbr><span>Explosion</span><wbr></wbr><span><span>ID</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1239640581%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="icon-explosion-i-d.html">iconExplosionID</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-849857302%2FProperties%2F-251573632" anchor-label="iconID" id="-849857302%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="icon-i-d.html"><span>icon</span><wbr></wbr><span><span>ID</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-849857302%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="icon-i-d.html">iconID</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1600329099%2FProperties%2F-251573632" anchor-label="iconType" id="1600329099%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="icon-type.html"><span>icon</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1600329099%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="icon-type.html">iconType</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-enum-property/index.html">EnumProperty</a><span class="token operator">&lt;</span><a href="../../client.enums/-gamemode/index.html">Gamemode</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="54658730%2FProperties%2F-251573632" anchor-label="instagram" id="54658730%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="instagram.html"><span><span>instagram</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="54658730%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="instagram.html">instagram</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-unencoded-string-property/index.html">UnencodedStringProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1496532786%2FProperties%2F-251573632" anchor-label="isRegistered" id="1496532786%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-registered.html"><span>is</span><wbr></wbr><span><span>Registered</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1496532786%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="is-registered.html">isRegistered</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-bool-property/index.html">BoolProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-979361994%2FProperties%2F-251573632" anchor-label="jetpackIconID" id="-979361994%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="jetpack-icon-i-d.html"><span>jetpack</span><wbr></wbr><span>Icon</span><wbr></wbr><span><span>ID</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-979361994%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="jetpack-icon-i-d.html">jetpackIconID</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1947735630%2FProperties%2F-251573632" anchor-label="messages" id="-1947735630%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="messages.html"><span><span>messages</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1947735630%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="messages.html">messages</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div><div class="brief "><p class="paragraph">Only has a value when logged in and when viewing your own profile</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1929718644%2FProperties%2F-251573632" anchor-label="messageState" id="1929718644%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="message-state.html"><span>message</span><wbr></wbr><span><span>State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1929718644%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="message-state.html">messageState</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-enum-property/index.html">EnumProperty</a><span class="token operator">&lt;</span><a href="../-message-state/index.html">MessageState</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1046888988%2FProperties%2F-251573632" anchor-label="modLevel" id="1046888988%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="mod-level.html"><span>mod</span><wbr></wbr><span><span>Level</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1046888988%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="mod-level.html">modLevel</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-enum-property/index.html">EnumProperty</a><span class="token operator">&lt;</span><a href="../-mod-level/index.html">ModLevel</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1310831542%2FProperties%2F-251573632" anchor-label="moons" id="-1310831542%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="moons.html"><span><span>moons</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1310831542%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="moons.html">moons</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1615915255%2FProperties%2F-251573632" anchor-label="newFriends" id="-1615915255%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="new-friends.html"><span>new</span><wbr></wbr><span><span>Friends</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1615915255%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="new-friends.html">newFriends</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1374449648%2FProperties%2F-251573632" anchor-label="platformerBreadown" id="1374449648%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="platformer-breadown.html"><span>platformer</span><wbr></wbr><span><span>Breadown</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1374449648%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="platformer-breadown.html">platformerBreadown</a><span class="token operator">: </span><a href="../-platformer-levels-breakdown/index.html">PlatformerLevelsBreakdown</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-913593754%2FProperties%2F-251573632" anchor-label="ranking" id="-913593754%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="ranking.html"><span><span>ranking</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-913593754%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="ranking.html">ranking</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-int-property/index.html">IntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-793708460%2FProperties%2F-251573632" anchor-label="rawClassicLevelsBreakdown" id="-793708460%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="raw-classic-levels-breakdown.html"><span>raw</span><wbr></wbr><span>Classic</span><wbr></wbr><span>Levels</span><wbr></wbr><span><span>Breakdown</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-793708460%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="raw-classic-levels-breakdown.html">rawClassicLevelsBreakdown</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-unencoded-string-property/index.html">UnencodedStringProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1982903443%2FProperties%2F-251573632" anchor-label="rawDemonLevelsBreakdown" id="-1982903443%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="raw-demon-levels-breakdown.html"><span>raw</span><wbr></wbr><span>Demon</span><wbr></wbr><span>Levels</span><wbr></wbr><span><span>Breakdown</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1982903443%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="raw-demon-levels-breakdown.html">rawDemonLevelsBreakdown</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-unencoded-string-property/index.html">UnencodedStringProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="297352340%2FProperties%2F-251573632" anchor-label="rawPlatformerLevelsBreakdown" id="297352340%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="raw-platformer-levels-breakdown.html"><span>raw</span><wbr></wbr><span>Platformer</span><wbr></wbr><span>Levels</span><wbr></wbr><span><span>Breakdown</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="297352340%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="raw-platformer-levels-breakdown.html">rawPlatformerLevelsBreakdown</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-unencoded-string-property/index.html">UnencodedStringProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1787828434%2FProperties%2F-251573632" anchor-label="rawStringFactory" id="-1787828434%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-user-structure/raw-string-factory.html"><span>raw</span><wbr></wbr><span>String</span><wbr></wbr><span><span>Factory</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1787828434%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="../-user-structure/raw-string-factory.html">rawStringFactory</a><span class="token operator">: </span><a href="../../editor.rawstring/-raw-string-factory/index.html">RawStringFactory</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-232087106%2FProperties%2F-251573632" anchor-label="robotIconID" id="-232087106%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="robot-icon-i-d.html"><span>robot</span><wbr></wbr><span>Icon</span><wbr></wbr><span><span>ID</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-232087106%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="robot-icon-i-d.html">robotIconID</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1048022217%2FProperties%2F-251573632" anchor-label="secretCoins" id="1048022217%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-user-structure/secret-coins.html"><span>secret</span><wbr></wbr><span><span>Coins</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1048022217%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-user-structure/secret-coins.html">secretCoins</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1396694386%2FProperties%2F-251573632" anchor-label="shipIconID" id="-1396694386%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="ship-icon-i-d.html"><span>ship</span><wbr></wbr><span>Icon</span><wbr></wbr><span><span>ID</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1396694386%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="ship-icon-i-d.html">shipIconID</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="212187272%2FProperties%2F-251573632" anchor-label="shipID" id="212187272%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-user-structure/ship-i-d.html"><span>ship</span><wbr></wbr><span><span>ID</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="212187272%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-user-structure/ship-i-d.html">shipID</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1525628739%2FProperties%2F-251573632" anchor-label="special" id="1525628739%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="special.html"><span><span>special</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1525628739%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="special.html">special</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-enum-property/index.html">EnumProperty</a><span class="token operator">&lt;</span><a href="../-special/index.html">Special</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1871344773%2FProperties%2F-251573632" anchor-label="spiderIconID" id="1871344773%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="spider-icon-i-d.html"><span>spider</span><wbr></wbr><span>Icon</span><wbr></wbr><span><span>ID</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1871344773%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="spider-icon-i-d.html">spiderIconID</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2071325446%2FProperties%2F-251573632" anchor-label="stars" id="-2071325446%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-user-structure/stars.html"><span><span>stars</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2071325446%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-user-structure/stars.html">stars</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-524076374%2FProperties%2F-251573632" anchor-label="swingIconID" id="-524076374%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="swing-icon-i-d.html"><span>swing</span><wbr></wbr><span>Icon</span><wbr></wbr><span><span>ID</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-524076374%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="swing-icon-i-d.html">swingIconID</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2127587836%2FProperties%2F-251573632" anchor-label="tiktok" id="-2127587836%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="tiktok.html"><span><span>tiktok</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2127587836%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="tiktok.html">tiktok</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-unencoded-string-property/index.html">UnencodedStringProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2102891189%2FProperties%2F-251573632" anchor-label="twitch" id="-2102891189%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="twitch.html"><span><span>twitch</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2102891189%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="twitch.html">twitch</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-unencoded-string-property/index.html">UnencodedStringProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2144688841%2FProperties%2F-251573632" anchor-label="twitter" id="2144688841%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="twitter.html"><span><span>twitter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2144688841%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="twitter.html">twitter</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-unencoded-string-property/index.html">UnencodedStringProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="726872426%2FProperties%2F-251573632" anchor-label="ufoIconID" id="726872426%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="ufo-icon-i-d.html"><span>ufo</span><wbr></wbr><span>Icon</span><wbr></wbr><span><span>ID</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="726872426%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="ufo-icon-i-d.html">ufoIconID</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="954429476%2FProperties%2F-251573632" anchor-label="userCoins" id="954429476%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-user-structure/user-coins.html"><span>user</span><wbr></wbr><span><span>Coins</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="954429476%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-user-structure/user-coins.html">userCoins</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2051351961%2FProperties%2F-251573632" anchor-label="userID" id="2051351961%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-user-structure/user-i-d.html"><span>user</span><wbr></wbr><span><span>ID</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2051351961%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-user-structure/user-i-d.html">userID</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1298880585%2FProperties%2F-251573632" anchor-label="userName" id="1298880585%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-user-structure/user-name.html"><span>user</span><wbr></wbr><span><span>Name</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1298880585%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-user-structure/user-name.html">userName</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-unencoded-string-property/index.html">UnencodedStringProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="640062001%2FProperties%2F-251573632" anchor-label="waveIconID" id="640062001%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="wave-icon-i-d.html"><span>wave</span><wbr></wbr><span>Icon</span><wbr></wbr><span><span>ID</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="640062001%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="wave-icon-i-d.html">waveIconID</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-u-int-property/index.html">UIntProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1938788359%2FProperties%2F-251573632" anchor-label="youTube" id="-1938788359%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="you-tube.html"><span>you</span><wbr></wbr><span><span>Tube</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1938788359%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="you-tube.html">youTube</a><span class="token operator">: </span><a href="../../editor.rawstring.property/-unencoded-string-property/index.html">UnencodedStringProperty</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-28008692%2FFunctions%2F-251573632" anchor-label="asRawString" id="-28008692%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-server-structure/as-raw-string.html"><span>as</span><wbr></wbr><span>Raw</span><wbr></wbr><span><span>String</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-28008692%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-server-structure/as-raw-string.html"><span class="token function">asRawString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Get the geometry dash raw string representing this object. Generally on server structures <strong>there's no need to use this</strong></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-418671886%2FFunctions%2F-251573632" anchor-label="get" id="-418671886%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../editor.objects/-generic-gd-object/get.html"><span><span>get</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-418671886%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="../../editor.objects/-generic-gd-object/get.html"><span class="token function">get</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">propID<span class="token operator">: </span><a href="../../editor.rawstring/-id/index.html">Id</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../editor.rawstring.property/-property-definition/index.html">PropertyDefinition</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Get the property of this geometry dash object by its property id</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-27039037%2FFunctions%2F-251573632" anchor-label="useClient" id="-27039037%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../use-client.html"><span>use</span><wbr></wbr><span><span>Client</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-27039037%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="../-server-structure/index.html">ServerStructure</a><span class="token punctuation">.</span><a href="../use-client.html"><span class="token function">useClient</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">func<span class="token operator">: </span><a href="../../client.clients/-abstract-g-d-client/index.html">AbstractGDClient</a><span class="token punctuation">.</span><span class="token punctuation">(</span>client<span class="token operator">: </span><a href="../../client.clients/-abstract-g-d-client/index.html">AbstractGDClient</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
