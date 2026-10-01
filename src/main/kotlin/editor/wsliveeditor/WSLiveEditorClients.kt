@@ -119,11 +119,11 @@ class AsyncWSLiveEditor(port: UShort = DEFAULT_PORT, client: OkHttpClient = DEFA
      * If multiple objects are going to get added, they must be separated by semicolons
      * @throws WSLiveEditorException if any error happens during the execution
      */
-    fun addObjects(objects: String, asyncCallback: AsyncCallback<Boolean> = {}) {
+    fun addObjects(objects: String, asyncCallback: AsyncCallback<Unit> = {}) {
         this.client.newWebSocket(
             this.createRequest(),
             this.createListener(createAction("ADD_OBJECTS", stringData = mapOf(Pair("objects", objects))), true) {
-                asyncCallback(!it.isError())
+                asyncCallback(Unit)
             }
         )
     }
@@ -134,7 +134,7 @@ class AsyncWSLiveEditor(port: UShort = DEFAULT_PORT, client: OkHttpClient = DEFA
      * @throws WSLiveEditorException if any error happens during the execution
      */
     @JvmName("addStringObjects")
-    fun addObjects(objects: Collection<String>, asyncCallback: AsyncCallback<Boolean> = {}) =
+    fun addObjects(objects: Collection<String>, asyncCallback: AsyncCallback<Unit> = {}) =
         this.addObjects(RawStringFactory.joinRawStrings(objects), asyncCallback)
 
     /**
@@ -142,7 +142,7 @@ class AsyncWSLiveEditor(port: UShort = DEFAULT_PORT, client: OkHttpClient = DEFA
      * If multiple objects are going to get added, they must be separated by semicolons
      * @throws WSLiveEditorException if any error happens during the execution
      */
-    fun addObject(rawStringableObj: RawStringable, asyncCallback: AsyncCallback<Boolean> = {}) =
+    fun addObject(rawStringableObj: RawStringable, asyncCallback: AsyncCallback<Unit> = {}) =
         this.addObjects(rawStringableObj.asRawString(), asyncCallback)
 
     /**
@@ -150,19 +150,18 @@ class AsyncWSLiveEditor(port: UShort = DEFAULT_PORT, client: OkHttpClient = DEFA
      * If multiple objects are going to get added, they must be separated by semicolons
      * @throws WSLiveEditorException if any error happens during the execution
      */
-    fun addObjects(objects: Collection<RawStringable>, asyncCallback: AsyncCallback<Boolean> = {}) =
+    fun addObjects(objects: Collection<RawStringable>, asyncCallback: AsyncCallback<Unit> = {}) =
         this.addObjects(RawStringFactory.joinRawStrings(objects), asyncCallback)
 
     /**
      * Removes all objects in the editor with the given group
      * @throws WSLiveEditorException if any error happens during the execution
      */
-    fun removeObjects(group: UInt, asyncCallback: AsyncCallback<Boolean> = {}) {
+    fun removeObjects(group: UInt, asyncCallback: AsyncCallback<Unit> = {}) {
         this.client.newWebSocket(
             this.createRequest(),
-            // "{\"action\": \"REMOVE_OBJECTS\", \"group\": $group}"
             this.createListener(createAction("REMOVE_OBJECTS", intData = mapOf(Pair("group", group.toInt()))), true) {
-                asyncCallback(!it.isError())
+                asyncCallback(Unit)
             }
         )
     }
@@ -172,7 +171,7 @@ class AsyncWSLiveEditor(port: UShort = DEFAULT_PORT, client: OkHttpClient = DEFA
      * @throws WSLiveEditorException if any error happens during the execution
      */
     @JvmName("removeObjectsJava")
-    fun removeObjects(group: Int, asyncCallback: AsyncCallback<Boolean> = {}) =
+    fun removeObjects(group: Int, asyncCallback: AsyncCallback<Unit> = {}) =
         this.removeObjects(group.toUInt(), asyncCallback)
 
     /**
@@ -192,11 +191,11 @@ class AsyncWSLiveEditor(port: UShort = DEFAULT_PORT, client: OkHttpClient = DEFA
      * Sets the level string of the currently opened level
      * @throws WSLiveEditorException if any error happens during the execution
      */
-    fun setLevelString(levelString: String, asyncCallback: AsyncCallback<Boolean> = {}) {
+    fun setLevelString(levelString: String, asyncCallback: AsyncCallback<Unit> = {}) {
         this.client.newWebSocket(
             this.createRequest(),
             this.createListener(createAction("REPLACE_LEVEL_STRING", stringData = mapOf(Pair("levelString", levelString))), true) {
-                asyncCallback(!it.isError())
+                asyncCallback(Unit)
             }
         )
     }
@@ -234,7 +233,7 @@ class WSLiveEditor(port: UShort = DEFAULT_PORT, client: OkHttpClient = DEFAULT_C
      * If multiple objects are going to get added, they must be separated by semicolons
      * @throws WSLiveEditorException if any error happens during the execution
      */
-    fun addObjects(objects: String): Boolean =
+    fun addObjects(objects: String) =
         syncCall { continuation, client ->
             client.addObjects(objects) {
                 continuation.resume(it)
@@ -247,7 +246,7 @@ class WSLiveEditor(port: UShort = DEFAULT_PORT, client: OkHttpClient = DEFAULT_C
      * @throws WSLiveEditorException if any error happens during the execution
      */
     @JvmName("addStringObjects")
-    fun addObjects(objects: Collection<String>): Boolean =
+    fun addObjects(objects: Collection<String>) =
         this.addObjects(RawStringFactory.joinRawStrings(objects))
 
     /**
@@ -255,7 +254,7 @@ class WSLiveEditor(port: UShort = DEFAULT_PORT, client: OkHttpClient = DEFAULT_C
      * If multiple objects are going to get added, they must be separated by semicolons
      * @throws WSLiveEditorException if any error happens during the execution
      */
-    fun addObject(rawStringableObj: RawStringable): Boolean =
+    fun addObject(rawStringableObj: RawStringable) =
         this.addObjects(rawStringableObj.asRawString())
 
     /**
@@ -263,14 +262,14 @@ class WSLiveEditor(port: UShort = DEFAULT_PORT, client: OkHttpClient = DEFAULT_C
      * If multiple objects are going to get added, they must be separated by semicolons
      * @throws WSLiveEditorException if any error happens during the execution
      */
-    fun addObjects(objects: Collection<RawStringable>): Boolean =
+    fun addObjects(objects: Collection<RawStringable>) =
         this.addObjects(RawStringFactory.joinRawStrings(objects))
 
     /**
      * Removes all objects in the editor with the given group
      * @throws WSLiveEditorException if any error happens during the execution
      */
-    fun removeObjects(group: UInt): Boolean =
+    fun removeObjects(group: UInt) =
         syncCall { continuation, client ->
             client.removeObjects(group) {
                 continuation.resume(it)
@@ -282,7 +281,7 @@ class WSLiveEditor(port: UShort = DEFAULT_PORT, client: OkHttpClient = DEFAULT_C
      * @throws WSLiveEditorException if any error happens during the execution
      */
     @JvmName("removeObjectsJava")
-    fun removeObjects(group: Int): Boolean =
+    fun removeObjects(group: Int) =
         this.removeObjects(group.toUInt())
 
     /**
@@ -300,7 +299,7 @@ class WSLiveEditor(port: UShort = DEFAULT_PORT, client: OkHttpClient = DEFAULT_C
      * Sets the level string of the currently opened level
      * @throws WSLiveEditorException if any error happens during the execution
      */
-    fun setLevelString(levelString: String): Boolean =
+    fun setLevelString(levelString: String) =
         syncCall { continuation, client ->
             client.setLevelString(levelString) {
                 continuation.resume(it)
