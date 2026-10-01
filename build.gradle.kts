@@ -27,6 +27,7 @@ dependencies {
     implementation("commons-codec:commons-codec:1.22.1")
     implementation("org.apache.commons:commons-lang3:3.20.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
 }
 
 kotlin {

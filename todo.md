@@ -4,7 +4,7 @@
 - [x] Add operators to `Scale`, `Pos` and `GridPos` (ex: multiplying, adding, ...)
 - [x] Add sample for ObjectParser + finish explanation in readme 
 - [x] Make docs
-- [ ] Add `WSLiveEditor` support
+- [x] Add `WSLiveEditor` support
 - Add these triggers:
   - [x] Timewarp
   - [x] Counter label
