@@ -109,7 +109,7 @@ $dokka.location:client.enums/Gamemode/value/#/PointingToDeclaration/gd.kt/clien
 $dokka.location:client.enums/Gamemode/valueOf/#kotlin.String/PointingToDeclaration/gd.kt/client.enums/-gamemode/value-of.html
 $dokka.location:client.enums/Gamemode/values/#/PointingToDeclaration/gd.kt/client.enums/-gamemode/values.html
 $dokka.location:client.struct////PointingToDeclaration/gd.kt/client.struct/index.html
-$dokka.location:client.struct//useClient/client.struct.ServerStructure#kotlin.Function2[client.clients.AbstractGDClient,client.clients.AbstractGDClient,kotlin.Unit]/PointingToDeclaration/gd.kt/client.struct/use-client.html
+$dokka.location:client.struct//useClient/client.struct.ServerStructure#kotlin.Function1[client.clients.AbstractGDClient,kotlin.Unit]/PointingToDeclaration/gd.kt/client.struct/use-client.html
 $dokka.location:client.struct/ClassicLevelsBreakdown///PointingToDeclaration/gd.kt/client.struct/-classic-levels-breakdown/index.html
 $dokka.location:client.struct/ClassicLevelsBreakdown/ClassicLevelsBreakdown/#kotlin.String/PointingToDeclaration/gd.kt/client.struct/-classic-levels-breakdown/-classic-levels-breakdown.html
 $dokka.location:client.struct/ClassicLevelsBreakdown/auto/#/PointingToDeclaration/gd.kt/client.struct/-classic-levels-breakdown/auto.html
