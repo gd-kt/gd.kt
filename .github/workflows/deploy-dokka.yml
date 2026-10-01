@@ -1,0 +1,35 @@
+# Stolen from https://stackoverflow.com/questions/62913488/how-can-i-publish-the-docs-to-github-pages-after-generating-it-via-dokka-kotlin
+
+name: Dokka Deployment
+
+on:
+  push:
+    branches: [ main ]
+
+  # Delete below when merged to main!
+  # Added such that one can test pages deployment on branch before merging
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Gradle setup
+        uses: ./.github/actions/gradle-setup
+
+      - name: Build documentation
+        run: ./gradlew dokkaHtml
+
+      - name: Publish documentation
+        uses: JamesIves/github-pages-deploy-action@releases/v4
+        with:
+          branch: dokka-deployment
+          folder: build/dokka/html
