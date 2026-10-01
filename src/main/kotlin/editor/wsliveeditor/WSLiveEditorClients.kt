@@ -53,6 +53,8 @@ sealed class WSLiveEditorClient(val port: UShort = DEFAULT_PORT, protected val c
 
     protected fun createListener(action: String, close: Boolean = false, responseHandler: (response: WSLiveEditorResponse) -> Unit): WebSocketListener =
         object : WebSocketListener() {
+            var response: WSLiveEditorResponse? = null
+
             override fun onOpen(webSocket: WebSocket, response: Response) {
                 webSocket.send(action)
             }
@@ -62,14 +64,14 @@ sealed class WSLiveEditorClient(val port: UShort = DEFAULT_PORT, protected val c
                     webSocket.close(1000, null)
                     // println("Closed websocket: ${webSocket.close(1000, null)}")
 
-                val response = Json.decodeFromString<WSLiveEditorResponse>(text)
-                response.throwIfError()
+                this.response = Json.decodeFromString<WSLiveEditorResponse>(text)
+                this.response!!.throwIfError()
 
-                responseHandler(response)
+                responseHandler(this.response!!)
             }
 
             override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) {
-                throw WSLiveEditorException("Caught an error while trying to do a WSLiveEditor operation", t)
+                throw WSLiveEditorException("Caught an error while trying to do a WSLiveEditor operation", t, this.response)
             }
         }
 
@@ -83,7 +85,7 @@ sealed class WSLiveEditorClient(val port: UShort = DEFAULT_PORT, protected val c
     }
 
     @Serializable
-    protected data class WSLiveEditorResponse(
+    data class WSLiveEditorResponse(
         val status: String,
         @SerialName("error") val errorMessage: String? = null,
         @SerialName("response") val successResponse: String? = null
@@ -93,7 +95,7 @@ sealed class WSLiveEditorClient(val port: UShort = DEFAULT_PORT, protected val c
 
         fun throwIfError() {
             if (this.isError())
-                throw WSLiveEditorException("WSLiveEditor error: ${this.errorMessage}")
+                throw WSLiveEditorException("WSLiveEditor error: ${this.errorMessage}", this)
         }
     }
 }
