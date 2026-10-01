@@ -11,9 +11,9 @@
 This is the 3rd gd.lang lib I've made (it's predecessor is [gddotpy v2](https://github.com/Geming400/gddotpy-v2)).
 This is mostly just to do a bit more kotlin and learn it more deeply.
 
-It can be used, but do not really expect anything, though the difference with most geometry dash libraries is that this one allows you to create objects using an easy to use property system.
+The difference with most geometry dash libraries is that this one allows you to create objects using an easy to use property system.
 
-There is not much java interoperability because for example `UInt`s cannot get created on java and fully used.
+There is not much java interoperability because for example `UInt`s cannot get created and fully used on java.
 
 > [!NOTE]
 > `gd.kt`'s documentation can be found [here](https://gd-kt.github.io/docs/).
