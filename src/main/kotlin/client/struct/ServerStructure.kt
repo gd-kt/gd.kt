@@ -21,4 +21,4 @@ interface ServerStructure : GenericGdObject {
 }
 
 @OptIn(GDClientApi::class)
-inline fun ServerStructure.useClient(func: AbstractGDClient.(client: AbstractGDClient) -> Unit) = func(this.client, this.client)
+inline fun ServerStructure.useClient(func: (client: AbstractGDClient) -> Unit) = func(this.client)
