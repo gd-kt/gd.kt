@@ -1,18 +1,12 @@
 package client.struct
 
-import client.clients.AbstractGDClient
 import client.GDClientApi
+import client.clients.AbstractGDClient
 import client.enums.Gamemode
 import editor.objects.ObjectParser
-import editor.rawstring.RawStringFactory
 import editor.rawstring.Id.Companion.id
-import editor.rawstring.property.BoolProperty
-import editor.rawstring.property.EnumProperty
-import editor.rawstring.property.GdEnum
-import editor.rawstring.property.IntProperty
-import editor.rawstring.property.UIntProperty
-import editor.rawstring.property.UnencodedStringProperty
-import editor.rawstring.property.getOrThrow
+import editor.rawstring.RawStringFactory
+import editor.rawstring.property.*
 import editor.rawstring.serializing.Serializer
 import exceptions.GdDotKtException
 
@@ -158,7 +152,7 @@ open class UserStructure(override val client: AbstractGDClient) : ServerStructur
             ObjectParser.parse(rawString, UserStructure(client), separator)
     }
 
-    override val rawStringFactory: RawStringFactory = RawStringFactory.createDynamic(this)
+    override val rawStringFactory: RawStringFactory = RawStringFactory.create(this, separator)
 
     val userName = UnencodedStringProperty(1.id, defaultValue = null)
     val userID = UIntProperty(2.id, defaultValue = null)
@@ -287,3 +281,25 @@ class FriendRequestUser(client: AbstractGDClient) : UserStructure(client) {
 
     val newFriendRequest = BoolProperty(41.id, defaultValue = null)
 }
+
+@GDClientApi
+class CommentUserInfo(override val client: AbstractGDClient) : ServerStructure {
+    companion object : ServerStructureCompanion<CommentUserInfo> {
+        override val separator: Char = '~'
+
+        override fun parse(rawString: String, client: AbstractGDClient): CommentUserInfo =
+            ObjectParser.parse(rawString, CommentUserInfo(client), separator)
+    }
+
+    override val rawStringFactory: RawStringFactory = RawStringFactory.create(this, separator)
+
+    val username = UnencodedStringProperty(1.id, defaultValue = null)
+    val displayIconID = UIntProperty(9.id, defaultValue = null)
+    val color = UIntProperty(10.id, defaultValue = null)
+    val color2 = UIntProperty(11.id, defaultValue = null)
+    val displayIconType = EnumProperty(14.id, Serializer.enum(Gamemode.entries))
+    val special = EnumProperty(15.id, Serializer.enum(Special.entries))
+    val accountID = UIntProperty(16.id, defaultValue = null)
+    val glowColor = UIntProperty(51.id, defaultValue = null)
+}
+

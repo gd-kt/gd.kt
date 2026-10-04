@@ -4,8 +4,12 @@ import client.Credentials
 import client.GDClientApi
 import client.Platform
 import client.endpoint.Endpoints
+import client.struct.LevelCommentStructure
 import client.struct.UserInfo
+import editor.rawstring.serializing.Parsable
+import editor.rawstring.serializing.Parsable.Companion.listParsable
 import editor.rawstring.serializing.Serializers
+import editor.rawstring.serializing.hook
 import okhttp3.HttpUrl
 import utils.toCompactedString
 import kotlin.io.encoding.Base64
@@ -53,6 +57,7 @@ class AsyncGDClient(
     /**
      * The callback returns the ID of the sent comment
      */
+    @JvmOverloads
     fun postComment(message: String, levelID: Int, percentage: Float = 0f, isList: Boolean = false, asyncCallback: CallbackWithData<Int>) {
         this.throwIfLoggedOut()
         val encodedMessage = Base64.UrlSafe.encode(message.toByteArray())
@@ -101,6 +106,31 @@ class AsyncGDClient(
             mapOf(
                 Pair("accountID", this.accountID!!),
                 Pair("commentID", commentID),
+            ),
+            asyncCallback = asyncCallback
+        )
+    }
+
+    @JvmOverloads
+    fun getComments(levelID: Int, page: Int = 0, isList: Boolean = false, asyncCallback: CallbackWithData<List<LevelCommentStructure>>) {
+        this.throwIfLoggedOut()
+        this.executeRequest(
+            Parsable.fromServerStruct(LevelCommentStructure, this).listParsable('|').hook { rawString ->
+                // Everything that's after the '#' is the
+                // "page info". We get rid of it
+                // to not clutter the response for the moment
+                //
+                // (ex: having a data class wrapping
+                // List<LevelCommentStructure> and the page info)
+                // (TODO: Add this wrapper)
+                //
+                // see: https://boomlings.dev/endpoints/lists/getGJLevelLists#response
+                rawString.removeRange(rawString.indexOf('#'), rawString.length - 1)
+            },
+            Endpoints.GET_COMMENTS,
+            mapOf(
+                Pair("levelID", if (isList) -levelID else levelID),
+                Pair("page", page),
             ),
             asyncCallback = asyncCallback
         )
