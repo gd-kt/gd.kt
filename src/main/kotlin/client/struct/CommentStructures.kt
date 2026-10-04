@@ -7,6 +7,7 @@ import editor.rawstring.Id.Companion.id
 import editor.rawstring.RawStringFactory
 import editor.rawstring.property.BoolProperty
 import editor.rawstring.property.IntProperty
+import editor.rawstring.property.StringProperty
 import editor.rawstring.property.UIntProperty
 import editor.rawstring.property.UnencodedStringProperty
 import editor.rawstring.property.getOrThrow
@@ -20,7 +21,7 @@ abstract class CommentStructure(override val client: AbstractGDClient, val userI
 
     override val rawStringFactory: RawStringFactory = RawStringFactory.create(this)
 
-    val comment = UnencodedStringProperty(2.id, defaultValue = null)
+    val comment = StringProperty(2.id, defaultValue = null)
     val likes = IntProperty(4.id, defaultValue = null)
     val dislikes = IntProperty(5.id, defaultValue = null)
     val messageID = UIntProperty(6.id, defaultValue = null)
