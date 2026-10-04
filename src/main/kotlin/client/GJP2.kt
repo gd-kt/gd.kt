@@ -12,13 +12,14 @@ import org.apache.commons.codec.digest.DigestUtils
 @JvmInline
 @Serializable
 @GDClientApi
-value class GJP2 internal constructor(val encryptedPassword: String) {
+// The constructor is private to not pass an unencrypted password
+// in the class's constructor
+value class GJP2 private constructor(val encryptedPassword: String) {
     companion object {
         const val SALT = "mI29fmAnxgTs"
 
-        fun encryptPassword(password: String): String {
-            return DigestUtils.sha1Hex(password + SALT)
-        }
+        fun encryptPassword(password: String): String =
+            DigestUtils.sha1Hex(password + SALT)
 
         fun create(password: String): GJP2 =
             GJP2(encryptPassword(password))
