@@ -1,5 +1,9 @@
 package editor.rawstring.serializing
 
+import client.GDClientApi
+import client.clients.AbstractGDClient
+import client.struct.ServerStructure
+import client.struct.ServerStructureCompanion
 import editor.rawstring.RawStringable
 import editor.rawstring.property.AbstractCollectionProperty
 import editor.rawstring.property.CollectionCtor
@@ -11,16 +15,34 @@ fun interface Serializable<in T> {
         /**
          * @see toString
          */
-        fun <T> usingToString(): Serializable<T> =
-            object : Serializable<T> {
-                override fun serialize(value: T): String = value.toString()
-            }
+        fun <T> usingToString(): Serializable<T> = { value -> value.toString() }
     }
 
     fun serialize(value: T): String
 }
 
 fun interface Parsable<out T> {
+    companion object {
+        @JvmStatic
+        @GDClientApi
+        fun <S : ServerStructure, T : ServerStructureCompanion<S>> fromServerStruct(serverStruct: T, client: AbstractGDClient): Parsable<S> = {
+            serverStruct.parse(it, client)
+        }
+
+        @JvmName("serverStructParsableToList")
+        @JvmStatic
+        @GDClientApi
+        fun <S : ServerStructure, T : ServerStructureCompanion<S>> Parsable<S>.listParsable(separator: Char = AbstractCollectionProperty.ELEMENT_SEPARATOR): Parsable<List<S>> = {
+            val res = arrayListOf<S>()
+            val splitted = it.split(separator)
+            splitted.forEach { value ->
+                res.add(this.parse(value))
+            }
+
+            res
+        }
+    }
+
     fun parse(rawValue: String): T
 }
 
