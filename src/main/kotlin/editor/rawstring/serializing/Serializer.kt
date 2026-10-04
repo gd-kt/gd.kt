@@ -33,13 +33,11 @@ fun interface Parsable<out T> {
         @JvmStatic
         @GDClientApi
         fun <S : ServerStructure, T : ServerStructureCompanion<S>> Parsable<S>.listParsable(separator: Char = AbstractCollectionProperty.ELEMENT_SEPARATOR): Parsable<List<S>> = {
-            val res = arrayListOf<S>()
-            val splitted = it.split(separator)
-            splitted.forEach { value ->
-                res.add(this.parse(value))
-            }
+            val coll = arrayListOf<S>()
+            val parsedElems = it.split(separator).map(this::parse)
+            coll.addAll(parsedElems)
 
-            res
+            coll
         }
     }
 
