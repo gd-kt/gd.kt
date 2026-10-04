@@ -282,7 +282,7 @@ abstract class AbstractGDClient(
  * @see accountID
  * @throws LoggedOutException if [accountID] is `null`
  */
-@OptIn(GDClientApi::class)
+@GDClientApi
 fun AbstractGDClient.getAccountIdOrThrow(): UInt =
     nonNull(LoggedOutException("Cannot get the client's accountID since this client isn't logged in")) { this.accountID }
 
@@ -290,7 +290,7 @@ fun AbstractGDClient.getAccountIdOrThrow(): UInt =
  * @see playerID
  * @throws LoggedOutException if [playerID] is `null`
  */
-@OptIn(GDClientApi::class)
+@GDClientApi
 fun AbstractGDClient.getPlayerIdOrThrow(): UInt =
     nonNull(LoggedOutException("Cannot get the client's playerID since this client isn't logged in")) { this.accountID }
 
@@ -298,7 +298,7 @@ fun AbstractGDClient.getPlayerIdOrThrow(): UInt =
  * If this client is logged in. **This doesn't check if the credentials are valid.**
  * @see credentials
  */
-@OptIn(GDClientApi::class)
+@GDClientApi
 fun AbstractGDClient.isLoggedIn(): Boolean =
     this.credentials != null
 
@@ -307,7 +307,7 @@ fun AbstractGDClient.isLoggedIn(): Boolean =
  * @see isLoggedIn
  * @throws LoggedOutException if the client is not logged in
  */
-@OptIn(GDClientApi::class)
+@GDClientApi
 fun AbstractGDClient.throwIfLoggedOut() {
     if (!this.isLoggedIn())
         throw LoggedOutException()
@@ -360,7 +360,7 @@ fun interface CallbackWithData<T> {
 /**
  * A copy of this client that is always synchronous
  */
-@OptIn(GDClientApi::class)
+@GDClientApi
 val AbstractGDClient.synchronousClient
     get() = GDClient(
         this.credentials,
