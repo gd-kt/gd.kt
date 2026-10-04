@@ -84,6 +84,24 @@ interface Serializer<T> : Serializable<T>, Parsable<T> {
         fun <T, C> Serializer<T>.collection(collectionCtor: CollectionCtor<C>, elemSeparator: Char = AbstractCollectionProperty.ELEMENT_SEPARATOR): Serializer<C> where C : MutableCollection<T> =
             collectionSerializer(collectionCtor, this, elemSeparator)
 
+        @JvmStatic
+        @GDClientApi
+        fun <S : ServerStructure, T : ServerStructureCompanion<S>> fromServerStruct(serverStruct: T, client: AbstractGDClient): Serializer<S> =
+            fromRawstringable { serverStruct.parse(it, client) }
+
+        @JvmName("serverStructParsableToList")
+        @JvmStatic
+        @GDClientApi
+        fun <S : ServerStructure, T : ServerStructureCompanion<S>> Serializer<S>.listParsable(elemSeparator: Char = AbstractCollectionProperty.ELEMENT_SEPARATOR): Serializer<List<S>> = create(
+            { it.joinToString(elemSeparator.toString(), transform = this::serialize) },
+            {
+                val coll = arrayListOf<S>()
+                val parsedElems = it.split(elemSeparator).map(this::parse)
+                coll.addAll(parsedElems)
+
+                return@create coll
+            }
+        )
 
         @JvmStatic
         fun clampedInt(range: IntRange): Serializer<Int> =
