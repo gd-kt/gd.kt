@@ -5,8 +5,10 @@ import editor.rawstring.Id
 import editor.rawstring.RawStringFactory
 import editor.rawstring.property.AbstractProperty
 import editor.rawstring.property.MutableProperty
+import exceptions.InvalidRawStringException
 import kotlin.reflect.KVisibility
 import kotlin.reflect.full.createInstance
+import kotlin.reflect.full.isSubclassOf
 import kotlin.reflect.full.isSubtypeOf
 import kotlin.reflect.full.memberProperties
 import kotlin.reflect.full.starProjectedType
@@ -51,21 +53,25 @@ object ObjectParser {
      * @see parseAnyJava
      */
     fun <T : Any> parseAnyJava(rawString: String, toFill: T, clazz: Class<T>, separator: Char = AbstractProperty.KEY_VAL_SEPARATOR): T {
-        val rawStringMap = RawStringFactory.rawStringToMap(rawString, separator)
-        clazz.kotlin.memberProperties.forEach {
-            if (it.visibility == KVisibility.PUBLIC && it.returnType.isSubtypeOf(MutableProperty::class.starProjectedType)) {
-                @Suppress("UNCHECKED_CAST")
-                val prop = it.get(toFill) as MutableProperty<Any?>
+        try {
+            val rawStringMap = RawStringFactory.rawStringToMap(rawString, separator)
+            clazz.kotlin.memberProperties.forEach {
+                if (it.visibility == KVisibility.PUBLIC && it.returnType.isSubtypeOf(MutableProperty::class.starProjectedType)) {
+                    @Suppress("UNCHECKED_CAST")
+                    val prop = it.get(toFill) as MutableProperty<Any?>
 
-                if (rawStringMap.containsKey(prop.id)) {
-                    val value = prop.serializer.parse(rawStringMap[prop.id]!!)
-                    if (value != null)
-                        prop.value = value
+                    if (rawStringMap.containsKey(prop.id)) {
+                        val value = prop.serializer.parse(rawStringMap[prop.id]!!)
+                        if (value != null)
+                            prop.value = value
+                    }
                 }
             }
-        }
 
-        return toFill
+            return toFill
+        } catch (e: Throwable) {
+            throw InvalidRawStringException("Caught an error while trying to parse (any) $toFill (of type ${toFill::class.simpleName}). Separator is '$separator' with the raw string: \"$rawString\"", e)
+        }
     }
 
     /**
@@ -90,31 +96,39 @@ object ObjectParser {
      * @see parseGdObject
      */
     fun <T : GenericGdObject> parseGdObjectJava(rawString: String, toFill: T, separator: Char = AbstractProperty.KEY_VAL_SEPARATOR): T {
-        val rawStringMap = RawStringFactory.rawStringToMap(rawString, separator)
-        val isDynamicRawStringFactory = toFill.rawStringFactory is DynamicRawStringFactory
+        try {
+            val rawStringMap = RawStringFactory.rawStringToMap(rawString, separator)
+            val isDynamicRawStringFactory = toFill.rawStringFactory is DynamicRawStringFactory
 
-        val defaultParseBehavior = { prop: MutableProperty<*> ->
-            @Suppress("UNCHECKED_CAST")
-            val castedProp = prop as MutableProperty<Any?>
-            val value = castedProp.serializer.parse(rawStringMap[castedProp.id]!!)
-            if (value != null)
-                castedProp.value = value
-        }
-
-        toFill.rawStringFactory.properties.forEach {
-            if (it is MutableProperty<*>) {
-                if (isDynamicRawStringFactory) {
-                    if (rawStringMap.containsKey(it.id)) {
-                        defaultParseBehavior(it)
-                    } else {
-                        (toFill.rawStringFactory as DynamicRawStringFactory).dynamicProperties.add(it)
-                    }
-                } else if (rawStringMap.containsKey(it.id)) {
-                    defaultParseBehavior(it)
+            val defaultParseBehavior = { prop: MutableProperty<*> ->
+                try {
+                    @Suppress("UNCHECKED_CAST")
+                    val castedProp = prop as MutableProperty<Any?>
+                    val value = castedProp.serializer.parse(rawStringMap[castedProp.id]!!)
+                    if (value != null)
+                        castedProp.value = value
+                } catch (e: Throwable) {
+                    throw InvalidRawStringException("Couldn't successfully parse prop $prop (of type ${prop::class.simpleName})", e)
                 }
             }
-        }
 
-        return toFill
+            toFill.rawStringFactory.properties.forEach {
+                if (it is MutableProperty<*>) {
+                    if (isDynamicRawStringFactory) {
+                        if (rawStringMap.containsKey(it.id)) {
+                            defaultParseBehavior(it)
+                        } else {
+                            (toFill.rawStringFactory as DynamicRawStringFactory).dynamicProperties.add(it)
+                        }
+                    } else if (rawStringMap.containsKey(it.id)) {
+                        defaultParseBehavior(it)
+                    }
+                }
+            }
+
+            return toFill
+        } catch (e: Throwable) {
+            throw InvalidRawStringException("Caught an error while trying to parse (GenericGdObject) $toFill (of type ${toFill::class.simpleName}). Separator is '$separator' with the raw string: \"$rawString\"", e)
+        }
     }
 }
