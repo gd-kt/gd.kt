@@ -484,6 +484,7 @@ $dokka.location:editor.objects.data/Hsv.Companion/BRIGHTNESS_RANGE/#/PointingToD
 $dokka.location:editor.objects.data/Hsv.Companion/HUE_RANGE/#/PointingToDeclaration/gd.kt/editor.objects.data/-hsv/-companion/-h-u-e_-r-a-n-g-e.html
 $dokka.location:editor.objects.data/Hsv.Companion/SATURATION_RANGE/#/PointingToDeclaration/gd.kt/editor.objects.data/-hsv/-companion/-s-a-t-u-r-a-t-i-o-n_-r-a-n-g-e.html
 $dokka.location:editor.objects.data/Hsv.Companion/SEPARATOR/#/PointingToDeclaration/gd.kt/editor.objects.data/-hsv/-companion/-s-e-p-a-r-a-t-o-r.html
+$dokka.location:editor.objects.data/Hsv.Companion/SERIALIZER/#/PointingToDeclaration/gd.kt/editor.objects.data/-hsv/-companion/-s-e-r-i-a-l-i-z-e-r.html
 $dokka.location:editor.objects.data/Hsv.Companion/checkedBrightness/#kotlin.Int#kotlin.Float#kotlin.Float/PointingToDeclaration/gd.kt/editor.objects.data/-hsv/-companion/checked-brightness.html
 $dokka.location:editor.objects.data/Hsv.Companion/checkedSat/#kotlin.Int#kotlin.Float#kotlin.Float/PointingToDeclaration/gd.kt/editor.objects.data/-hsv/-companion/checked-sat.html
 $dokka.location:editor.objects.data/Hsv.Companion/checkedSatBrightness/#kotlin.Int#kotlin.Float#kotlin.Float/PointingToDeclaration/gd.kt/editor.objects.data/-hsv/-companion/checked-sat-brightness.html
@@ -1231,20 +1232,23 @@ $dokka.location:editor.rawstring.serializing/Serializer.Companion///PointingToDe
 $dokka.location:editor.rawstring.serializing/Serializer.Companion/clampedFloat/#kotlin.ranges.ClosedFloatingPointRange[kotlin.Float]/PointingToDeclaration/gd.kt/editor.rawstring.serializing/-serializer/-companion/clamped-float.html
 $dokka.location:editor.rawstring.serializing/Serializer.Companion/clampedInt/#kotlin.ranges.IntRange/PointingToDeclaration/gd.kt/editor.rawstring.serializing/-serializer/-companion/clamped-int.html
 $dokka.location:editor.rawstring.serializing/Serializer.Companion/clampedUInt/#kotlin.ranges.UIntRange/PointingToDeclaration/gd.kt/editor.rawstring.serializing/-serializer/-companion/clamped-u-int.html
+$dokka.location:editor.rawstring.serializing/Serializer.Companion/collection/editor.rawstring.serializing.Serializer[TypeParam(bounds=[kotlin.Any?])]#kotlin.Function0[TypeParam(bounds=[kotlin.collections.MutableCollection[TypeParam(bounds=[kotlin.Any?])]])]#kotlin.Char/PointingToDeclaration/gd.kt/editor.rawstring.serializing/-serializer/-companion/collection.html
 $dokka.location:editor.rawstring.serializing/Serializer.Companion/collectionSerializer/#kotlin.Function0[TypeParam(bounds=[kotlin.collections.MutableCollection[TypeParam(bounds=[kotlin.Any?])]])]#editor.rawstring.serializing.Serializer[TypeParam(bounds=[kotlin.Any?])]#kotlin.Char/PointingToDeclaration/gd.kt/editor.rawstring.serializing/-serializer/-companion/collection-serializer.html
 $dokka.location:editor.rawstring.serializing/Serializer.Companion/create/#kotlin.Function1[TypeParam(bounds=[kotlin.Any?]),kotlin.String]#kotlin.Function1[kotlin.String,TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/gd.kt/editor.rawstring.serializing/-serializer/-companion/create.html
 $dokka.location:editor.rawstring.serializing/Serializer.Companion/enum/#kotlin.enums.EnumEntries[TypeParam(bounds=[kotlin.Enum[^], editor.rawstring.property.GdEnum])]/PointingToDeclaration/gd.kt/editor.rawstring.serializing/-serializer/-companion/enum.html
 $dokka.location:editor.rawstring.serializing/Serializer.Companion/fromRawstringable/#kotlin.Function1[kotlin.String,TypeParam(bounds=[editor.rawstring.RawStringable])]/PointingToDeclaration/gd.kt/editor.rawstring.serializing/-serializer/-companion/from-rawstringable.html
+$dokka.location:editor.rawstring.serializing/Serializer.Companion/fromServerStruct/#TypeParam(bounds=[client.struct.ServerStructureCompanion[TypeParam(bounds=[client.struct.ServerStructure])]])#client.clients.AbstractGDClient/PointingToDeclaration/gd.kt/editor.rawstring.serializing/-serializer/-companion/from-server-struct.html
+$dokka.location:editor.rawstring.serializing/Serializer.Companion/listParsable/editor.rawstring.serializing.Serializer[TypeParam(bounds=[client.struct.ServerStructure])]#kotlin.Char/PointingToDeclaration/gd.kt/editor.rawstring.serializing/-serializer/-companion/list-parsable.html
 $dokka.location:editor.rawstring.serializing/Serializer///PointingToDeclaration/gd.kt/editor.rawstring.serializing/-serializer/index.html
 $dokka.location:editor.rawstring.serializing/Serializers///PointingToDeclaration/gd.kt/editor.rawstring.serializing/-serializers/index.html
 $dokka.location:editor.rawstring.serializing/Serializers/B64STRING/#/PointingToDeclaration/gd.kt/editor.rawstring.serializing/-serializers/-b64-s-t-r-i-n-g.html
 $dokka.location:editor.rawstring.serializing/Serializers/BOOLEAN/#/PointingToDeclaration/gd.kt/editor.rawstring.serializing/-serializers/-b-o-o-l-e-a-n.html
 $dokka.location:editor.rawstring.serializing/Serializers/FLOAT/#/PointingToDeclaration/gd.kt/editor.rawstring.serializing/-serializers/-f-l-o-a-t.html
-$dokka.location:editor.rawstring.serializing/Serializers/HSV/#/PointingToDeclaration/gd.kt/editor.rawstring.serializing/-serializers/-h-s-v.html
 $dokka.location:editor.rawstring.serializing/Serializers/INT/#/PointingToDeclaration/gd.kt/editor.rawstring.serializing/-serializers/-i-n-t.html
 $dokka.location:editor.rawstring.serializing/Serializers/STRING/#/PointingToDeclaration/gd.kt/editor.rawstring.serializing/-serializers/-s-t-r-i-n-g.html
 $dokka.location:editor.rawstring.serializing/Serializers/UBYTE/#/PointingToDeclaration/gd.kt/editor.rawstring.serializing/-serializers/-u-b-y-t-e.html
 $dokka.location:editor.rawstring.serializing/Serializers/UINT/#/PointingToDeclaration/gd.kt/editor.rawstring.serializing/-serializers/-u-i-n-t.html
+$dokka.location:editor.rawstring.serializing/Serializers/USHORT/#/PointingToDeclaration/gd.kt/editor.rawstring.serializing/-serializers/-u-s-h-o-r-t.html
 $dokka.location:editor.rawstring////PointingToDeclaration/gd.kt/editor.rawstring/index.html
 $dokka.location:editor.rawstring//asIntMap/editor.rawstring.RawStringFactory#/PointingToDeclaration/gd.kt/editor.rawstring/as-int-map.html
 $dokka.location:editor.rawstring//asRawStringIntMap/editor.rawstring.RawStringFactory#/PointingToDeclaration/gd.kt/editor.rawstring/as-raw-string-int-map.html
