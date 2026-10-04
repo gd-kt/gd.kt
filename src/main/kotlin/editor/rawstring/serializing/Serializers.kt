@@ -37,6 +37,11 @@ object Serializers {
         String::toUByte
     )
 
+    val USHORT: Serializer<UShort> = Serializer.create(
+        UShort::toString,
+        String::toUShort
+    )
+
     val FLOAT: Serializer<Float> = Serializer.create(
         Float::toString,
         String::toFloat
