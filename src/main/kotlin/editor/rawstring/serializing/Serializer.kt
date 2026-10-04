@@ -84,3 +84,42 @@ interface Serializer<T> : Serializable<T>, Parsable<T> {
             )
     }
 }
+
+/**
+ * Creates a new [Serializable] that is hooked
+ * @param hooker the lambda used to transform the value
+ * @return the hooked [Serializable]
+ */
+fun <T> Serializable<T>.hook(hooker: (value: T) -> T): Serializable<T> = {
+    this.serialize(hooker(it))
+}
+
+/**
+ * Creates a new [Parsable] that is hooked
+ * @param hooker the lambda used to transform the raw value
+ * @return the hooked [Parsable]
+ */
+fun <T> Parsable<T>.hook(hooker: (rawValue: String) -> String): Parsable<T> = {
+    this.parse(hooker(it))
+}
+
+/**
+ * Creates a new [Serializer] where the [serializer][Serializable] is hooked
+ * @param hooker the lambda used to transform the value
+ * @return the hooked [Parsable]
+ */
+fun <T> Serializer<T>.hookSerializer(hooker: (value: T) -> T): Serializer<T> = Serializer.create(
+    { this.serialize(hooker(it)) },
+    ::parse
+)
+
+/**
+ * Creates a new [Serializer] where the [parser][Parsable] is hooked
+ * @param hooker the lambda used to transform the raw value
+ * @return the hooked [Parsable]
+ */
+@Suppress("MoveLambdaOutsideParentheses")
+fun <T> Serializer<T>.hookParser(hooker: (rawValue: String) -> String): Serializer<T> = Serializer.create(
+    ::serialize,
+    { this.parse(hooker(it)) }
+)
