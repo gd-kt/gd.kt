@@ -7,6 +7,14 @@ import exceptions.ServerErrorException
 object ResponseHandlers {
     private const val BAN_TIME_RESPONSE_CAP = 3020399
 
+    /**
+     * The response handler for the generic `-1` error code
+     */
+    val GENERIC: ResponseHandler = {
+        if (it == "-1")
+            throw ServerErrorException.genericError()
+    }
+
     val COMMENT: ResponseHandler = {
         when (it) {
             "-1" -> throw ServerErrorException.genericError()
