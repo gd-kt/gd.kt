@@ -26,9 +26,9 @@ interface PropertyDefinition<T> : RawStringable {
                 prop.value.toString()
 
             return if (prop is AbstractProperty<*>) {
-                "${this::class.simpleName!!}(id = ${prop.id}, defaultValue = ${prop.defaultValue}, value = $valueStr)"
+                "${prop::class.simpleName!!}(id = ${prop.id}, defaultValue = ${prop.defaultValue}, value = $valueStr)"
             } else {
-                "${this::class.simpleName!!}(id = ${prop.id}, value = $valueStr)"
+                "${prop::class.simpleName!!}(id = ${prop.id}, value = $valueStr)"
             }
         }
     }
