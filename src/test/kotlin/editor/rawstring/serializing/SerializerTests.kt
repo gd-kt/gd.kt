@@ -55,6 +55,12 @@ private class SerializerTests {
     }
 
     @Test
+    @DisplayName("Serializers.USHORT test")
+    fun ushortSerializerTest() {
+        parsingAndSerializingTest(Serializers.USHORT, 8u.toUShort(), 8.toUShort())
+    }
+
+    @Test
     @DisplayName("Serializers.FLOAT test")
     fun floatSerializerTest() {
         parsingAndSerializingTest(Serializers.FLOAT, -7.1f, -7.1f)
