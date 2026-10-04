@@ -48,6 +48,7 @@ fun interface Parsable<out T> {
 
 interface Serializer<T> : Serializable<T>, Parsable<T> {
     companion object {
+        @JvmStatic
         fun <T> create(serializer: (T) -> String, parser: (String) -> T): Serializer<T> {
             return object : Serializer<T> {
                 override fun serialize(value: T): String = serializer(value)
@@ -56,6 +57,7 @@ interface Serializer<T> : Serializable<T>, Parsable<T> {
             }
         }
 
+        @JvmStatic
         fun <T : RawStringable> fromRawstringable(parser: (String) -> T): Serializer<T> {
             return object : Serializer<T> {
                 override fun serialize(value: T): String = value.asRawString()
@@ -64,6 +66,7 @@ interface Serializer<T> : Serializable<T>, Parsable<T> {
             }
         }
 
+        @JvmStatic
         fun <T, C> collectionSerializer(
             collectionCtor: CollectionCtor<C>,
             elemSerializer: Serializer<T>,
@@ -80,24 +83,32 @@ interface Serializer<T> : Serializable<T>, Parsable<T> {
                 }
             )
 
+        fun <T, C> Serializer<T>.collection(collectionCtor: CollectionCtor<C>, elemSeparator: Char = AbstractCollectionProperty.ELEMENT_SEPARATOR): Serializer<C> where C : MutableCollection<T> =
+            collectionSerializer(collectionCtor, this, elemSeparator)
+
+
+        @JvmStatic
         fun clampedInt(range: IntRange): Serializer<Int> =
             create(
                 { it.coerceIn(range).toString() },
                 { it.toInt().coerceIn(range) }
             )
 
+        @JvmStatic
         fun clampedUInt(range: UIntRange): Serializer<UInt> =
             create(
                 { it.coerceIn(range).toString() },
                 { it.toUInt().coerceIn(range) }
             )
 
+        @JvmStatic
         fun clampedFloat(range: ClosedFloatingPointRange<Float>): Serializer<Float> =
             create(
                 { it.coerceIn(range).toString() },
                 { it.toFloat().coerceIn(range) }
             )
 
+        @JvmStatic
         @Suppress("MoveLambdaOutsideParentheses")
         fun <T> enum(enumEntries: EnumEntries<T>): Serializer<T> where T : Enum<T>, T : GdEnum =
             create(
