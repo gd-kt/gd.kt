@@ -1,9 +1,11 @@
 package editor.rawstring.serializing
 
-import editor.objects.data.Hsv
 import utils.toBooleanFromIntStrict
 import kotlin.io.encoding.Base64
 
+/**
+ * Contains a list of **primitive** serializers
+ */
 object Serializers {
     val STRING: Serializer<String> = Serializer.create(
         { it },
@@ -39,6 +41,4 @@ object Serializers {
         Float::toString,
         String::toFloat
     )
-
-    val HSV: Serializer<Hsv> = Serializer.fromRawstringable(Hsv::parseHsv)
 }

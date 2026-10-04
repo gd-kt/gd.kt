@@ -2,6 +2,7 @@ package editor.objects.data
 
 import exceptions.InvalidRawStringException
 import editor.rawstring.RawStringable
+import editor.rawstring.serializing.Serializer
 import utils.toBooleanFromIntStrict
 import utils.toInt
 import java.util.Objects
@@ -23,6 +24,8 @@ import java.util.Objects
  */
 class Hsv : RawStringable {
     companion object {
+        val SERIALIZER: Serializer<Hsv> = Serializer.fromRawstringable(Hsv::parseHsv)
+
         const val SEPARATOR: Char = 'a'
         val HUE_RANGE = -180..180
         val SATURATION_RANGE = HsvRange(0f..2f, -1f..1f)

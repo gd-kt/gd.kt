@@ -2,10 +2,9 @@ package editor.rawstring.property
 
 import editor.objects.data.Hsv
 import editor.rawstring.Id
-import editor.rawstring.serializing.Serializers
 
 class HsvProperty(id: Id, defaultValue: Hsv? = Hsv.create(), currentValue: Hsv? = null) : AbstractProperty<Hsv>(id, defaultValue, currentValue) {
-    override val serializer = Serializers.HSV
+    override val serializer = Hsv.SERIALIZER
 
     private var usesColorPropID: Id? = null
 
@@ -27,6 +26,6 @@ class HsvProperty(id: Id, defaultValue: Hsv? = Hsv.create(), currentValue: Hsv? 
             else
                 KEY_VAL_SEPARATOR + this.usesColorPropID!!.getID() + KEY_VAL_SEPARATOR + "1"
 
-        return this.toRawStringHelper(Serializers.HSV, separator, suffix)
+        return this.toRawStringHelper(Hsv.SERIALIZER, separator, suffix)
     }
 }

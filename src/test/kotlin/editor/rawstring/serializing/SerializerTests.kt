@@ -65,11 +65,11 @@ private class SerializerTests {
     @DisplayName("Serializers.HSV test")
     fun hsvSerializerTest() {
         val firstHsv = Hsv(40, 2f, 1f)
-        parsingAndSerializingTest(Serializers.HSV, firstHsv, firstHsv.asRawString())
-        parsingAndSerializingTest(Serializers.HSV, firstHsv, "40a2.0a1.0a0a0")
+        parsingAndSerializingTest(Hsv.SERIALIZER, firstHsv, firstHsv.asRawString())
+        parsingAndSerializingTest(Hsv.SERIALIZER, firstHsv, "40a2.0a1.0a0a0")
 
         val secondHsv = Hsv.checkedSatBrightness(40, 0.5f, 1f)
-        parsingAndSerializingTest(Serializers.HSV, secondHsv, secondHsv.asRawString())
-        parsingAndSerializingTest(Serializers.HSV, secondHsv, "40a0.5a1.0a1a1")
+        parsingAndSerializingTest(Hsv.SERIALIZER, secondHsv, secondHsv.asRawString())
+        parsingAndSerializingTest(Hsv.SERIALIZER, secondHsv, "40a0.5a1.0a1a1")
     }
 }
