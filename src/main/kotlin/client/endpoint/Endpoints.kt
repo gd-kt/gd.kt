@@ -3,6 +3,12 @@ package client.endpoint
 import client.GDClientApi
 import client.ResponseHandlers
 
+/**
+ * Contains a list of endpoints used by `gd.kt`'s client api
+ * @see Endpoint
+ * @see client.clients.GDClient
+ * @see client.clients.AsyncGDClient
+ */
 @GDClientApi
 object Endpoints {
     // User
