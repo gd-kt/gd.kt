@@ -56,6 +56,7 @@ class AsyncGDClient(
     fun postComment(message: String, levelID: Int, percentage: Float = 0f, isList: Boolean = false, asyncCallback: CallbackWithData<Int>) {
         this.throwIfLoggedOut()
         val encodedMessage = Base64.UrlSafe.encode(message.toByteArray())
+        val actualLevelID = if (isList) -levelID else levelID
         this.executeRequest(
             Serializers.INT,
             Endpoints.UPLOAD_COMMENT,
@@ -63,12 +64,12 @@ class AsyncGDClient(
                 Pair("comment", encodedMessage),
                 Pair("accountID", this.accountID!!),
                 Pair("userName", this.credentials!!.username),
-                Pair("levelID", levelID),
+                Pair("levelID", actualLevelID),
                 Pair("percent", percentage),
                 Pair("chk", createCHK(
                     this.credentials.username,
                     encodedMessage,
-                    if (isList) -levelID else levelID,
+                    actualLevelID,
                     percentage.toCompactedString(),
                     0, // = commentType = level
                     key = XorKey.COMMENT_INTEGRITY
