@@ -26,7 +26,7 @@ object ObjectParser {
      * @see parseGdObject
      */
     inline fun <reified T : Any> parse(rawString: String, toFill: T = T::class.createInstance(), separator: Char = AbstractProperty.KEY_VAL_SEPARATOR): T {
-        return if (T::class.isInstance(GenericGdObject::class))
+        return if (T::class.isSubclassOf(GenericGdObject::class))
             parseGdObject(rawString, toFill as GenericGdObject, separator) as T
         else
             parseAny(rawString, toFill, separator)
