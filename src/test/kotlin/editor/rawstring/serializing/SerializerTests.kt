@@ -1,7 +1,12 @@
 package editor.rawstring.serializing
 
 import TestTags
+import client.GDClientApi
+import client.clients.GDClient
+import client.struct.CommentUserInfo
 import editor.objects.data.Hsv
+import editor.rawstring.property.getOrThrow
+import editor.rawstring.serializing.Parsable.Companion.listParsable
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Tag
@@ -77,5 +82,33 @@ private class SerializerTests {
         val secondHsv = Hsv.checkedSatBrightness(40, 0.5f, 1f)
         parsingAndSerializingTest(Hsv.SERIALIZER, secondHsv, secondHsv.asRawString())
         parsingAndSerializingTest(Hsv.SERIALIZER, secondHsv, "40a0.5a1.0a1a1")
+    }
+
+    @Test
+    @DisplayName("ServerStructure parser test")
+    @OptIn(GDClientApi::class)
+    fun serverStructParserTest() {
+        val client = GDClient()
+        val parser = Parsable.fromServerStruct(CommentUserInfo, client)
+        val struct = CommentUserInfo(client).also {
+            it.username.value = "Hi"
+        }
+
+        Assertions.assertEquals(struct.username, parser.parse("1~Hi").username)
+    }
+
+    @Test
+    @DisplayName("ServerStructure parser test (list)")
+    @OptIn(GDClientApi::class)
+    fun serverStructListParserTest() {
+        val client = GDClient()
+        val parser = Parsable.fromServerStruct(CommentUserInfo, client).listParsable(separator = '|')
+
+        val structs = listOf(
+            CommentUserInfo(client).also { it.username.value = "Hi" },
+            CommentUserInfo(client).also { it.username.value = "Bye" }
+        )
+
+        Assertions.assertEquals(structs.map { it.username.getOrThrow() }, parser.parse("1~Hi|1~Bye").map { it.username.getOrThrow() })
     }
 }
