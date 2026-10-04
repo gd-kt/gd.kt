@@ -77,5 +77,31 @@ class GDClient(
             asyncCallback = null
         )
     }
+
+    fun deleteComment(commentID: Int, levelID: Int): Result<Boolean> {
+        this.throwIfLoggedOut()
+        return this.executeRequest(
+            Serializers.BOOLEAN,
+            Endpoints.DELETE_COMMENT,
+            mapOf(
+                Pair("accountID", this.accountID!!),
+                Pair("commentID", commentID),
+                Pair("levelID", levelID)
+            )
+        )
+    }
+
+    fun deleteAccountComment(commentID: Int): Result<Boolean> {
+        this.throwIfLoggedOut()
+        return this.executeRequest(
+            Serializers.BOOLEAN,
+            Endpoints.DELETE_ACCOUNT_COMMENT,
+            mapOf(
+                Pair("accountID", this.accountID!!),
+                Pair("targetAccountID", this.accountID!!),
+                Pair("commentID", commentID)
+            )
+        )
+    }
 }
 

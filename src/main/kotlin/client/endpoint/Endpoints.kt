@@ -19,5 +19,7 @@ object Endpoints {
 
     // Comments
     val UPLOAD_COMMENT = Endpoint("uploadGJComment21", ResponseHandlers.COMMENT)
+    val DELETE_COMMENT = Endpoint("deleteGJComment20")
     val UPLOAD_ACCOUNT_COMMENT = Endpoint("uploadGJAccComment20", ResponseHandlers.COMMENT)
+    val DELETE_ACCOUNT_COMMENT = Endpoint("deleteGJAccComment20")
 }
