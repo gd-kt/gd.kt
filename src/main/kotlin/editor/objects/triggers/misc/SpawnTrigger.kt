@@ -16,7 +16,7 @@ import editor.rawstring.property.FloatProperty
  */
 class SpawnTrigger : TriggerObject {
     companion object {
-        const val OBJ_ID = 1049u
+        const val OBJ_ID = 1268u
     }
 
     val targetGroup = TriggerProperties.TARGET_GROUP
