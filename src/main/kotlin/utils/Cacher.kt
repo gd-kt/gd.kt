@@ -60,5 +60,5 @@ class Cacher<T>(val valueGetter: CacheValueGetter<T>) {
  * @param valueGetter the getter for the value
  * @return the [Cacher] storing the value when called
  */
-fun <T> remember(valueGetter: CacheValueGetter<T>): Cacher<T> =
+fun <T> cache(valueGetter: CacheValueGetter<T>): Cacher<T> =
      Cacher(valueGetter)

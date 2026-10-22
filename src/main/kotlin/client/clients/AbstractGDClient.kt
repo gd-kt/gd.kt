@@ -106,7 +106,7 @@ abstract class AbstractGDClient(
      * @throws IOException see [Call.execute] for info on this exception
      * @see accountID
      */
-    val accountInfo: UserInfo by remember {
+    val accountInfo: UserInfo by cache {
         this.throwIfLoggedOut()
         this.synchronousClient.getUserInfo(this.getAccountIdOrThrow().toInt()).getOrThrow()
     }

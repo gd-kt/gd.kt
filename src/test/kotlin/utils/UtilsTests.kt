@@ -127,7 +127,7 @@ private class UtilsTest {
     @DisplayName("Cacher test")
     fun cacherTest() {
         var calledLambdaAmount = 0
-        val cacher = remember {
+        val cacher = cache {
             calledLambdaAmount += 1
             12
         }
