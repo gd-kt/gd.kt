@@ -6,6 +6,7 @@ import editor.objects.common.Speed
 import editor.objects.common.SpeedPortalObject
 import editor.objects.data.Pos
 import editor.objects.data.Scale
+import editor.objects.propertycontainers.TriggerProperties
 import editor.objects.triggers.objects.*
 import editor.rawstring.Id.Companion.id
 import editor.rawstring.property.UIntProperty
@@ -23,7 +24,7 @@ private class SimpleObjectTests {
     fun getOperatorTest() {
         val obj = SimpleObject(0u, 0f, 0f)
 
-        Assertions.assertThrows(NoSuchElementException::class.java) { obj[9999.id] }
+        Assertions.assertThrows(NoSuchElementException::class.java) { obj[TriggerProperties.MAX_GROUPS.id] }
         Assertions.assertDoesNotThrow { obj[1.id] }
         Assertions.assertEquals(UIntProperty::class, obj[1.id]::class)
     }
