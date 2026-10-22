@@ -5,6 +5,7 @@ import client.Credentials
 import client.GDClientApi
 import client.Platform
 import client.Secret
+import client.clients.versions.GDPlatformVersions
 import client.endpoint.Endpoint
 import client.endpoint.Endpoints
 import client.struct.ServerStructure
@@ -41,14 +42,12 @@ abstract class AbstractGDClient(
     val credentials: Credentials? = null,
     val url: HttpUrl = DEFAULT_URL,
 
-    val gameVersion: UInt = GAME_VERSION,
-    val binaryVersion: UInt = BINARY_VERSION,
+    val gameVersion: UInt = GDPlatformVersions.CURRENT.gameVersion,
+    val binaryVersion: UInt = GDPlatformVersions.CURRENT.binaryVersion,
     val platform: Platform = Platform.get()
 ) {
     companion object {
         val DEFAULT_URL = "https://www.boomlings.com/".toHttpUrl()
-        const val GAME_VERSION = 22u
-        const val BINARY_VERSION = 47u
 
         /**
          * Generates an [UDID](https://en.wikipedia.org/wiki/UDID) according to [boomlings.dev](https://boomlings.dev/topics/encryption/id#udid)

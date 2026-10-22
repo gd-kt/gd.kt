@@ -4,6 +4,7 @@ import XorKey
 import client.Credentials
 import client.GDClientApi
 import client.Platform
+import client.clients.versions.GDPlatformVersions
 import client.endpoint.Endpoints
 import client.struct.LevelCommentStructure
 import client.struct.UserInfo
@@ -24,8 +25,8 @@ class GDClient(
     credentials: Credentials? = null,
     url: HttpUrl = DEFAULT_URL,
 
-    gameVersion: UInt = GAME_VERSION,
-    binaryVersion: UInt = BINARY_VERSION,
+    gameVersion: UInt = GDPlatformVersions.CURRENT.gameVersion,
+    binaryVersion: UInt = GDPlatformVersions.CURRENT.binaryVersion,
     platform: Platform = Platform.get()
 ) : AbstractGDClient(credentials, url, gameVersion, binaryVersion, platform) {
     fun getUserInfo(accountID: Int): Result<UserInfo> =
