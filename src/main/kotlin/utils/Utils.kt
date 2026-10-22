@@ -173,14 +173,8 @@ fun String.cyclicXor(key: Int) = this.cyclicXor(key.toString())
 fun CharSequence?.quote(): String =
     "\"$this\""
 
-internal inline fun <T : Any> nonNull(valueGetter: () -> T?): T =
-    valueGetter()!!
-
-internal inline fun <T : Any> nonNull(exception: RuntimeException, valueGetter: () -> T?): T =
-    valueGetter() ?: throw exception
-
-internal inline fun <T : Any> nonNull(message: String, valueGetter: () -> T?): T =
-    nonNull(NullPointerException(message), valueGetter)
+inline fun <T : Any> checkNonNull(value: T?, exceptionGetter: () -> RuntimeException): T =
+    value ?: throw exceptionGetter()
 
 /**
  * This is not like kotlin's T0DO() function and is instead used for tests to prevent

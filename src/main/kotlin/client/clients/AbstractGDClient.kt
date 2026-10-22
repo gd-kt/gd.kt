@@ -24,8 +24,8 @@ import okhttp3.Request
 import okhttp3.Response
 import org.apache.commons.codec.digest.DigestUtils
 import utils.cyclicXor
-import utils.nonNull
-import utils.remember
+import utils.checkNonNull
+import utils.cache
 import utils.toFormRequestBody
 import java.io.IOException
 import java.util.ArrayList
@@ -284,7 +284,7 @@ abstract class AbstractGDClient(
  */
 @GDClientApi
 fun AbstractGDClient.getAccountIdOrThrow(): UInt =
-    nonNull(LoggedOutException("Cannot get the client's accountID since this client isn't logged in")) { this.accountID }
+    checkNonNull(this.accountID) { LoggedOutException("Cannot get the client's accountID since this client isn't logged in") }
 
 /**
  * @see playerID
@@ -292,7 +292,7 @@ fun AbstractGDClient.getAccountIdOrThrow(): UInt =
  */
 @GDClientApi
 fun AbstractGDClient.getPlayerIdOrThrow(): UInt =
-    nonNull(LoggedOutException("Cannot get the client's playerID since this client isn't logged in")) { this.accountID }
+    checkNonNull(this.accountID) { LoggedOutException("Cannot get the client's playerID since this client isn't logged in") }
 
 /**
  * If this client is logged in. **This doesn't check if the credentials are valid.**

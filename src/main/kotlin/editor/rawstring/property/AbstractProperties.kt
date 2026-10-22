@@ -4,7 +4,6 @@ import editor.rawstring.Id
 import editor.rawstring.serializing.Serializable
 import editor.rawstring.serializing.Serializer
 import editor.rawstring.RawStringable
-import utils.nonNull
 import utils.quote
 import kotlin.reflect.KProperty
 
@@ -79,7 +78,7 @@ interface PropertyDefinition<T> : RawStringable {
  * @throws NullPointerException if the property's [value] is `null`
  */
 fun <T> PropertyDefinition<T>.getOrThrow(): T =
-    nonNull("${this::class.simpleName}'s value is null when it was expected to be non null") { this.value }
+    checkNotNull(this.value) { "${this::class.simpleName}'s value is null when it was expected to be non null" }
 
 /**
  * Returns the property's [value] or [other] if it's `null`.
