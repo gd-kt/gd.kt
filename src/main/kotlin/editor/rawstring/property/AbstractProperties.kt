@@ -382,6 +382,13 @@ abstract class AbstractCollectionProperty<T, C>(
     fun remove(element: T): Boolean = this.getOrCreateCollection().remove(element)
 
     /**
+     * Checks if the specified element is contained in this collection.
+     * @see MutableCollection.contains
+     */
+    fun contains(elem: T): Boolean =
+        this.value != null && this.value!!.contains(elem)
+
+    /**
      * The size of the underlying collection
      * @see Collection.size
      */
@@ -408,6 +415,15 @@ abstract class AbstractCollectionProperty<T, C>(
             )
         }
     }
+}
+
+/**
+ * Performs the given [action] on each element.
+ * @see Collection.forEach
+ */
+inline fun <T> AbstractCollectionProperty<T, *>.forEach(action: (T) -> Unit) {
+    if (this.value != null)
+        this.value!!.forEach(action)
 }
 
 /**
