@@ -6,6 +6,15 @@ import editor.rawstring.serializing.Serializer
 import java.util.SequencedSet
 
 /**
+ * A Geometry Dash group that can be interpreted
+ * as "null".
+ *
+ * This group **cannot be linked to anything** and this is why
+ * it can be qualified as a null group.
+ */
+const val NULL_GROUP: UInt = 0u
+
+/**
  * Special property used to store object groups.
  * It needs to know the [groupParentsProperty], this is where "pink groups" (or "parents group") are stored.
  *
