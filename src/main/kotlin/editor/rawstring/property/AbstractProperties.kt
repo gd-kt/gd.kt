@@ -358,14 +358,14 @@ abstract class AbstractCollectionProperty<T, C>(
      * Returns if the underlying collection is [empty][Collection.isEmpty]
      * @see Collection.isEmpty
      */
-    fun isEmpty(): Boolean =
+    open fun isEmpty(): Boolean =
         this.value == null || this.value!!.isEmpty()
 
     /**
      * Removes all the elements from the underlying collection
      * @see MutableCollection.clear
      */
-    fun clear() = this.getOrCreateCollection().clear()
+    open fun clear() = this.getOrCreateCollection().clear()
 
     /**
      * Adds the specified element to the collection.
@@ -373,7 +373,7 @@ abstract class AbstractCollectionProperty<T, C>(
      * and the element is already contained in the collection.
      * @see MutableCollection.add
     */
-    fun add(element: T): Boolean = this.getOrCreateCollection().add(element)
+    open fun add(element: T): Boolean = this.getOrCreateCollection().add(element)
 
     /**
      * Removes a single instance of the specified element from this
@@ -381,20 +381,20 @@ abstract class AbstractCollectionProperty<T, C>(
      * @return `true` if the element has been successfully removed; `false` if it was not contained in the collection.
      * @see MutableCollection.remove
      */
-    fun remove(element: T): Boolean = this.getOrCreateCollection().remove(element)
+    open fun remove(element: T): Boolean = this.getOrCreateCollection().remove(element)
 
     /**
      * Checks if the specified element is contained in this collection.
      * @see MutableCollection.contains
      */
-    fun contains(elem: T): Boolean =
+    open fun contains(elem: T): Boolean =
         this.value != null && this.value!!.contains(elem)
 
     /**
      * The size of the underlying collection
      * @see Collection.size
      */
-    fun size(): Int = this.getOrCreateCollection().size
+    open fun size(): Int = this.getOrCreateCollection().size
 
     /**
      * See [toRawStringHelper] for more info
