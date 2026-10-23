@@ -17,7 +17,9 @@ object ObjectParser {
     /**
      * Parses any raw string into [T]. Every [mutable properties][MutableProperty] of this object
      * are filled accordingly to the raw string.
-     * This chooses which parsing implementation to use
+     * This chooses which parsing implementation to use.
+     *
+     * To learn more about the parsers' implementation details, read [parseAny] and [parseGdObject]'s KDoc
      * @param rawString the raw string to parse
      * @param toFill the instance to fill
      * @param separator the separator used to separate the raw string (ex, in `1,10,2,20,3,30` the separator is `,`)
