@@ -11,7 +11,7 @@ import java.util.SequencedSet
  *
  * [value] returns both this property's stored groups and the [groupParentsProperty]'s groups.
  */
-class GroupSetProperty(
+open class GroupSetProperty(
     id: Id,
     val groupParentsProperty: SequencedSetProperty<UInt>,
     defaultValue: SequencedSet<UInt>? = linkedSetOf(),

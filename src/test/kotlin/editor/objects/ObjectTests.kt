@@ -81,6 +81,21 @@ private class SimpleObjectTests {
         secondObj.linkedGroupID.value = 5
         Assertions.assertTrue(firstObj == secondObj)
     }
+
+    @Test
+    @DisplayName("0u group insertion test")
+    fun groupTests() {
+        val obj = SimpleObject(0u, 0f, 0f)
+        obj.groups.add(7u)
+
+        Assertions.assertTrue(obj.groups.contains(7u) && obj.groups.size() == 1)
+
+        obj.groups.add(176u)
+        Assertions.assertTrue(obj.groups.contains(176u) && obj.groups.size() == 2)
+
+        obj.groups.add(0u)
+        Assertions.assertTrue(!obj.groups.contains(176u) && obj.groups.size() == 2)
+    }
 }
 
 @Tag(TestTags.EDITOR)
