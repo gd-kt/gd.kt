@@ -331,6 +331,8 @@ abstract class AbstractCollectionProperty<T, C>(
      * Gets the underlying collection, or creates if necessary.
      *
      * **This should be called when modifying the collection** !
+     * [getOrThrow] can be used for other cases where the collection
+     * doesn't get mutated
      */
     fun getOrCreateCollection(): C {
         if (this.currentValue == null) {
