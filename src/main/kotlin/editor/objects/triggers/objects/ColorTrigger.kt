@@ -31,6 +31,10 @@ class ColorTrigger : TriggerObject {
     val blending = BoolProperty(17.id, false)
     val playerColor1 = BoolProperty(15.id, false)
     val playerColor2 = BoolProperty(16.id, false)
+    /**
+     * See [SpecialColors] for a list of
+     * special colors
+     */
     @GDName("Color ID")
     val colorChannel = UIntProperty(23.id)
     @GDName("Channel ID")
@@ -84,6 +88,37 @@ class ColorTrigger : TriggerObject {
         this.colorChannel.value = colorChannel
     }
     constructor(x: Float, y: Float, color: Color, colorChannel: UInt) : this(Pos(x, y), color, colorChannel)
+}
+
+enum class SpecialColors(val colorID: UInt) {
+    @GDName("BG")
+    BACKGROUND(1000u),
+    @GDName("G1")
+    GROUND_1(1001u),
+    @GDName("Line")
+    LINE(1002u),
+    @GDName("3DL")
+    THREE_D_LINE(1003u),
+    @GDName("Obj")
+    OBJECT(1004u),
+    @GDName("P1")
+    PLAYER_1(1005u),
+    @GDName("P2")
+    PLAYER_2(1006u),
+    @GDName("LBG")
+    LIGHT_BG(1007u),
+    @GDName("G2")
+    GROUND_2(1009u),
+    @GDName("Black")
+    BLACK(10010u),
+    @GDName("White")
+    WHITE(10011u),
+    @GDName("Lighter")
+    LIGHTER_OBJ(10012u),
+    @GDName("MG")
+    MIDDLEGROUND(10013u),
+    @GDName("MG2")
+    MIDDLEGROUND_2(10014u)
 }
 
 enum class PlayerColor {
