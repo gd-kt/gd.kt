@@ -1092,6 +1092,8 @@ $dokka.location:editor.rawstring.property/ConditionalProperty///PointingToDeclar
 $dokka.location:editor.rawstring.property/ConditionalProperty/ConditionalProperty/#editor.rawstring.Id#TypeParam(bounds=[editor.rawstring.property.AbstractProperty[TypeParam(bounds=[kotlin.Any?])]?])#editor.rawstring.serializing.Serializer[TypeParam(bounds=[kotlin.Any?])]#kotlin.Function1[TypeParam(bounds=[editor.rawstring.property.AbstractProperty[TypeParam(bounds=[kotlin.Any?])]?]),kotlin.Boolean]#kotlin.Function1[TypeParam(bounds=[editor.rawstring.property.AbstractProperty[TypeParam(bounds=[kotlin.Any?])]?]),TypeParam(bounds=[kotlin.Any?])?]/PointingToDeclaration/gd.kt/editor.rawstring.property/-conditional-property/-conditional-property.html
 $dokka.location:editor.rawstring.property/ConditionalProperty/asRawString/#kotlin.Char/PointingToDeclaration/gd.kt/editor.rawstring.property/-conditional-property/as-raw-string.html
 $dokka.location:editor.rawstring.property/ConditionalProperty/dependantOn/#/PointingToDeclaration/gd.kt/editor.rawstring.property/-conditional-property/dependant-on.html
+$dokka.location:editor.rawstring.property/ConditionalProperty/equals/#kotlin.Any?/PointingToDeclaration/gd.kt/editor.rawstring.property/-conditional-property/equals.html
+$dokka.location:editor.rawstring.property/ConditionalProperty/hashCode/#/PointingToDeclaration/gd.kt/editor.rawstring.property/-conditional-property/hash-code.html
 $dokka.location:editor.rawstring.property/ConditionalProperty/id/#/PointingToDeclaration/gd.kt/editor.rawstring.property/-conditional-property/id.html
 $dokka.location:editor.rawstring.property/ConditionalProperty/isSerializable/#/PointingToDeclaration/gd.kt/editor.rawstring.property/-conditional-property/is-serializable.html
 $dokka.location:editor.rawstring.property/ConditionalProperty/predicate/#/PointingToDeclaration/gd.kt/editor.rawstring.property/-conditional-property/predicate.html
@@ -1129,6 +1131,7 @@ $dokka.location:editor.rawstring.property/GdEnum///PointingToDeclaration/gd.kt/
 $dokka.location:editor.rawstring.property/GdEnum/value/#/PointingToDeclaration/gd.kt/editor.rawstring.property/-gd-enum/value.html
 $dokka.location:editor.rawstring.property/GroupSetProperty///PointingToDeclaration/gd.kt/editor.rawstring.property/-group-set-property/index.html
 $dokka.location:editor.rawstring.property/GroupSetProperty/GroupSetProperty/#editor.rawstring.Id#editor.rawstring.property.SequencedSetProperty[kotlin.UInt]#<ERROR CLASS> ERROR CLASS: Symbol not found for SequencedSet<kotlin/UInt>??#<ERROR CLASS> ERROR CLASS: Symbol not found for SequencedSet<kotlin/UInt>??/PointingToDeclaration/gd.kt/editor.rawstring.property/-group-set-property/-group-set-property.html
+$dokka.location:editor.rawstring.property/GroupSetProperty/add/#kotlin.UInt/PointingToDeclaration/gd.kt/editor.rawstring.property/-group-set-property/add.html
 $dokka.location:editor.rawstring.property/GroupSetProperty/groupParentsProperty/#/PointingToDeclaration/gd.kt/editor.rawstring.property/-group-set-property/group-parents-property.html
 $dokka.location:editor.rawstring.property/GroupSetProperty/value/#/PointingToDeclaration/gd.kt/editor.rawstring.property/-group-set-property/value.html
 $dokka.location:editor.rawstring.property/HsvProperty///PointingToDeclaration/gd.kt/editor.rawstring.property/-hsv-property/index.html
