@@ -45,15 +45,7 @@ open class SimpleObject : GenericGdObject {
 
     @GDName("Pink groups")
     val groupsParent = SequencedSetProperty(274.id, elemSerializer = Serializers.UINT)
-    val groups = object : GroupSetProperty(57.id, groupParentsProperty = this@SimpleObject.groupsParent) {
-        // For groups, we don't need to add the group 0u
-        // since it's equal to "no group"
-        //
-        // If the user tries to add the group 0u
-        // false will be returned
-        override fun add(element: UInt): Boolean =
-            element != 0u && super.add(element)
-    }
+    val groups = GroupSetProperty(57.id, groupParentsProperty = this@SimpleObject.groupsParent)
     val editorLayer = IntProperty(20.id)
     val editorLayer2 = IntProperty(61.id)
     val zOrder = IntProperty(25.id, defaultValue = null)

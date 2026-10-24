@@ -43,4 +43,12 @@ open class GroupSetProperty(
         set(value) {
             super.value = value
         }
+
+    // For groups, we don't need to add the group 0u (aka NULL_GROUP)
+    // since it's equal to "no group"
+    //
+    // If the user tries to add the group 0u
+    // false will be returned
+    override fun add(element: UInt): Boolean =
+        element != NULL_GROUP && super.add(element)
 }
