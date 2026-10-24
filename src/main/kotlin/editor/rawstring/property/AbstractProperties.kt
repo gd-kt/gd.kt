@@ -74,11 +74,13 @@ interface PropertyDefinition<T> : RawStringable {
  * to be used with [collection properties][AbstractCollectionProperty].
  *
  * `this.value!!` can also be used but this has a proper error message.
+ * @param message the message to display in the exception if the property's [value]
+ * is `null`. If it's `null` a default message will get used instead.
  * @return the property's [value] or throw if it's `null`
- * @throws NullPointerException if the property's [value] is `null`
+ * @throws IllegalStateException if the property's [value] is `null`
  */
-fun <T> PropertyDefinition<T>.getOrThrow(): T =
-    checkNotNull(this.value) { "${this::class.simpleName}'s value is null when it was expected to be non null" }
+fun <T> PropertyDefinition<T>.getOrThrow(message: String? = null): T =
+    checkNotNull(this.value) { message ?: "${this::class.simpleName}'s value is null when it was expected to be non null" }
 
 /**
  * Returns the property's [value] or [other] if it's `null`.
