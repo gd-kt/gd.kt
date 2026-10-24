@@ -9,6 +9,7 @@ import editor.objects.data.Scale
 import editor.objects.propertycontainers.TriggerProperties
 import editor.objects.triggers.objects.*
 import editor.rawstring.Id.Companion.id
+import editor.rawstring.property.NULL_GROUP
 import editor.rawstring.property.UIntProperty
 import editor.rawstring.property.getOrThrow
 import org.junit.jupiter.api.Assertions
@@ -93,8 +94,8 @@ private class SimpleObjectTests {
         obj.groups.add(176u)
         Assertions.assertTrue(obj.groups.contains(176u) && obj.groups.size() == 2)
 
-        obj.groups.add(0u)
-        Assertions.assertTrue(!obj.groups.contains(176u) && obj.groups.size() == 2)
+        obj.groups.add(NULL_GROUP)
+        Assertions.assertTrue(!obj.groups.contains(NULL_GROUP) && obj.groups.size() == 2)
     }
 }
 
