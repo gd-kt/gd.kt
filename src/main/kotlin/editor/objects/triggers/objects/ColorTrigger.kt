@@ -20,7 +20,7 @@ import java.awt.Color
  */
 class ColorTrigger : TriggerObject {
     companion object {
-        const val OBJ_ID = 889u
+        const val OBJ_ID = 899u
     }
 
     val fadeTime = TriggerProperties.DURATION
