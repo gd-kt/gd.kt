@@ -40,6 +40,17 @@ $dokka.location:/XorType/xorer/#/PointingToDeclaration/gd.kt/[root]/-xor-type/x
 $dokka.location:annotations////PointingToDeclaration/gd.kt/annotations/index.html
 $dokka.location:annotations/GDName///PointingToDeclaration/gd.kt/annotations/-g-d-name/index.html
 $dokka.location:annotations/GDName/name/#/PointingToDeclaration/gd.kt/annotations/-g-d-name/name.html
+$dokka.location:client.clients.versions////PointingToDeclaration/gd.kt/client.clients.versions/index.html
+$dokka.location:client.clients.versions/GDPlatformVersion///PointingToDeclaration/gd.kt/client.clients.versions/-g-d-platform-version/index.html
+$dokka.location:client.clients.versions/GDPlatformVersion/GDPlatformVersion/#kotlin.String#kotlin.UInt#kotlin.UInt/PointingToDeclaration/gd.kt/client.clients.versions/-g-d-platform-version/-g-d-platform-version.html
+$dokka.location:client.clients.versions/GDPlatformVersion/binaryVersion/#/PointingToDeclaration/gd.kt/client.clients.versions/-g-d-platform-version/binary-version.html
+$dokka.location:client.clients.versions/GDPlatformVersion/gameVersion/#/PointingToDeclaration/gd.kt/client.clients.versions/-g-d-platform-version/game-version.html
+$dokka.location:client.clients.versions/GDPlatformVersion/strVersion/#/PointingToDeclaration/gd.kt/client.clients.versions/-g-d-platform-version/str-version.html
+$dokka.location:client.clients.versions/GDPlatformVersions///PointingToDeclaration/gd.kt/client.clients.versions/-g-d-platform-versions/index.html
+$dokka.location:client.clients.versions/GDPlatformVersions/CURRENT/#/PointingToDeclaration/gd.kt/client.clients.versions/-g-d-platform-versions/-c-u-r-r-e-n-t.html
+$dokka.location:client.clients.versions/GDPlatformVersions/VER_2_208/#/PointingToDeclaration/gd.kt/client.clients.versions/-g-d-platform-versions/-v-e-r_2_208.html
+$dokka.location:client.clients.versions/GDPlatformVersions/VER_2_209/#/PointingToDeclaration/gd.kt/client.clients.versions/-g-d-platform-versions/-v-e-r_2_209.html
+$dokka.location:client.clients.versions/GDPlatformVersions/VER_2_2091/#/PointingToDeclaration/gd.kt/client.clients.versions/-g-d-platform-versions/-v-e-r_2_2091.html
 $dokka.location:client.clients////PointingToDeclaration/gd.kt/client.clients/index.html
 $dokka.location:client.clients//getAccountIdOrThrow/client.clients.AbstractGDClient#/PointingToDeclaration/gd.kt/client.clients/get-account-id-or-throw.html
 $dokka.location:client.clients//getPlayerIdOrThrow/client.clients.AbstractGDClient#/PointingToDeclaration/gd.kt/client.clients/get-player-id-or-throw.html
@@ -48,9 +59,7 @@ $dokka.location:client.clients//synchronousClient/client.clients.AbstractGDClien
 $dokka.location:client.clients//throwIfLoggedOut/client.clients.AbstractGDClient#/PointingToDeclaration/gd.kt/client.clients/throw-if-logged-out.html
 $dokka.location:client.clients//toFormRequestBodyWithClientInfo/kotlin.collections.Map[TypeParam(bounds=[kotlin.Any]),TypeParam(bounds=[kotlin.Any])]#client.clients.AbstractGDClient#client.Secret/PointingToDeclaration/gd.kt/client.clients/to-form-request-body-with-client-info.html
 $dokka.location:client.clients/AbstractGDClient.Companion///PointingToDeclaration/gd.kt/client.clients/-abstract-g-d-client/-companion/index.html
-$dokka.location:client.clients/AbstractGDClient.Companion/BINARY_VERSION/#/PointingToDeclaration/gd.kt/client.clients/-abstract-g-d-client/-companion/-b-i-n-a-r-y_-v-e-r-s-i-o-n.html
 $dokka.location:client.clients/AbstractGDClient.Companion/DEFAULT_URL/#/PointingToDeclaration/gd.kt/client.clients/-abstract-g-d-client/-companion/-d-e-f-a-u-l-t_-u-r-l.html
-$dokka.location:client.clients/AbstractGDClient.Companion/GAME_VERSION/#/PointingToDeclaration/gd.kt/client.clients/-abstract-g-d-client/-companion/-g-a-m-e_-v-e-r-s-i-o-n.html
 $dokka.location:client.clients/AbstractGDClient.Companion/createCHK/#kotlin.collections.List[kotlin.Any]#XorKey#kotlin.String?/PointingToDeclaration/gd.kt/client.clients/-abstract-g-d-client/-companion/create-c-h-k.html
 $dokka.location:client.clients/AbstractGDClient.Companion/createCHK/#kotlin.collections.List[kotlin.Any]#kotlin.String#kotlin.String?/PointingToDeclaration/gd.kt/client.clients/-abstract-g-d-client/-companion/create-c-h-k.html
 $dokka.location:client.clients/AbstractGDClient.Companion/createCHK/#vararg(kotlin.Any)#XorKey#kotlin.String?/PointingToDeclaration/gd.kt/client.clients/-abstract-g-d-client/-companion/create-c-h-k.html
@@ -1033,8 +1042,10 @@ $dokka.location:editor.objects/SimpleObject/x/#/PointingToDeclaration/gd.kt/edi
 $dokka.location:editor.objects/SimpleObject/y/#/PointingToDeclaration/gd.kt/editor.objects/-simple-object/y.html
 $dokka.location:editor.objects/SimpleObject/zOrder/#/PointingToDeclaration/gd.kt/editor.objects/-simple-object/z-order.html
 $dokka.location:editor.rawstring.property////PointingToDeclaration/gd.kt/editor.rawstring.property/index.html
+$dokka.location:editor.rawstring.property//NULL_GROUP/#/PointingToDeclaration/gd.kt/editor.rawstring.property/-n-u-l-l_-g-r-o-u-p.html
 $dokka.location:editor.rawstring.property//compareOrElse/editor.rawstring.property.PropertyDefinition[TypeParam(bounds=[kotlin.Comparable[^]])]#TypeParam(bounds=[kotlin.Comparable[^]])#kotlin.Int/PointingToDeclaration/gd.kt/editor.rawstring.property/compare-or-else.html
 $dokka.location:editor.rawstring.property//compareOrThrow/editor.rawstring.property.PropertyDefinition[TypeParam(bounds=[kotlin.Comparable[^]])]#TypeParam(bounds=[kotlin.Comparable[^]])/PointingToDeclaration/gd.kt/editor.rawstring.property/compare-or-throw.html
+$dokka.location:editor.rawstring.property//forEach/editor.rawstring.property.AbstractCollectionProperty[TypeParam(bounds=[kotlin.Any?]),*]#kotlin.Function1[TypeParam(bounds=[kotlin.Any?]),kotlin.Unit]/PointingToDeclaration/gd.kt/editor.rawstring.property/for-each.html
 $dokka.location:editor.rawstring.property//getOrElse/editor.rawstring.property.PropertyDefinition[TypeParam(bounds=[kotlin.Any?])]#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/gd.kt/editor.rawstring.property/get-or-else.html
 $dokka.location:editor.rawstring.property//getOrNullableElse/editor.rawstring.property.PropertyDefinition[TypeParam(bounds=[kotlin.Any?])]#TypeParam(bounds=[kotlin.Any?])?/PointingToDeclaration/gd.kt/editor.rawstring.property/get-or-nullable-else.html
 $dokka.location:editor.rawstring.property//getOrThrow/editor.rawstring.property.PropertyDefinition[TypeParam(bounds=[kotlin.Any?])]#/PointingToDeclaration/gd.kt/editor.rawstring.property/get-or-throw.html
@@ -1045,6 +1056,7 @@ $dokka.location:editor.rawstring.property/AbstractCollectionProperty///PointingT
 $dokka.location:editor.rawstring.property/AbstractCollectionProperty/AbstractCollectionProperty/#editor.rawstring.Id#TypeParam(bounds=[kotlin.collections.MutableCollection[TypeParam(bounds=[kotlin.Any?])]])?#TypeParam(bounds=[kotlin.collections.MutableCollection[TypeParam(bounds=[kotlin.Any?])]])?#editor.rawstring.serializing.Serializer[TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/gd.kt/editor.rawstring.property/-abstract-collection-property/-abstract-collection-property.html
 $dokka.location:editor.rawstring.property/AbstractCollectionProperty/add/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/gd.kt/editor.rawstring.property/-abstract-collection-property/add.html
 $dokka.location:editor.rawstring.property/AbstractCollectionProperty/clear/#/PointingToDeclaration/gd.kt/editor.rawstring.property/-abstract-collection-property/clear.html
+$dokka.location:editor.rawstring.property/AbstractCollectionProperty/contains/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/gd.kt/editor.rawstring.property/-abstract-collection-property/contains.html
 $dokka.location:editor.rawstring.property/AbstractCollectionProperty/elemSerializer/#/PointingToDeclaration/gd.kt/editor.rawstring.property/-abstract-collection-property/elem-serializer.html
 $dokka.location:editor.rawstring.property/AbstractCollectionProperty/getOrCreateCollection/#/PointingToDeclaration/gd.kt/editor.rawstring.property/-abstract-collection-property/get-or-create-collection.html
 $dokka.location:editor.rawstring.property/AbstractCollectionProperty/isEmpty/#/PointingToDeclaration/gd.kt/editor.rawstring.property/-abstract-collection-property/is-empty.html
@@ -1361,13 +1373,14 @@ $dokka.location:exceptions/WSLiveEditorException/WSLiveEditorException/#kotlin.S
 $dokka.location:exceptions/WSLiveEditorException/WSLiveEditorException/#kotlin.String#kotlin.Throwable#editor.wsliveeditor.WSLiveEditorClient.WSLiveEditorResponse?/PointingToDeclaration/gd.kt/exceptions/-w-s-live-editor-exception/-w-s-live-editor-exception.html
 $dokka.location:exceptions/WSLiveEditorException/response/#/PointingToDeclaration/gd.kt/exceptions/-w-s-live-editor-exception/response.html
 $dokka.location:utils////PointingToDeclaration/gd.kt/utils/index.html
+$dokka.location:utils//cache/#kotlin.Function0[TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/gd.kt/utils/cache.html
+$dokka.location:utils//checkNonNull/#TypeParam(bounds=[kotlin.Any])?#kotlin.Function0[java.lang.RuntimeException]/PointingToDeclaration/gd.kt/utils/check-non-null.html
 $dokka.location:utils//containsProperty/kotlin.collections.Collection[TypeParam(bounds=[editor.rawstring.property.PropertyDefinition[*]])]#editor.rawstring.Id/PointingToDeclaration/gd.kt/utils/contains-property.html
 $dokka.location:utils//cyclicXor/kotlin.String#kotlin.Int/PointingToDeclaration/gd.kt/utils/cyclic-xor.html
 $dokka.location:utils//cyclicXor/kotlin.String#kotlin.String/PointingToDeclaration/gd.kt/utils/cyclic-xor.html
 $dokka.location:utils//getProperty/kotlin.collections.Collection[TypeParam(bounds=[editor.rawstring.property.PropertyDefinition[*]])]#editor.rawstring.Id/PointingToDeclaration/gd.kt/utils/get-property.html
 $dokka.location:utils//isPrimitive/#kotlin.Any/PointingToDeclaration/gd.kt/utils/is-primitive.html
 $dokka.location:utils//quote/kotlin.CharSequence?#/PointingToDeclaration/gd.kt/utils/quote.html
-$dokka.location:utils//remember/#kotlin.Function0[TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/gd.kt/utils/remember.html
 $dokka.location:utils//staticXor/kotlin.String#kotlin.Int/PointingToDeclaration/gd.kt/utils/static-xor.html
 $dokka.location:utils//toBooleanFromInt/kotlin.String#/PointingToDeclaration/gd.kt/utils/to-boolean-from-int.html
 $dokka.location:utils//toBooleanFromIntStrict/kotlin.String#/PointingToDeclaration/gd.kt/utils/to-boolean-from-int-strict.html
@@ -1388,6 +1401,7 @@ $dokka.location:utils/Cacher/valueGetter/#/PointingToDeclaration/gd.kt/utils/-c
 annotations
 client
 client.clients
+client.clients.versions
 client.endpoint
 client.enums
 client.struct
