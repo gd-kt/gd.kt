@@ -87,8 +87,26 @@ open class ConditionalProperty<T, PT, P : AbstractProperty<PT>?>(
             ""
     }
 
+
+
     override fun toString(): String =
         PropertyDefinition.createToString(this)
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is ConditionalProperty<*, *, *>) return false
+
+        if (this.id != other.id) return false
+        if (this.value != other.value) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = this.id.hashCode()
+        result = 31 * result + this.value.hashCode()
+        return result
+    }
 }
 
 /**
