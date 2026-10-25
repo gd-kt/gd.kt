@@ -16,34 +16,11 @@ most stuff don't need any samples !
 ---
 
 Kotlin's coding guidelines should be followed.
+There are some minor exceptions however.
 
 ### General guidelines
 
 #### Annotations
-
-For annotations, they should be placed in order from the shortest to the longest
-or by order of importance:
-
-```kotlin
-// Ordered by their length
-
-@DoesThing                                             // 10 chars long
-@Annotation                                            // 11 chars long
-@Annot("This string makes the resulting line longer")  // 53 chars long
-fun myFunc(): Nothing = TODO()
-```
-
-```kotlin
-// Ordered by their important
-//
-// This is very subjective
-// but is still a rule nonetheless
-
-@GDName("Something Something")  // Least important
-@JvmStatic                      // These are placed last, except if there's an opt in annotation
-@OptIn(MyOptInClass::class)     // Always last no matter what
-fun myFunc(): Nothing = TODO()
-```
 
 Unlike in kotlin's coding guidelines, annotations shouldn't be placed
 on the same line as other ones:
