@@ -90,35 +90,40 @@ class ColorTrigger : TriggerObject {
     constructor(x: Float, y: Float, color: Color, colorChannel: UInt) : this(Pos(x, y), color, colorChannel)
 }
 
-enum class SpecialColors(val colorID: UInt) {
+/**
+ * Special color channels
+ * @property gdName the name of the color channel in the Geometry Dash UI
+ * @property colorID the ID of the color
+ */
+enum class SpecialColors(val gdName: String, val colorID: UInt) {
     @GDName("BG")
-    BACKGROUND(1000u),
+    BACKGROUND("BG", 1000u),
     @GDName("G1")
-    GROUND_1(1001u),
+    GROUND_1("G1", 1001u),
     @GDName("Line")
-    LINE(1002u),
+    LINE("Line", 1002u),
     @GDName("3DL")
-    THREE_D_LINE(1003u),
+    THREE_D_LINE("3DL", 1003u),
     @GDName("Obj")
-    OBJECT(1004u),
+    OBJECT("Obj", 1004u),
     @GDName("P1")
-    PLAYER_1(1005u),
+    PLAYER_1("P1", 1005u),
     @GDName("P2")
-    PLAYER_2(1006u),
+    PLAYER_2("P2", 1006u),
     @GDName("LBG")
-    LIGHT_BG(1007u),
+    LIGHT_BG("LBG", 1007u),
     @GDName("G2")
-    GROUND_2(1009u),
+    GROUND_2("G2", 1009u),
     @GDName("Black")
-    BLACK(10010u),
+    BLACK("Black", 10010u),
     @GDName("White")
-    WHITE(10011u),
+    WHITE("White", 10011u),
     @GDName("Lighter")
-    LIGHTER_OBJ(10012u),
+    LIGHTER_OBJ("Lighter", 10012u),
     @GDName("MG")
-    MIDDLEGROUND(10013u),
+    MIDDLEGROUND("MG", 10013u),
     @GDName("MG2")
-    MIDDLEGROUND_2(10014u)
+    MIDDLEGROUND_2("MG2", 10014u)
 }
 
 enum class PlayerColor {
