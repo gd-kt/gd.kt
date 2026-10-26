@@ -10,6 +10,10 @@ import editor.rawstring.property.CollectionCtor
 import editor.rawstring.property.GdEnum
 import kotlin.enums.EnumEntries
 
+/**
+ * Represents something that can be serialized into a string **understandable by Geometry Dash**
+ * @see Parsable
+ */
 fun interface Serializable<in T> {
     companion object {
         /**
@@ -21,6 +25,10 @@ fun interface Serializable<in T> {
     fun serialize(value: T): String
 }
 
+/**
+ * Represents something can be parsed into an object from a string **understandable by Geometry Dash**
+ * @see Serializable
+ */
 fun interface Parsable<out T> {
     companion object {
         @JvmStatic
@@ -44,6 +52,24 @@ fun interface Parsable<out T> {
     fun parse(rawValue: String): T
 }
 
+/**
+ * Represents something that can be turned into and back from a **string understandable by Geometry Dash**.
+ * A list of primitive serializers can be found inside the [Serializers] class.
+ *
+ * To make your own serializers, inside your class' `companion object`
+ * put your serializer implementation:
+ *
+ * ```kotlin
+ * class Clazz {
+ *     companion object {
+ *         val SERIALIZER: Serializer<Clazz> = /* ... */
+ *     }
+ * }
+ * ```
+ *
+ * @see Serializable
+ * @see Parsable
+ */
 interface Serializer<T> : Serializable<T>, Parsable<T> {
     companion object {
         @JvmStatic

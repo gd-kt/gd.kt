@@ -4,7 +4,16 @@ import utils.toBooleanFromIntStrict
 import kotlin.io.encoding.Base64
 
 /**
- * Contains a list of **primitive** serializers
+ * Contains a list of **primitive** serializers.
+ * You should declare your own serializers inside the object's companion object:
+ *
+ * ```kotlin
+ * class Clazz {
+ *     companion object {
+ *         val SERIALIZER: Serializer<Clazz> = /* ... */
+ *     }
+ * }
+ * ```
  */
 object Serializers {
     val STRING: Serializer<String> = Serializer.create(
