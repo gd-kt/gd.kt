@@ -101,12 +101,16 @@ enum class ItemCompareComparisonType(override val value: Int) : GdEnum {
  * Compares [a] and [b] using this [comparison type][ItemCompareComparisonType]
  * @return the evaluated result
  */
-fun ItemCompareComparisonType.compare(a: Double, b: Double): Boolean =
-    when (this) {
-        ItemCompareComparisonType.EQUAL -> a == b
-        ItemCompareComparisonType.NOT_EQUAL -> a != b
-        ItemCompareComparisonType.GREATER_THAN -> a > b
-        ItemCompareComparisonType.GREATER_THAN_EQUAL -> a >= b
-        ItemCompareComparisonType.LESS_THAN -> a < b
-        ItemCompareComparisonType.LESS_THAN_EQUAL -> a <= b
+fun ItemCompareComparisonType.compare(a: Number, b: Number): Boolean {
+    val aDouble = a.toDouble()
+    val bDouble = b.toDouble()
+
+    return when (this) {
+        ItemCompareComparisonType.EQUAL -> aDouble == bDouble
+        ItemCompareComparisonType.NOT_EQUAL -> aDouble != bDouble
+        ItemCompareComparisonType.GREATER_THAN -> aDouble > bDouble
+        ItemCompareComparisonType.GREATER_THAN_EQUAL -> aDouble >= bDouble
+        ItemCompareComparisonType.LESS_THAN -> aDouble < bDouble
+        ItemCompareComparisonType.LESS_THAN_EQUAL -> aDouble <= bDouble
     }
+}
