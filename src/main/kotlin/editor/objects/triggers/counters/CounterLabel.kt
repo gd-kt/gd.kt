@@ -15,7 +15,7 @@ import editor.rawstring.serializing.Serializer
  *
  * **If you are wondering what any of these properties mean, check the [GD Editor Guide](https://www.robtopgames.com/files/GDEditor.pdf) !**
  */
-class CounterLabelTrigger : ComplexObject {
+class CounterLabel : ComplexObject {
     companion object {
         const val OBJ_ID = 1615u
     }
