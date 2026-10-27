@@ -1,8 +1,8 @@
 package editor.objects.triggers.counters
 
+import editor.objects.ComplexObject
 import editor.objects.data.Pos
 import editor.objects.data.Position
-import editor.objects.triggers.TriggerObject
 import editor.rawstring.Id.Companion.id
 import editor.rawstring.property.BoolProperty
 import editor.rawstring.property.EnumProperty
@@ -15,7 +15,7 @@ import editor.rawstring.serializing.Serializer
  *
  * **If you are wondering what any of these properties mean, check the [GD Editor Guide](https://www.robtopgames.com/files/GDEditor.pdf) !**
  */
-class CounterLabelTrigger : TriggerObject {
+class CounterLabelTrigger : ComplexObject {
     companion object {
         const val OBJ_ID = 1615u
     }
