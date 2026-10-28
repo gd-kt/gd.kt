@@ -45,3 +45,10 @@ class UnencodedStringProperty(id: Id, defaultValue: String? = "", currentValue: 
     override fun asRawString(separator: Char): String =
         this.toRawStringHelper(separator = separator)
 }
+
+/**
+ * The [value][StringProperty.value] of this [StringProperty] encoded
+ * using [Base64][Base64.UrlSafe]
+ */
+val StringProperty.b64String: String?
+    get() = this.value?.let { Base64.UrlSafe.encode(it.toByteArray()) }
