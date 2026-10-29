@@ -21,7 +21,7 @@ import kotlin.io.encoding.Base64
  * @see AsyncGDClient
  */
 @GDClientApi
-class GDClient(
+open class GDClient(
     credentials: Credentials? = null,
     url: HttpUrl = DEFAULT_URL,
 
