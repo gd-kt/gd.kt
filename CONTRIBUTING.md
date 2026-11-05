@@ -16,7 +16,7 @@ most stuff don't need any samples !
 ---
 
 Kotlin's coding guidelines should be followed.
-There are some minor exceptions however.
+However, there are some minor exceptions.
 
 ### General guidelines
 
