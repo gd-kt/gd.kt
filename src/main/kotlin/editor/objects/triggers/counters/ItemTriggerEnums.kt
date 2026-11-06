@@ -21,7 +21,16 @@ enum class ItemTriggerOperatorType(override val value: Int) : GdEnum {
 enum class ItemTriggerAbsNeg(override val value: Int) : GdEnum {
     NONE(0),
     ABS(1),
-    NEGATIVE(2)
+    NEGATE(2);
+
+    companion object {
+        @Deprecated(
+            message = "NEGATIVE has been renamed to NEGATE",
+            replaceWith = ReplaceWith("NEGATE")
+        )
+        inline val NEGATIVE
+            get() = NEGATE
+    }
 }
 
 enum class ItemTriggerRoundingType(override val value: Int) : GdEnum {
