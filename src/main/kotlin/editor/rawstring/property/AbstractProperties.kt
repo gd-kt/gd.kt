@@ -87,17 +87,20 @@ fun <T> PropertyDefinition<T>.getOrThrow(message: String? = null): T =
  * This is only useful if the default value is nullable
  * @return the property's [value] or [other] if it's `null`
  */
-fun <T> PropertyDefinition<T>.getOrElse(other: T): T =
-    if (this.value == null)
+fun <T, NullableT : T?> PropertyDefinition<T>.getOrElse(other: NullableT): NullableT {
+    @Suppress("UNCHECKED_CAST")
+    return if (this.value == null)
         other
     else
-        this.value!!
+        this.value!! as NullableT
+}
 
 /**
  * Returns the property's [value] or [other] if it's `null`.
  * This is only useful if the default value is nullable
  * @return the property's [value] or [other] if it's `null`
  */
+@Deprecated(message = "getOrElse is now typed correctly to accept null values", replaceWith = ReplaceWith("getOrElse(other)"))
 fun <T> PropertyDefinition<T>.getOrNullableElse(other: T?): T? =
     if (this.value == null)
         other
