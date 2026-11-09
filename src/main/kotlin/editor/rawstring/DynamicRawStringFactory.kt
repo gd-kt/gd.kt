@@ -23,9 +23,7 @@ interface DynamicRawStringFactory : RawStringFactory {
 
     fun getDynamicSerializableProperties(): List<PropertyDefinition<*>> =
         this.dynamicProperties
-            .stream()
             .filter { it.isSerializable() }
-            .toList()
 
     override fun asRawString(): String {
         val dynamicSerializableProperties = this.getDynamicSerializableProperties()

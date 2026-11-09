@@ -124,9 +124,7 @@ interface RawStringFactory {
 
     fun getSerializableProperties(): List<PropertyDefinition<*>> =
         this.properties
-            .stream()
             .filter { it.isSerializable() }
-            .toList()
 
     /**
      * Gets all the **serializable** properties of this factory's parent in a map
