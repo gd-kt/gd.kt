@@ -195,7 +195,7 @@ fun Float.toCompactedString(): String =
  * @return the found [property][PropertyDefinition]
  * @throws NoSuchElementException if there is no property corresponding to the given [id]
  */
-fun <T : PropertyDefinition<*>> Collection<T>.getProperty(id: Id): PropertyDefinition<*> =
+fun <T : PropertyDefinition<*>> Collection<T>.getProperty(id: Id): T =
     this.first { it.id == id }
 
 /**
