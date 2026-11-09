@@ -18,6 +18,11 @@ import utils.getProperty
 interface DynamicRawStringFactory : RawStringFactory {
     /**
      * A mutable list of custom properties provided by this dynamic raw string factory.
+     * A dynamic property is a property that is not contained inside the object's
+     * default property list.
+     *
+     * The [GdObject object parser][editor.objects.ObjectParser.parseGdObject] can automatically
+     * add properties to this list.
      */
     val dynamicProperties: MutableList<PropertyDefinition<*>>
 
