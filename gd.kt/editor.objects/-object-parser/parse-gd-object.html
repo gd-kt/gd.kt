@@ -127,12 +127,12 @@ class MyObjCtor(private val number: Int) : MyObj()
 
 // Since MyObj.prop has a default value it defaults to it
 val myObjCtor = ObjectParser.parseGdObject(&quot;&quot;, MyObjCtor(1))
-// myObj2.prop.value is equal to 6
-// myObj2.number is equal to 1. Since it's not a property its value doesn't change
+// myObjCtor.prop.value is equal to 6
+// myObjCtor.number is equal to 1. Since it's not a property its value doesn't change
 
 val myObjCtor2 = ObjectParser.parseGdObject(&quot;5,7&quot;, MyObjCtor(1))
-// myObj2.prop.value is equal to 7
-// myObj2.number is equal to 1</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div></div></div>
+// myObjCtor2.prop.value is equal to 7
+// myObjCtor2.number is equal to 1</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div></div></div>
 </div>
     <div class="footer">
         <div class="footer--container">
