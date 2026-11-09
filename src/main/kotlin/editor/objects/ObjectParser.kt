@@ -5,7 +5,9 @@ import editor.rawstring.Id
 import editor.rawstring.RawStringFactory
 import editor.rawstring.property.AbstractProperty
 import editor.rawstring.property.MutableProperty
+import editor.rawstring.property.UnencodedStringProperty
 import exceptions.InvalidRawStringException
+import utils.containsProperty
 import kotlin.reflect.KVisibility
 import kotlin.reflect.full.createInstance
 import kotlin.reflect.full.isSubclassOf
@@ -42,7 +44,7 @@ object ObjectParser {
      * To parse a [GenericGdObject], [parseGdObject] should get used instead
      * @param rawString the raw string to parse
      * @param toFill the instance to fill
-     * @param separator the separator used to separate the raw string (ex, in `1,10,2,20,3,30` the separator is `,`)
+     * @param separator the separator used to separate the raw string (ex: in `1,10,2,20,3,30` the separator is `,`)
      * @return returns the final instance, aka the same as [toFill]
      * @throws exceptions.InvalidRawStringException if the raw string is invalid *(see [GenericGdObject.isValidObjectString])*
      * @throws IllegalArgumentException if any of the parsed [ids][Id] are below `0` (exclusive, so `< 0`)
@@ -54,6 +56,7 @@ object ObjectParser {
     /**
      * @see parseAnyJava
      */
+    @JvmOverloads
     fun <T : Any> parseAnyJava(rawString: String, toFill: T, clazz: Class<T>, separator: Char = AbstractProperty.KEY_VAL_SEPARATOR): T {
         try {
             val rawStringMap = RawStringFactory.rawStringToMap(rawString, separator)
@@ -85,19 +88,33 @@ object ObjectParser {
      * the object will get added in the [dynamic properties][DynamicRawStringFactory.dynamicProperties] list
      * @param rawString the raw string to parse
      * @param toFill the instance to fill
-     * @param separator the separator used to separate the raw string (ex, in `1,10,2,20,3,30` the separator is `,`)
+     * @param separator the separator used to separate the raw string (ex: in `1,10,2,20,3,30` the separator is `,`)
+     * @param dynamicPropertiesBehavior the behavior to apply when unknown properties are found inside the given [rawString]
      * @return returns the final instance, aka the same as [toFill]
      * @throws exceptions.InvalidRawStringException if the raw string is invalid *(see [GenericGdObject.isValidObjectString])*
      * @throws IllegalArgumentException if any of the parsed [ids][Id] are below `0` (exclusive, so `< 0`)
+     * @throws HasDynamicPropertiesException if there are [dynamic properties][DynamicRawStringFactory.dynamicProperties] inside the given [rawString]
+     *                                       but the given [dynamicPropertiesBehavior] is [DynamicPropertiesBehavior.THROW_EXCEPTION]
      * @sample samples.editor.objects.parseGenericGdObjectSample
      */
-    inline fun <reified T : GenericGdObject> parseGdObject(rawString: String, toFill: T = T::class.createInstance(), separator: Char = AbstractProperty.KEY_VAL_SEPARATOR): T =
-        parseGdObjectJava(rawString, toFill, separator)
+    inline fun <reified T : GenericGdObject> parseGdObject(
+        rawString: String,
+        toFill: T = T::class.createInstance(),
+        separator: Char = AbstractProperty.KEY_VAL_SEPARATOR,
+        dynamicPropertiesBehavior: DynamicPropertiesBehavior = DynamicPropertiesBehavior.ADD
+    ): T =
+        parseGdObjectJava(rawString, toFill, separator, dynamicPropertiesBehavior)
 
     /**
      * @see parseGdObject
      */
-    fun <T : GenericGdObject> parseGdObjectJava(rawString: String, toFill: T, separator: Char = AbstractProperty.KEY_VAL_SEPARATOR): T {
+    @JvmOverloads
+    fun <T : GenericGdObject> parseGdObjectJava(
+        rawString: String,
+        toFill: T,
+        separator: Char = AbstractProperty.KEY_VAL_SEPARATOR,
+        dynamicPropertiesBehavior: DynamicPropertiesBehavior = DynamicPropertiesBehavior.ADD
+    ): T {
         try {
             val rawStringMap = RawStringFactory.rawStringToMap(rawString, separator)
             val isDynamicRawStringFactory = toFill.rawStringFactory is DynamicRawStringFactory
@@ -117,20 +134,74 @@ object ObjectParser {
             toFill.rawStringFactory.properties.forEach {
                 if (it is MutableProperty<*>) {
                     if (isDynamicRawStringFactory) {
-                        if (rawStringMap.containsKey(it.id)) {
+                        if (rawStringMap.containsKey(it.id))
                             defaultParseBehavior(it)
-                        } else {
-                            (toFill.rawStringFactory as DynamicRawStringFactory).dynamicProperties.add(it)
-                        }
                     } else if (rawStringMap.containsKey(it.id)) {
                         defaultParseBehavior(it)
                     }
                 }
             }
 
+            when (dynamicPropertiesBehavior) {
+                DynamicPropertiesBehavior.ADD ->
+                    rawStringMap
+                        .filterKeys { !toFill.rawStringFactory.properties.containsProperty(it) }
+                        .forEach { (id, value) ->
+                            val dynamicProperties = (toFill.rawStringFactory as DynamicRawStringFactory).dynamicProperties
+                            dynamicProperties.add(UnencodedStringProperty(id, defaultValue = null, currentValue = value))
+                        }
+                DynamicPropertiesBehavior.THROW_EXCEPTION ->
+                    rawStringMap
+                        .any { !toFill.rawStringFactory.properties.containsProperty(it.key) }
+                        .let { hasDynamicProperties ->
+                            if (hasDynamicProperties)
+                                throw HasDynamicPropertiesException(toFill, rawString)
+                        }
+                else -> {}
+            }
+
             return toFill
         } catch (e: Throwable) {
+            if (e is HasDynamicPropertiesException)
+                throw e
+
             throw InvalidRawStringException("Caught an error while trying to parse (GenericGdObject) $toFill (of type ${toFill::class.simpleName}). Separator is '$separator' with the raw string: \"$rawString\"", e)
         }
     }
+
+    /**
+     * The behavior of [dynamic properties][DynamicRawStringFactory.dynamicProperties].
+     * @see parseGdObject
+     * @see parseGdObjectJava
+     */
+    enum class DynamicPropertiesBehavior {
+        /**
+         * If [dynamic properties][DynamicRawStringFactory.dynamicProperties] should get added when a property cannot be found inside
+         * the object's property list.
+         *
+         * All the added properties are added as [UnencodedStringProperties][UnencodedStringProperty] because the
+         * type can't be inferred.
+         *
+         * **This is the default behavior.**
+         */
+        ADD,
+
+        /**
+         * When a property cannot be found inside the object's property list
+         * an exception will be thrown
+         * @see HasDynamicPropertiesException
+         */
+        THROW_EXCEPTION,
+
+        /**
+         * If [dynamic properties][DynamicRawStringFactory.dynamicProperties] should get ignored
+         */
+        IGNORE
+    }
+
+    /**
+     * @see DynamicPropertiesBehavior.THROW_EXCEPTION
+     */
+    class HasDynamicPropertiesException(obj: GenericGdObject, rawString: String = obj.asRawString()) :
+        RuntimeException("Found dynamic properties inside $obj with rawString $rawString, but they were not expected")
 }

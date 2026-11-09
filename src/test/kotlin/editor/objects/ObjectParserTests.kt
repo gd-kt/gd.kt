@@ -1,6 +1,7 @@
 package editor.objects
 
 import TestTags
+import editor.objects.data.Pos
 import editor.rawstring.Id.Companion.id
 import editor.rawstring.property.IntProperty
 import editor.rawstring.property.ListProperty
@@ -37,6 +38,30 @@ class NotGenericObject {
 @Tag(TestTags.EDITOR)
 private class ObjectParserTests {
     @Test
+    @DisplayName("ObjectParser.parse (GenericGDObject) Test -> DynamicPropertiesBehavior")
+    fun dynamicPropertiesBehaviorTest() {
+        Assertions.assertDoesNotThrow {
+            val obj1 = ObjectParser.parseGdObject(
+                "1,1,2,0,3,0,1789,100",
+                SimpleObject(1u, Pos.ZERO),
+                dynamicPropertiesBehavior = ObjectParser.DynamicPropertiesBehavior.ADD
+            )
+
+            Assertions.assertEquals(1, obj1.rawStringFactory.dynamicProperties.size)
+            Assertions.assertEquals("100", obj1.rawStringFactory.dynamicProperties.first().value)
+        }
+
+        Assertions.assertDoesNotThrow {
+            val obj2 = ObjectParser.parseGdObject("1,1,2,0,3,0,1789,100", SimpleObject(1u, Pos.ZERO), dynamicPropertiesBehavior = ObjectParser.DynamicPropertiesBehavior.IGNORE)
+            Assertions.assertEquals(0, obj2.rawStringFactory.dynamicProperties.size)
+        }
+
+        Assertions.assertThrows(ObjectParser.HasDynamicPropertiesException::class.java) {
+            ObjectParser.parseGdObject("1,1,2,0,3,0,1789,100", SimpleObject(1u, Pos.ZERO), dynamicPropertiesBehavior = ObjectParser.DynamicPropertiesBehavior.THROW_EXCEPTION)
+        }
+    }
+
+    @Test
     @DisplayName("ObjectParser.parse (GenericGDObject) Test")
     fun objectParserTestGeneric() {
         val obj = SimpleObject(2u, 0f, 0f)
@@ -58,6 +83,14 @@ private class ObjectParserTests {
         obj.linkedGroupID.value = 5
         parsedObj = ObjectParser.parseGdObject(SimpleObject(2u, 0f, 0f).asRawString(), SimpleObject(0u, 0f, 0f))
         Assertions.assertNotEquals(obj, parsedObj)
+
+
+        val objRawStringWithAdditionalProperties = obj.asRawString() + ",1789,5"
+        parsedObj = ObjectParser.parseGdObject(objRawStringWithAdditionalProperties, SimpleObject(0u, 0f, 0f))
+        Assertions.assertNotEquals(obj, parsedObj)
+        Assertions.assertEquals(1, parsedObj.rawStringFactory.dynamicProperties.size)
+
+        Assertions.assertEquals("5", parsedObj.rawStringFactory.dynamicProperties.first().value)
     }
 
     @Test
